@@ -1,7 +1,7 @@
 name = "zero-spore-web"
 compatibility_date = "2024-09-23"
 compatibility_flags = ["nodejs_compat"]
-pages_build_output_dir = ".next/"
+pages_build_output_dir = "out"
 
 # Pages deployment via Cloudflare Pages dashboard or CLI
 # Build command: npx @cloudflare/next-on-pages
