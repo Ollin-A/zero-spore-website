@@ -1,0 +1,172 @@
+@import "tailwindcss";
+
+/* ===== TAILWIND V4 THEME EXTENSIONS ===== */
+@theme {
+  /* Font families (mapped from next/font CSS variables) */
+  --font-serif: var(--font-heading);
+  --font-sans: var(--font-body);
+
+  /* Breakpoints */
+  --breakpoint-sm: 640px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1440px;
+
+  /* Colors - Light palette */
+  --color-cream: #fdfbf7;
+  --color-warm: #f5f0eb;
+  --color-stone: #e8e2da;
+  --color-carbon: #1a1a1a;
+  --color-muted: #6b6560;
+  --color-hint: #9c9790;
+
+  /* Colors - Functional accents */
+  --color-forest: #1a7a42;
+  --color-moss: #eaf3de;
+  --color-ocean: #0d5b8a;
+  --color-sky: #e6f1fb;
+  --color-alert: #d44a2a;
+  --color-alert-bg: #fef0ec;
+
+  /* Colors - Dark palette */
+  --color-midnight: #0b1d2e;
+  --color-deep: #122a3f;
+  --color-navy: #1a3a54;
+  --color-ivory: #f5f0eb;
+  --color-ivory-dim: #8bb8d4;
+  --color-cyan: #4ecdc4;
+}
+
+/* ===== CSS CUSTOM PROPERTIES (Design Tokens) ===== */
+:root {
+  /* Light palette */
+  --cream: #fdfbf7;
+  --warm: #f5f0eb;
+  --stone: #e8e2da;
+  --carbon: #1a1a1a;
+  --muted: #6b6560;
+  --hint: #9c9790;
+
+  /* Functional accents */
+  --forest: #1a7a42;
+  --moss: #eaf3de;
+  --ocean: #0d5b8a;
+  --sky: #e6f1fb;
+  --alert: #d44a2a;
+  --alert-bg: #fef0ec;
+
+  /* Dark palette */
+  --midnight: #0b1d2e;
+  --deep: #122a3f;
+  --navy: #1a3a54;
+  --ivory: #f5f0eb;
+  --ivory-dim: #8bb8d4;
+  --cyan: #4ecdc4;
+
+  /* Spacing */
+  --max-width: 1200px;
+  --text-max: 680px;
+  --section-py: 120px;
+  --section-py-m: 64px;
+  --grid-gap: 24px;
+  --card-padding: 24px;
+
+  /* Border radius */
+  --radius-card: 12px;
+  --radius-button: 8px;
+  --radius-input: 8px;
+  --radius-badge: 20px;
+  --radius-image: 10px;
+
+  /* Typography - Display */
+  --font-display-size: clamp(2rem, 5vw, 4rem);
+  --font-display-lh: 1.1;
+  --font-display-ls: -0.02em;
+
+  /* Typography - H1 */
+  --font-h1-size: clamp(1.75rem, 3.5vw, 2.5rem);
+  --font-h1-lh: 1.15;
+  --font-h1-ls: -0.02em;
+
+  /* Typography - H2 */
+  --font-h2-size: clamp(1.5rem, 2.5vw, 2rem);
+  --font-h2-lh: 1.2;
+
+  /* Typography - H3 */
+  --font-h3-size: clamp(1.125rem, 2vw, 1.5rem);
+  --font-h3-lh: 1.3;
+
+  /* Typography - Body */
+  --font-body-size: clamp(1rem, 1.2vw, 1.125rem);
+  --font-body-lh: 1.7;
+
+  /* Typography - Small */
+  --font-small-size: clamp(0.8125rem, 1vw, 0.875rem);
+  --font-small-lh: 1.5;
+
+  /* Typography - Nav */
+  --font-nav-size: clamp(0.875rem, 1vw, 0.9375rem);
+
+  /* Typography - CTA */
+  --font-cta-size: clamp(0.9375rem, 1vw, 1rem);
+}
+
+/* ===== BASE STYLES ===== */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body), ui-sans-serif, system-ui, sans-serif;
+  background-color: var(--cream);
+  color: var(--carbon);
+  font-size: var(--font-body-size);
+  line-height: var(--font-body-lh);
+}
+
+/* Headings use serif font, never bold */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-heading), ui-serif, Georgia, serif;
+  font-weight: 400;
+}
+
+/* ===== SCROLLBAR HIDE UTILITY ===== */
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* ===== EMERGENCY PULSE (only micro-animation on the site) ===== */
+@keyframes pulse-emergency {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(212, 74, 42, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 0 12px rgba(212, 74, 42, 0);
+  }
+}
+
+.animate-pulse-emergency {
+  animation: pulse-emergency 2s ease-in-out infinite;
+}
+
+/* ===== REDUCED MOTION ===== */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
