@@ -1,6 +1,7 @@
 "use client";
 
-import { useEffect } from "react";
+import { useState, useEffect, useLayoutEffect } from "react";
+import { usePathname } from "next/navigation";
 import { ScrollTrigger } from "@/lib/gsap";
 import ServiceHero from "@/components/services/ServiceHero";
 import FeatureGrid from "@/components/services/FeatureGrid";
@@ -11,6 +12,10 @@ import SchemaMarkup from "@/components/shared/SchemaMarkup";
 import MoodSection from "@/components/scroll/MoodSection";
 import type { ServiceData } from "@/data/services";
 
+// useLayoutEffect on client, useEffect on server (SSR safety)
+const useIsomorphicLayoutEffect =
+  typeof window !== "undefined" ? useLayoutEffect : useEffect;
+
 interface ServicePageContentProps {
   service: ServiceData;
 }
@@ -18,15 +23,33 @@ interface ServicePageContentProps {
 export default function ServicePageContent({
   service,
 }: ServicePageContentProps) {
-  useEffect(() => {
+  const pathname = usePathname();
+  const [isReady, setIsReady] = useState(false);
+
+  // When pathname changes: unmount children, scroll to top, then remount.
+  // useLayoutEffect fires synchronously before the browser paints,
+  // ensuring scroll is at 0 before any ScrollTrigger instances are created.
+  useIsomorphicLayoutEffect(() => {
+    setIsReady(false);
     window.scrollTo(0, 0);
 
     const raf = requestAnimationFrame(() => {
-      ScrollTrigger.refresh(true);
+      setIsReady(true);
+
+      // After children mount and create ScrollTriggers, refresh positions
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          ScrollTrigger.refresh(true);
+        });
+      });
     });
 
     return () => cancelAnimationFrame(raf);
-  }, []);
+  }, [pathname]);
+
+  if (!isReady) {
+    return null;
+  }
 
   return (
     <>

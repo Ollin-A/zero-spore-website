@@ -16,5 +16,5 @@ export const metadata: Metadata = {
 };
 
 export default function WaterDamagePage() {
-  return <ServicePageContent key={service.slug} service={service} />;
+  return <ServicePageContent service={service} />;
 }
