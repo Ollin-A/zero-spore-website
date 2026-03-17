@@ -9,7 +9,7 @@ import {
   useEffect,
 } from "react";
 import { usePathname } from "next/navigation";
-import { gsap, ScrollTrigger, useGSAP } from "@/lib/gsap";
+import { gsap, ScrollTrigger } from "@/lib/gsap";
 
 interface MoodState {
   bg: string;
@@ -104,25 +104,32 @@ export default function ScrollMoodProvider({
   }, [updateMood, pathname]);
 
   // GSAP ScrollTrigger for normal motion
-  useGSAP(
-    () => {
-      const prefersReduced = window.matchMedia(
-        "(prefers-reduced-motion: reduce)",
-      ).matches;
-      if (prefersReduced) return;
+  // Uses useEffect (not useGSAP) to avoid hydration mismatch — useGSAP uses
+  // useLayoutEffect which fires during hydration, causing mood state to update
+  // before React finishes comparing server vs client HTML.
+  useEffect(() => {
+    const prefersReduced = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
+    if (prefersReduced) return;
 
-      const sections = gsap.utils.toArray<HTMLElement>("[data-mood-bg]");
-      if (sections.length === 0) return;
+    const container = containerRef.current;
+    if (!container) return;
 
-      // Set initial mood from first section
-      const first = sections[0];
-      updateMood(
-        first.dataset.moodBg!,
-        first.dataset.moodText!,
-        first.dataset.moodAccent!,
-      );
+    const sections = gsap.utils.toArray<HTMLElement>("[data-mood-bg]");
+    if (sections.length === 0) return;
 
-      sections.forEach((section) => {
+    // Set initial mood from first section
+    const first = sections[0];
+    updateMood(
+      first.dataset.moodBg!,
+      first.dataset.moodText!,
+      first.dataset.moodAccent!,
+    );
+
+    const triggers: ScrollTrigger[] = [];
+    sections.forEach((section) => {
+      triggers.push(
         ScrollTrigger.create({
           trigger: section,
           start: "top center",
@@ -139,11 +146,14 @@ export default function ScrollMoodProvider({
               section.dataset.moodText!,
               section.dataset.moodAccent!,
             ),
-        });
-      });
-    },
-    { scope: containerRef, dependencies: [pathname] },
-  );
+        }),
+      );
+    });
+
+    return () => {
+      triggers.forEach((t) => t.kill());
+    };
+  }, [pathname, updateMood]);
 
   return (
     <MoodContext.Provider value={mood}>

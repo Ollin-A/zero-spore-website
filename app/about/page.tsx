@@ -74,7 +74,7 @@ export default function AboutPage() {
       <MoodSection mood="about">
         <FadeUp>
           <h1
-            className="font-heading"
+            className="font-serif"
             style={{
               fontSize: "var(--font-h1-size)",
               lineHeight: "var(--font-h1-lh)",
@@ -116,7 +116,7 @@ export default function AboutPage() {
               <div className={block.reverse ? "lg:order-2" : ""}>
                 <FadeUp>
                   <h2
-                    className="font-heading"
+                    className="font-serif"
                     style={{
                       fontSize: "var(--font-h2-size)",
                       lineHeight: "var(--font-h2-lh)",
@@ -161,7 +161,7 @@ export default function AboutPage() {
       <MoodSection mood="about">
         <FadeUp>
           <h2
-            className="text-center font-heading"
+            className="text-center font-serif"
             style={{
               fontSize: "var(--font-h2-size)",
               lineHeight: "var(--font-h2-lh)",
@@ -203,7 +203,7 @@ export default function AboutPage() {
       <MoodSection mood="services">
         <FadeUp>
           <h2
-            className="text-center font-heading"
+            className="text-center font-serif"
             style={{
               fontSize: "var(--font-h2-size)",
               lineHeight: "var(--font-h2-lh)",
@@ -252,7 +252,7 @@ export default function AboutPage() {
         <div className="text-center">
           <FadeUp>
             <h2
-              className="font-heading"
+              className="font-serif"
               style={{
                 fontSize: "var(--font-h2-size)",
                 lineHeight: "var(--font-h2-lh)",

@@ -128,15 +128,6 @@ export default function EmergencySection() {
               </p>
             )}
 
-            {/* Honeypot — hidden from real users */}
-            <input
-              type="text"
-              name="company_fax"
-              tabIndex={-1}
-              autoComplete="off"
-              className="absolute -left-[9999px] h-0 w-0 opacity-0"
-              aria-hidden="true"
-            />
           </div>
         </FadeUp>
       </div>

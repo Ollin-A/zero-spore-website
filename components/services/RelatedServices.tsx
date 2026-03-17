@@ -24,7 +24,7 @@ export default function RelatedServices({ relatedSlugs }: RelatedServicesProps) 
       <FadeUp>
         <div className="text-center">
           <h2
-            className="font-heading"
+            className="font-serif"
             style={{
               fontSize: "var(--font-h2-size)",
               lineHeight: "var(--font-h2-lh)",

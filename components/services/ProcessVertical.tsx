@@ -11,7 +11,7 @@ export default function ProcessVertical({ steps }: ProcessVerticalProps) {
     <MoodSection mood="about">
       <FadeUp>
         <h2
-          className="text-center font-heading"
+          className="text-center font-serif"
           style={{
             fontSize: "var(--font-h2-size)",
             lineHeight: "var(--font-h2-lh)",

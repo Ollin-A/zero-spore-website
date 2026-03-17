@@ -38,7 +38,7 @@ export default function FAQAccordion({ items, serviceName }: FAQAccordionProps) 
       />
 
       <h2
-        className="font-heading text-center"
+        className="font-serif text-center"
         style={{
           fontSize: "var(--font-h2-size)",
           lineHeight: "var(--font-h2-lh)",

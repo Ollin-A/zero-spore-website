@@ -56,7 +56,7 @@ export default function Footer() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-sm text-warm transition-opacity hover:opacity-80"
+                    className="inline-block py-2 text-sm text-warm transition-opacity hover:opacity-80"
                   >
                     {link.label}
                   </Link>
@@ -75,7 +75,7 @@ export default function Footer() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-sm text-warm transition-opacity hover:opacity-80"
+                    className="inline-block py-2 text-sm text-warm transition-opacity hover:opacity-80"
                   >
                     {link.label}
                   </Link>
@@ -92,10 +92,10 @@ export default function Footer() {
         >
           <p>&copy; {new Date().getFullYear()} {BUSINESS.name}. All rights reserved.</p>
           <div className="mt-2 flex items-center justify-center gap-4 lg:mt-0">
-            <Link href="/terms" className="transition-opacity hover:opacity-80">
+            <Link href="/terms" className="inline-block py-1.5 transition-opacity hover:opacity-80">
               Terms
             </Link>
-            <Link href="/privacy" className="transition-opacity hover:opacity-80">
+            <Link href="/privacy" className="inline-block py-1.5 transition-opacity hover:opacity-80">
               Privacy
             </Link>
           </div>

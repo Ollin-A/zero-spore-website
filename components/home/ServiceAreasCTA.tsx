@@ -38,19 +38,27 @@ export default function ServiceAreasCTA() {
         </FadeUp>
 
         {/* Area pills — horizontal scroll on mobile */}
-        <FadeUp delay={0.25}>
-          <div className="mt-10 flex w-full justify-center">
-            <div className="no-scrollbar flex gap-3 overflow-x-auto px-1 pb-2">
-              {AREAS.map((area) => (
-                <Link
-                  key={area.slug}
-                  href={`/areas/${area.slug}`}
-                  className="inline-flex shrink-0 items-center gap-1.5 rounded-(--radius-badge) border border-stone bg-white px-4 py-2 text-sm font-medium text-carbon transition-colors hover:border-forest hover:text-forest"
-                >
-                  <MapPin className="h-3.5 w-3.5" strokeWidth={1.5} />
-                  {area.name}
-                </Link>
-              ))}
+        <FadeUp delay={0.25} className="w-full">
+          {/* Overflow gate — clips horizontal bleed via negative margins */}
+          <div className="mt-10 overflow-hidden -mx-5 lg:-mx-8">
+            {/* Scroll container — this element actually scrolls */}
+            <div
+              className="overflow-x-auto no-scrollbar px-5 lg:px-8"
+              style={{ WebkitOverflowScrolling: 'touch' }}
+            >
+              {/* Content row — single line on mobile, wrap on desktop */}
+              <div className="flex gap-3 w-max py-2 mx-auto lg:w-auto lg:flex-wrap lg:justify-center">
+                {AREAS.map((area) => (
+                  <Link
+                    key={area.slug}
+                    href={`/areas/${area.slug}`}
+                    className="inline-flex shrink-0 items-center gap-1.5 rounded-(--radius-badge) border border-stone bg-white px-4 py-2 text-sm font-medium text-carbon transition-colors hover:border-forest hover:text-forest"
+                  >
+                    <MapPin className="h-3.5 w-3.5" strokeWidth={1.5} />
+                    {area.name}
+                  </Link>
+                ))}
+              </div>
             </div>
           </div>
         </FadeUp>

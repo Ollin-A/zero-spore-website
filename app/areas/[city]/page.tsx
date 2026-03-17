@@ -52,7 +52,7 @@ export default async function AreaPage({ params }: PageProps) {
       <MoodSection mood="about">
         <FadeUp>
           <h1
-            className="font-heading text-center"
+            className="font-serif text-center"
             style={{
               fontSize: "var(--font-h1-size)",
               lineHeight: "var(--font-h1-lh)",
@@ -107,7 +107,7 @@ export default async function AreaPage({ params }: PageProps) {
       <MoodSection mood="about">
         <FadeUp>
           <h2
-            className="font-heading text-center"
+            className="font-serif text-center"
             style={{
               fontSize: "var(--font-h2-size)",
               lineHeight: "var(--font-h2-lh)",
@@ -136,7 +136,7 @@ export default async function AreaPage({ params }: PageProps) {
       <MoodSection mood="services">
         <FadeUp>
           <h2
-            className="font-heading text-center"
+            className="font-serif text-center"
             style={{
               fontSize: "var(--font-h2-size)",
               lineHeight: "var(--font-h2-lh)",
@@ -167,7 +167,7 @@ export default async function AreaPage({ params }: PageProps) {
         <FadeUp>
           <div className="text-center">
             <h2
-              className="font-heading"
+              className="font-serif"
               style={{
                 fontSize: "var(--font-h2-size)",
                 lineHeight: "var(--font-h2-lh)",

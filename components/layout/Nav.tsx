@@ -201,7 +201,7 @@ export default function Nav() {
           {/* Mobile hamburger */}
           <button
             ref={hamburgerRef}
-            className="flex h-12 w-12 items-center justify-center rounded-sm lg:hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-forest focus-visible:ring-offset-2"
+            className="flex h-12 w-12 items-center justify-center rounded-sm lg:hidden outline-none focus-visible:ring-2 focus-visible:ring-forest focus-visible:ring-offset-2"
             onClick={() => setMobileOpen(true)}
             aria-label="Open menu"
           >
@@ -234,7 +234,7 @@ export default function Nav() {
             ref={closeRef}
             onClick={closeMobile}
             aria-label="Close menu"
-            className="flex h-12 w-12 items-center justify-center rounded-sm text-carbon focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-forest focus-visible:ring-offset-2"
+            className="flex h-12 w-12 items-center justify-center rounded-sm text-carbon outline-none focus-visible:ring-2 focus-visible:ring-forest focus-visible:ring-offset-2"
           >
             <X size={28} strokeWidth={1.5} />
           </button>

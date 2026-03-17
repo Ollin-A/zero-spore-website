@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Instrument_Serif, Inter } from "next/font/google";
 import ScrollMoodProvider from "@/components/scroll/ScrollMoodProvider";
 import Nav from "@/components/layout/Nav";
@@ -21,6 +21,12 @@ const inter = Inter({
   variable: "--font-body",
   display: "swap",
 });
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
+};
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://zerosporerestoration.com"),
@@ -61,7 +67,7 @@ export default function RootLayout({
       <body className="antialiased">
         <ScrollMoodProvider>
           <Nav />
-          <main>{children}</main>
+          <main className="pb-20 lg:pb-0">{children}</main>
           <Footer />
           <MobileCTABar />
           <EmergencyBadge />

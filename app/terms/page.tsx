@@ -21,7 +21,7 @@ export default function TermsPage() {
       <div className="mx-auto max-w-(--text-max) text-center">
         <FadeUp>
           <h1
-            className="font-heading"
+            className="font-serif"
             style={{
               fontSize: "var(--font-h1-size)",
               lineHeight: "var(--font-h1-lh)",

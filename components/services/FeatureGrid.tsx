@@ -53,7 +53,7 @@ export default function FeatureGrid({ features, accentColor }: FeatureGridProps)
     <MoodSection mood="services">
       <FadeUp>
         <h2
-          className="text-center font-heading"
+          className="text-center font-serif"
           style={{
             fontSize: "var(--font-h2-size)",
             lineHeight: "var(--font-h2-lh)",

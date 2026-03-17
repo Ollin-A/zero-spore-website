@@ -19,7 +19,7 @@ export default function ServiceHero({ service }: ServiceHeroProps) {
         <div>
           <FadeUp>
             <h1
-              className="font-heading"
+              className="font-serif"
               style={{
                 fontSize: "var(--font-h1-size)",
                 lineHeight: "var(--font-h1-lh)",
