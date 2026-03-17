@@ -1,13 +1,13 @@
 "use client";
 
-import { Droplets, Shield, Siren } from "lucide-react";
+import { WaterDamageIcon, MoldRemediationIcon, EmergencyIcon } from "@/components/icons";
 import MoodSection from "@/components/scroll/MoodSection";
 import FadeUp from "@/components/scroll/FadeUp";
 import ServiceCard from "@/components/ui/ServiceCard";
 
 const SERVICES = [
   {
-    icon: Droplets,
+    icon: WaterDamageIcon,
     title: "Water Damage",
     description:
       "Fast water extraction, structural drying, and moisture monitoring to protect your home from lasting damage.",
@@ -15,7 +15,7 @@ const SERVICES = [
     accentColor: "text-ocean",
   },
   {
-    icon: Shield,
+    icon: MoldRemediationIcon,
     title: "Mold Remediation",
     description:
       "Safe, thorough mold removal with containment protocols that protect your family\u2019s health.",
@@ -23,7 +23,7 @@ const SERVICES = [
     accentColor: "text-forest",
   },
   {
-    icon: Siren,
+    icon: EmergencyIcon,
     title: "Emergency Services",
     description:
       "24/7 emergency response when every minute counts. We arrive fast and work until your home is safe.",

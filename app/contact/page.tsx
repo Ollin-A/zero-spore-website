@@ -4,7 +4,7 @@ import FadeUp from "@/components/scroll/FadeUp";
 import ContactForm from "@/components/ui/ContactForm";
 import { BUSINESS } from "@/data/constants";
 import { PAGE_SEO } from "@/data/seo";
-import { Phone, Mail, MapPin, Clock, ShieldCheck } from "lucide-react";
+import { PhoneIcon, MailIcon, MapPinIcon, ExperienceIcon, CCBLicenseIcon } from "@/components/icons";
 
 export const metadata: Metadata = {
   title: PAGE_SEO.contact.title,
@@ -19,27 +19,27 @@ export const metadata: Metadata = {
 
 const CONTACT_ITEMS = [
   {
-    icon: Phone,
+    icon: PhoneIcon,
     label: BUSINESS.phone,
     href: BUSINESS.phoneTel,
     className: "text-xl font-medium text-forest",
   },
   {
-    icon: Mail,
+    icon: MailIcon,
     label: BUSINESS.email,
     href: `mailto:${BUSINESS.email}`,
     className: "text-muted hover:text-carbon transition-colors",
   },
   {
-    icon: MapPin,
+    icon: MapPinIcon,
     label: `${BUSINESS.address.city}, ${BUSINESS.address.state} — serving all of Oregon`,
   },
   {
-    icon: Clock,
+    icon: ExperienceIcon,
     label: "Open 24/7 for emergencies",
   },
   {
-    icon: ShieldCheck,
+    icon: CCBLicenseIcon,
     label: `CCB #${BUSINESS.ccb} — Licensed Contractor`,
   },
 ];
@@ -76,7 +76,7 @@ export default function ContactPage() {
                 const Icon = item.icon;
                 const content = (
                   <span className="flex items-center gap-4">
-                    <Icon className="h-5 w-5 shrink-0" strokeWidth={1.5} />
+                    <Icon className="h-5 w-5 shrink-0" />
                     {item.label}
                   </span>
                 );

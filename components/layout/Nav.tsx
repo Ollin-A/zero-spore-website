@@ -4,7 +4,7 @@ import { useState, useEffect, useCallback, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { Menu, X, ChevronDown, Phone } from "lucide-react";
+import { MenuIcon, CloseIcon, ChevronDownIcon, PhoneIcon } from "@/components/icons";
 import { useMood } from "@/components/scroll/ScrollMoodProvider";
 import { NAV_LINKS } from "@/data/navigation";
 import { BUSINESS } from "@/data/constants";
@@ -70,13 +70,13 @@ export default function Nav() {
   // Once scrolled: solid bg matching mood + appropriate text
   const navBg = scrolled
     ? isDark
-      ? "rgba(11, 29, 46, 0.95)"
-      : "rgba(253, 251, 247, 0.95)"
+      ? "rgba(0, 0, 0, 0.3)"
+      : "rgba(253, 251, 247, 0.8)"
     : "transparent";
 
   const useLight = isDark || (!scrolled && isHomepage);
   const navText = useLight ? "var(--ivory)" : "var(--carbon)";
-  const backdrop = scrolled ? "blur(12px)" : "none";
+  const backdrop = scrolled ? "blur(16px)" : "none";
 
   const isActive = (href: string) => {
     if (href === "/") return pathname === "/";
@@ -97,7 +97,7 @@ export default function Nav() {
       >
         <div className="mx-auto flex h-16 max-w-(--max-width) items-center justify-between px-5 lg:h-[72px] lg:px-8">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2.5 rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-forest focus-visible:ring-offset-2">
+          <Link href="/" className="flex items-center gap-2.5 rounded-sm outline-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-forest focus-visible:ring-offset-2">
             <Image
               src={useLight ? "/logo/isotipo-white.svg" : "/logo/isotipo-color.svg"}
               alt="Zero Spore"
@@ -131,9 +131,8 @@ export default function Nav() {
                     aria-controls="services-dropdown"
                   >
                     {item.label}
-                    <ChevronDown
+                    <ChevronDownIcon
                       size={14}
-                      strokeWidth={1.5}
                       className={cn(
                         "transition-transform duration-200",
                         servicesOpen && "rotate-180",
@@ -194,7 +193,7 @@ export default function Nav() {
             href={BUSINESS.phoneTel}
             className="hidden items-center gap-2 font-sans text-(length:--font-nav-size) font-medium transition-opacity hover:opacity-75 lg:flex rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-forest focus-visible:ring-offset-2"
           >
-            <Phone size={16} strokeWidth={1.5} />
+            <PhoneIcon size={16} />
             {BUSINESS.phone}
           </a>
 
@@ -205,7 +204,7 @@ export default function Nav() {
             onClick={() => setMobileOpen(true)}
             aria-label="Open menu"
           >
-            <Menu size={28} strokeWidth={1.5} />
+            <MenuIcon size={28} />
           </button>
         </div>
       </nav>
@@ -236,7 +235,7 @@ export default function Nav() {
             aria-label="Close menu"
             className="flex h-12 w-12 items-center justify-center rounded-lg text-carbon outline-none focus:outline-none focus-visible:ring-2 focus-visible:ring-forest focus-visible:ring-offset-2"
           >
-            <X size={28} strokeWidth={1.5} />
+            <CloseIcon size={28} />
           </button>
         </div>
 
@@ -249,9 +248,8 @@ export default function Nav() {
                   onClick={() => setMobileServicesOpen(!mobileServicesOpen)}
                 >
                   {item.label}
-                  <ChevronDown
+                  <ChevronDownIcon
                     size={20}
-                    strokeWidth={1.5}
                     className={cn(
                       "transition-transform duration-200",
                       mobileServicesOpen && "rotate-180",

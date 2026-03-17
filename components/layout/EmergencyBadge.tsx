@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
-import { Phone } from "lucide-react";
+import { PhoneIcon } from "@/components/icons";
 import { BUSINESS } from "@/data/constants";
 import { cn } from "@/lib/utils";
 
@@ -33,7 +33,7 @@ export default function EmergencyBadge() {
         footerVisible && "pointer-events-none opacity-0",
       )}
     >
-      <Phone size={16} strokeWidth={1.5} />
+      <PhoneIcon size={16} />
       <span>24/7 Emergency</span>
       <span className="text-cyan">{BUSINESS.phone}</span>
     </a>

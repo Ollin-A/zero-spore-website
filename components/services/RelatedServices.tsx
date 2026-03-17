@@ -1,5 +1,4 @@
-import { Droplets, Shield, Siren } from "lucide-react";
-import type { LucideIcon } from "lucide-react";
+import { WaterDamageIcon, MoldRemediationIcon, EmergencyIcon, type IconComponent } from "@/components/icons";
 import MoodSection from "@/components/scroll/MoodSection";
 import FadeUp from "@/components/scroll/FadeUp";
 import Button from "@/components/ui/Button";
@@ -7,10 +6,10 @@ import ServiceCard from "@/components/ui/ServiceCard";
 import { BUSINESS } from "@/data/constants";
 import { SERVICES } from "@/data/services";
 
-const PRIMARY_ICONS: Record<string, LucideIcon> = {
-  "water-damage": Droplets,
-  "mold-remediation": Shield,
-  emergency: Siren,
+const PRIMARY_ICONS: Record<string, IconComponent> = {
+  "water-damage": WaterDamageIcon,
+  "mold-remediation": MoldRemediationIcon,
+  emergency: EmergencyIcon,
 };
 
 interface RelatedServicesProps {

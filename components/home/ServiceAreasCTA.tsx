@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { MapPin } from "lucide-react";
+import { MapPinIcon } from "@/components/icons";
 import MoodSection from "@/components/scroll/MoodSection";
 import FadeUp from "@/components/scroll/FadeUp";
 import Button from "@/components/ui/Button";
@@ -54,7 +54,7 @@ export default function ServiceAreasCTA() {
                     href={`/areas/${area.slug}`}
                     className="inline-flex shrink-0 items-center gap-1.5 rounded-(--radius-badge) border border-stone bg-white px-4 py-2 text-sm font-medium text-carbon transition-colors hover:border-forest hover:text-forest"
                   >
-                    <MapPin className="h-3.5 w-3.5" strokeWidth={1.5} />
+                    <MapPinIcon className="h-3.5 w-3.5" />
                     {area.name}
                   </Link>
                 ))}

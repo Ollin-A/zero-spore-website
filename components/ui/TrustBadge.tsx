@@ -1,8 +1,8 @@
-import type { LucideIcon } from "lucide-react";
+import type { IconComponent } from "@/components/icons";
 import { cn } from "@/lib/utils";
 
 interface TrustBadgeProps {
-  icon: LucideIcon;
+  icon: IconComponent;
   label: string;
   sublabel?: string;
   className?: string;
@@ -21,7 +21,7 @@ export default function TrustBadge({
         className,
       )}
     >
-      <Icon className="h-7 w-7 text-forest" strokeWidth={1.5} />
+      <Icon className="h-7 w-7 text-forest" />
       <span className="text-sm font-medium text-carbon">{label}</span>
       {sublabel && (
         <span className="text-xs text-muted">{sublabel}</span>

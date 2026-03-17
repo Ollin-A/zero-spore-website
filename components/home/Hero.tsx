@@ -2,7 +2,7 @@
 
 import { useRef } from "react";
 import { gsap, useGSAP } from "@/lib/gsap";
-import { ChevronDown } from "lucide-react";
+import { ChevronDownIcon } from "@/components/icons";
 import MoodSection from "@/components/scroll/MoodSection";
 import FadeUp from "@/components/scroll/FadeUp";
 import Button from "@/components/ui/Button";
@@ -91,8 +91,8 @@ export default function Hero() {
             </Button>
             <Button
               variant="secondary"
+              dark
               href="/contact"
-              className="border-ivory-dim text-ivory hover:bg-deep"
             >
               Schedule inspection
             </Button>
@@ -112,7 +112,7 @@ export default function Hero() {
           ref={indicatorRef}
           className="absolute bottom-8 left-1/2 -translate-x-1/2"
         >
-          <ChevronDown className="h-6 w-6 text-ivory-dim" />
+          <ChevronDownIcon className="h-6 w-6 text-ivory-dim" />
         </div>
       </div>
     </MoodSection>

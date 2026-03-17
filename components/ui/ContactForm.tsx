@@ -4,7 +4,7 @@ import { useState } from "react";
 import { submitContactForm } from "@/lib/lead-gateway";
 import { LEAD_GATEWAY, BUSINESS } from "@/data/constants";
 import Button from "@/components/ui/Button";
-import { AlertTriangle, CheckCircle } from "lucide-react";
+import { AlertTriangleIcon, FollowUpIcon } from "@/components/icons";
 
 type FormStatus = "idle" | "submitting" | "success" | "error";
 
@@ -60,7 +60,7 @@ export default function ContactForm() {
   if (status === "success") {
     return (
       <div className="rounded-(--radius-card) border border-stone bg-white p-(--card-padding) text-center">
-        <CheckCircle className="mx-auto h-12 w-12 text-forest" strokeWidth={1.5} />
+        <FollowUpIcon className="mx-auto h-12 w-12 text-forest" />
         <h3
           className="mt-4 font-sans font-medium"
           style={{
@@ -198,7 +198,7 @@ export default function ContactForm() {
       {/* Emergency alert */}
       {formData.isEmergency && (
         <div className="flex gap-3 rounded-(--radius-button) border border-alert/20 bg-alert-bg p-4">
-          <AlertTriangle className="h-5 w-5 shrink-0 text-alert mt-0.5" strokeWidth={1.5} />
+          <AlertTriangleIcon className="h-5 w-5 shrink-0 text-alert mt-0.5" />
           <p className="text-sm text-carbon">
             For immediate emergency response, call us directly at{" "}
             <a href={BUSINESS.phoneTel} className="font-medium text-forest">

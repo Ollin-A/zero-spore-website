@@ -6,7 +6,7 @@ import ParallaxImage from "@/components/scroll/ParallaxImage";
 import Button from "@/components/ui/Button";
 import { BUSINESS } from "@/data/constants";
 import { PAGE_SEO } from "@/data/seo";
-import { Eye, Zap, Heart } from "lucide-react";
+import { HonestyIcon, SpeedIcon, CareIcon } from "@/components/icons";
 
 export const metadata: Metadata = {
   title: PAGE_SEO.about.title,
@@ -48,19 +48,19 @@ const STORY_BLOCKS = [
 
 const VALUES = [
   {
-    icon: Eye,
+    icon: HonestyIcon,
     title: "Honesty",
     description:
       "We tell you exactly what we find, what it will take to fix, and what it will cost. No upselling, no surprise charges, no pressure. If something doesn\u2019t need to be replaced, we\u2019ll say so.",
   },
   {
-    icon: Zap,
+    icon: SpeedIcon,
     title: "Speed",
     description:
       "Water and mold don\u2019t wait, and neither do we. We respond within the hour across Sheridan and surrounding areas, 24 hours a day, 7 days a week. Every minute we save is damage we prevent.",
   },
   {
-    icon: Heart,
+    icon: CareIcon,
     title: "Care",
     description:
       "Your home holds your life. We understand that, and we treat every job with the respect it deserves. We protect your belongings, communicate at every step, and leave your home better than we found it.",
@@ -178,7 +178,6 @@ export default function AboutPage() {
                 <div className="rounded-(--radius-card) border border-stone bg-white p-(--card-padding) text-center">
                   <Icon
                     className="mx-auto h-10 w-10 text-forest"
-                    strokeWidth={1.5}
                   />
                   <h3
                     className="mt-4 font-sans font-medium"

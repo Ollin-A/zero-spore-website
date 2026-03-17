@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Instrument_Serif, Inter } from "next/font/google";
+import { Instrument_Serif, Plus_Jakarta_Sans } from "next/font/google";
 import ScrollMoodProvider from "@/components/scroll/ScrollMoodProvider";
 import Nav from "@/components/layout/Nav";
 import Footer from "@/components/layout/Footer";
@@ -15,9 +15,9 @@ const instrumentSerif = Instrument_Serif({
   display: "swap",
 });
 
-const inter = Inter({
+const plusJakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
-  weight: ["400", "500"],
+  weight: ["400", "500", "600", "700"],
   variable: "--font-body",
   display: "swap",
 });
@@ -52,7 +52,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${instrumentSerif.variable} ${inter.variable}`}
+      className={`${instrumentSerif.variable} ${plusJakarta.variable}`}
     >
       <head>
         <SchemaMarkup type="localBusiness" />

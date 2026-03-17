@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Phone } from "lucide-react";
+import { PhoneIcon } from "@/components/icons";
 import { BUSINESS } from "@/data/constants";
 import { cn } from "@/lib/utils";
 
@@ -46,7 +46,7 @@ export default function MobileCTABar() {
       )}
       style={{ paddingBottom: "env(safe-area-inset-bottom, 8px)" }}
     >
-      <Phone size={18} strokeWidth={1.5} />
+      <PhoneIcon size={18} />
       Call Now &mdash; {BUSINESS.phone}
     </a>
   );

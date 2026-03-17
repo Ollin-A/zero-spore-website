@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Phone } from "lucide-react";
+import { PhoneIcon } from "@/components/icons";
 import MoodSection from "@/components/scroll/MoodSection";
 import FadeUp from "@/components/scroll/FadeUp";
 import Button from "@/components/ui/Button";
@@ -71,7 +71,7 @@ export default function EmergencySection() {
             href={BUSINESS.phoneTel}
             className="mt-10"
           >
-            <Phone className="mr-2 h-5 w-5" strokeWidth={1.5} />
+            <PhoneIcon className="mr-2 h-5 w-5" />
             Call Now &mdash; {BUSINESS.phone}
           </Button>
         </FadeUp>

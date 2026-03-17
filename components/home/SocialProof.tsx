@@ -1,6 +1,6 @@
 "use client";
 
-import { Star, ShieldCheck, Award, Clock, Heart } from "lucide-react";
+import { StarIcon, CCBLicenseIcon, IICRCCertifiedIcon, ExperienceIcon, FamilyOwnedIcon } from "@/components/icons";
 import MoodSection from "@/components/scroll/MoodSection";
 import FadeUp from "@/components/scroll/FadeUp";
 import BeforeAfterSlider from "@/components/ui/BeforeAfterSlider";
@@ -28,22 +28,22 @@ const PLACEHOLDER_REVIEWS = [
 
 const TRUST_BADGES = [
   {
-    icon: ShieldCheck,
+    icon: CCBLicenseIcon,
     label: `CCB #${BUSINESS.ccb}`,
     sublabel: "Licensed Contractor",
   },
   {
-    icon: Award,
+    icon: IICRCCertifiedIcon,
     label: "IICRC Certified",
     sublabel: "Industry Standard",
   },
   {
-    icon: Clock,
+    icon: ExperienceIcon,
     label: "10+ Years",
     sublabel: "Experience",
   },
   {
-    icon: Heart,
+    icon: FamilyOwnedIcon,
     label: "Family Owned",
     sublabel: "Sheridan, Oregon",
   },
@@ -53,10 +53,11 @@ function StarRating({ rating }: { rating: number }) {
   return (
     <div className="flex gap-0.5">
       {Array.from({ length: 5 }, (_, i) => (
-        <Star
+        <StarIcon
           key={i}
-          className={`h-4 w-4 ${i < rating ? "fill-forest text-forest" : "text-stone"}`}
-          strokeWidth={1.5}
+          filled={i < rating}
+          className={`h-4 w-4 ${i < rating ? "text-forest" : "text-stone"}`}
+          size={16}
         />
       ))}
     </div>

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { ChevronDown } from "lucide-react";
+import { ChevronDownIcon } from "@/components/icons";
 import { cn } from "@/lib/utils";
 import type { FAQItem } from "@/data/services";
 
@@ -71,12 +71,11 @@ export default function FAQAccordion({ items, serviceName }: FAQAccordionProps) 
                 }}
               >
                 <span>{item.question}</span>
-                <ChevronDown
+                <ChevronDownIcon
                   className={cn(
                     "h-5 w-5 shrink-0 text-muted transition-transform duration-300",
                     isOpen && "rotate-180",
                   )}
-                  strokeWidth={1.5}
                 />
               </button>
 

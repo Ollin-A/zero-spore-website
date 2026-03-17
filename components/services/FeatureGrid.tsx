@@ -1,46 +1,46 @@
 import {
-  Droplets,
-  ThermometerSun,
-  Fan,
-  ShieldCheck,
-  FileCheck,
-  Clock,
-  Shield,
-  Microscope,
-  Wind,
-  Leaf,
-  ClipboardCheck,
-  HeartPulse,
-  Siren,
-  Phone,
-  Wrench,
-  ShieldAlert,
-  Truck,
-} from "lucide-react";
-import type { LucideIcon } from "lucide-react";
+  WaterDamageIcon,
+  ThermometerIcon,
+  FanIcon,
+  ShieldCheckIcon,
+  FileCheckIcon,
+  ExperienceIcon,
+  ShieldIcon,
+  MicroscopeIcon,
+  WindIcon,
+  LeafIcon,
+  ClipboardCheckIcon,
+  HeartPulseIcon,
+  SirenIcon,
+  PhoneIcon,
+  WrenchIcon,
+  ShieldAlertIcon,
+  TruckIcon,
+  type IconComponent,
+} from "@/components/icons";
 import MoodSection from "@/components/scroll/MoodSection";
 import FadeUp from "@/components/scroll/FadeUp";
 import { cn } from "@/lib/utils";
 import type { ServiceFeature } from "@/data/services";
 
-const ICON_MAP: Record<string, LucideIcon> = {
-  Droplets,
-  ThermometerSun,
-  Fan,
-  ShieldCheck,
-  FileCheck,
-  Clock,
-  Shield,
-  Microscope,
-  Wind,
-  Leaf,
-  ClipboardCheck,
-  HeartPulse,
-  Siren,
-  Phone,
-  Wrench,
-  ShieldAlert,
-  Truck,
+const ICON_MAP: Record<string, IconComponent> = {
+  Droplets: WaterDamageIcon,
+  ThermometerSun: ThermometerIcon,
+  Fan: FanIcon,
+  ShieldCheck: ShieldCheckIcon,
+  FileCheck: FileCheckIcon,
+  Clock: ExperienceIcon,
+  Shield: ShieldIcon,
+  Microscope: MicroscopeIcon,
+  Wind: WindIcon,
+  Leaf: LeafIcon,
+  ClipboardCheck: ClipboardCheckIcon,
+  HeartPulse: HeartPulseIcon,
+  Siren: SirenIcon,
+  Phone: PhoneIcon,
+  Wrench: WrenchIcon,
+  ShieldAlert: ShieldAlertIcon,
+  Truck: TruckIcon,
 };
 
 interface FeatureGridProps {
@@ -72,7 +72,6 @@ export default function FeatureGrid({ features, accentColor }: FeatureGridProps)
                 {Icon && (
                   <Icon
                     className={cn("h-10 w-10", accentColor)}
-                    strokeWidth={1.5}
                   />
                 )}
                 <h3

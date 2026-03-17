@@ -20,8 +20,10 @@ const variantStyles = {
     light: "bg-forest text-white hover:bg-[#156835] active:scale-[0.98]",
     dark: "bg-cyan text-midnight hover:bg-[#5dd9d0] active:scale-[0.98]",
   },
-  secondary:
-    "bg-transparent border border-stone text-carbon hover:bg-warm active:scale-[0.98]",
+  secondary: {
+    light: "bg-transparent border border-stone text-carbon hover:bg-warm active:scale-[0.98]",
+    dark: "bg-transparent border border-ivory-dim text-ivory hover:bg-white/10 hover:border-ivory active:scale-[0.98]",
+  },
   emergency:
     "bg-alert text-white hover:bg-[#c0401f] active:scale-[0.98]",
 };
@@ -42,7 +44,9 @@ export default function Button({
         ? variantStyles.primary.dark
         : variantStyles.primary.light
       : variant === "secondary"
-        ? variantStyles.secondary
+        ? dark
+          ? variantStyles.secondary.dark
+          : variantStyles.secondary.light
         : variantStyles.emergency;
 
   const padding = variant === "emergency" ? "px-8 py-4" : "px-7 py-3.5";

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { Droplets, Bug, AlertTriangle, MapPin, Phone } from "lucide-react";
+import { WaterDamageIcon, MoldRemediationIcon, EmergencyIcon, MapPinIcon, PhoneIcon, type IconComponent } from "@/components/icons";
 import MoodSection from "@/components/scroll/MoodSection";
 import FadeUp from "@/components/scroll/FadeUp";
 import Button from "@/components/ui/Button";
@@ -9,12 +9,11 @@ import ServiceCard from "@/components/ui/ServiceCard";
 import FAQAccordion from "@/components/ui/FAQAccordion";
 import { BUSINESS } from "@/data/constants";
 import { getArea, getAllAreaSlugs, AREAS } from "@/data/areas";
-import type { LucideIcon } from "lucide-react";
 
-const SERVICE_ICONS: Record<string, LucideIcon> = {
-  "water-damage": Droplets,
-  "mold-remediation": Bug,
-  emergency: AlertTriangle,
+const SERVICE_ICONS: Record<string, IconComponent> = {
+  "water-damage": WaterDamageIcon,
+  "mold-remediation": MoldRemediationIcon,
+  emergency: EmergencyIcon,
 };
 
 interface PageProps {
@@ -72,7 +71,7 @@ export default async function AreaPage({ params }: PageProps) {
 
         <FadeUp delay={0.2}>
           <div className="mx-auto mt-6 flex items-center justify-center gap-2 text-sm font-medium text-forest">
-            <MapPin className="h-4 w-4" strokeWidth={1.5} />
+            <MapPinIcon className="h-4 w-4" />
             <span>Response time: {area.responseTime}</span>
           </div>
         </FadeUp>
@@ -83,7 +82,7 @@ export default async function AreaPage({ params }: PageProps) {
               Schedule your free inspection
             </Button>
             <Button variant="secondary" href={BUSINESS.phoneTel}>
-              <Phone className="mr-2 h-4 w-4" strokeWidth={1.5} />
+              <PhoneIcon className="mr-2 h-4 w-4" />
               {BUSINESS.phone}
             </Button>
           </div>
@@ -121,7 +120,7 @@ export default async function AreaPage({ params }: PageProps) {
           {area.services.map((service, i) => (
             <FadeUp key={service.slug} delay={i * 0.1}>
               <ServiceCard
-                icon={SERVICE_ICONS[service.slug] ?? Droplets}
+                icon={SERVICE_ICONS[service.slug] ?? WaterDamageIcon}
                 title={service.title}
                 description={service.description}
                 href={`/services/${service.slug}`}
@@ -182,7 +181,7 @@ export default async function AreaPage({ params }: PageProps) {
             <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
               <Button href="/contact">Schedule inspection</Button>
               <Button variant="secondary" href={BUSINESS.phoneTel}>
-                <Phone className="mr-2 h-4 w-4" strokeWidth={1.5} />
+                <PhoneIcon className="mr-2 h-4 w-4" />
                 {BUSINESS.phone}
               </Button>
             </div>

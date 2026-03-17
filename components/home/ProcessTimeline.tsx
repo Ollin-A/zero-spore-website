@@ -2,16 +2,15 @@
 
 import { useRef, useState } from "react";
 import { gsap, useGSAP } from "@/lib/gsap";
-import { ClipboardCheck, ShieldCheck, Hammer, CheckCircle } from "lucide-react";
+import { AssessmentIcon, MitigationIcon, RestorationIcon, FollowUpIcon, type IconComponent } from "@/components/icons";
 import MoodSection from "@/components/scroll/MoodSection";
 import FadeUp from "@/components/scroll/FadeUp";
-import type { LucideIcon } from "lucide-react";
 
 interface Step {
   number: string;
   title: string;
   description: string;
-  icon: LucideIcon;
+  icon: IconComponent;
   image: string;
 }
 
@@ -21,7 +20,7 @@ const STEPS: Step[] = [
     title: "Assessment",
     description:
       "We arrive fast, inspect every affected area, document the damage with photos, and provide a detailed estimate — so you know exactly what to expect.",
-    icon: ClipboardCheck,
+    icon: AssessmentIcon,
     /* TODO: REPLACE — Unsplash placeholder */
     image:
       "https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=600&q=80",
@@ -31,7 +30,7 @@ const STEPS: Step[] = [
     title: "Mitigation",
     description:
       "Extract standing water, stabilize the structure, set up industrial drying equipment, and prevent further damage from spreading through your home.",
-    icon: ShieldCheck,
+    icon: MitigationIcon,
     /* TODO: REPLACE — Unsplash placeholder */
     image:
       "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=600&q=80",
@@ -41,7 +40,7 @@ const STEPS: Step[] = [
     title: "Restoration",
     description:
       "Remove damaged materials, clean and sanitize every surface, complete structural drying, and restore your home to its pre-damage condition.",
-    icon: Hammer,
+    icon: RestorationIcon,
     /* TODO: REPLACE — Unsplash placeholder */
     image:
       "https://images.unsplash.com/photo-1593642632559-0c6d3fc62b89?w=600&q=80",
@@ -51,7 +50,7 @@ const STEPS: Step[] = [
     title: "Follow-up",
     description:
       "Final moisture testing, air quality verification, a thorough walkthrough, and quality assurance — because the job isn't done until you're confident.",
-    icon: CheckCircle,
+    icon: FollowUpIcon,
     /* TODO: REPLACE — Unsplash placeholder */
     image:
       "https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=600&q=80",
@@ -82,7 +81,8 @@ export default function ProcessTimeline() {
       // Calculate scroll distance from actual card positions
       const firstCard = cards[0];
       const lastCard = cards[cards.length - 1];
-      const scrollDistance = lastCard.offsetLeft - firstCard.offsetLeft;
+      const trackPadLeft = parseFloat(getComputedStyle(track).paddingLeft);
+      const scrollDistance = lastCard.offsetLeft - trackPadLeft;
 
       // Single unified timeline — track, progress bar, and card opacity all in sync
       const tl = gsap.timeline({
@@ -181,7 +181,7 @@ export default function ProcessTimeline() {
         <div className="overflow-hidden">
           <div
             ref={trackRef}
-            className="flex gap-8 pb-(--section-py) pl-[calc((100vw-var(--max-width))/2+20px)] pr-[40vw]"
+            className="flex gap-8 pb-(--section-py) pl-[calc((100vw-var(--max-width))/2+20px)] pr-[max(200px,30vw)]"
           >
             {STEPS.map((step) => (
               <ProcessCard key={step.number} step={step} layout="horizontal" />
@@ -225,7 +225,7 @@ export default function ProcessTimeline() {
                         <img
                           src={step.image}
                           alt={`${step.title} — restoration process step ${step.number}`}
-                          className="aspect-16/10 w-full object-cover"
+                          className="aspect-video w-full object-cover"
                         />
                       </div>
                       <h3
@@ -264,19 +264,19 @@ function ProcessCard({
   if (layout === "vertical") return null;
 
   return (
-    <div className="process-card w-[400px] shrink-0 lg:w-[460px]">
+    <div className="process-card w-[clamp(350px,32vw,480px)] shrink-0">
       <div className="overflow-hidden rounded-(--radius-card) border border-stone bg-white">
         {/* TODO: REPLACE — Unsplash placeholder */}
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={step.image}
           alt={`${step.title} — restoration process step ${step.number}`}
-          className="aspect-16/10 w-full object-cover"
+          className="aspect-video w-full object-cover"
         />
         <div className="p-(--card-padding)">
           <div className="flex items-center gap-3">
             <div className="flex h-10 w-10 items-center justify-center rounded-full bg-forest/10">
-              <Icon className="h-5 w-5 text-forest" strokeWidth={1.5} />
+              <Icon className="h-5 w-5 text-forest" />
             </div>
             <span className="text-xs font-medium tracking-wider text-muted uppercase">
               Step {step.number}

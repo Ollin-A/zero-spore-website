@@ -1,9 +1,9 @@
 import Link from "next/link";
 import { cn } from "@/lib/utils";
-import type { LucideIcon } from "lucide-react";
+import type { IconComponent } from "@/components/icons";
 
 interface ServiceCardProps {
-  icon: LucideIcon;
+  icon: IconComponent;
   title: string;
   description: string;
   href: string;
@@ -24,7 +24,6 @@ export default function ServiceCard({
       <div className="flex h-full flex-col rounded-(--radius-card) border border-stone bg-white p-(--card-padding) transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
         <Icon
           className={cn("h-10 w-10", accentColor)}
-          strokeWidth={1.5}
         />
         <h3
           className="mt-4 font-sans font-medium"
