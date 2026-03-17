@@ -4,10 +4,10 @@ import { useState, useEffect, useCallback, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { MenuIcon, CloseIcon, ChevronDownIcon, PhoneIcon } from "@/components/icons";
+import { MenuIcon, ChevronDownIcon, PhoneIcon, FacebookIcon } from "@/components/icons";
 import { useMood } from "@/components/scroll/ScrollMoodProvider";
 import { NAV_LINKS } from "@/data/navigation";
-import { BUSINESS } from "@/data/constants";
+import { BUSINESS, SOCIAL } from "@/data/constants";
 import { cn } from "@/lib/utils";
 import Button from "@/components/ui/Button";
 
@@ -99,7 +99,7 @@ export default function Nav() {
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2.5 rounded-sm outline-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-forest focus-visible:ring-offset-2">
             <Image
-              src={useLight ? "/logo/isotipo-white.svg" : "/logo/isotipo-color.svg"}
+              src="/logo/isotipo-color.png"
               alt="Zero Spore"
               width={36}
               height={36}
@@ -212,65 +212,93 @@ export default function Nav() {
       {/* Mobile overlay */}
       <div
         className={cn(
-          "fixed inset-0 z-60 bg-cream transition-transform duration-300 ease-out lg:hidden",
-          mobileOpen ? "translate-x-0" : "translate-x-full",
+          "fixed inset-0 z-60 flex flex-col bg-cream transition-opacity duration-250 ease-out lg:hidden",
+          mobileOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none",
         )}
       >
+        {/* Header bar */}
         <div className="flex h-16 items-center justify-between px-5">
-          <Link href="/" className="flex items-center gap-2.5" onClick={closeMobile}>
-            <Image
-              src="/logo/isotipo-color.svg"
-              alt="Zero Spore"
-              width={36}
-              height={36}
-              className="h-8 w-8"
-            />
-            <span className="font-sans text-base font-medium text-carbon">
-              {BUSINESS.shortName}
-            </span>
-          </Link>
+          {/* Close button — custom SVG */}
           <button
             ref={closeRef}
             onClick={closeMobile}
             aria-label="Close menu"
             className="flex h-12 w-12 items-center justify-center rounded-lg text-carbon outline-none focus:outline-none focus-visible:ring-2 focus-visible:ring-forest focus-visible:ring-offset-2"
           >
-            <CloseIcon size={28} />
+            <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+              <line x1="2" y1="2" x2="20" y2="20" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+              <line x1="20" y1="2" x2="2" y2="20" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+            </svg>
           </button>
+
+          {/* Brand name — centered */}
+          <Link
+            href="/"
+            onClick={closeMobile}
+            className="absolute left-1/2 -translate-x-1/2 font-serif text-lg text-carbon"
+          >
+            {BUSINESS.shortName}
+          </Link>
+
+          {/* Language toggle — placeholder */}
+          <span className="flex items-center gap-1 font-sans text-xs">
+            <span className="font-medium text-forest">EN</span>
+            <span className="text-hint">|</span>
+            <span className="text-hint">ES</span>
+          </span>
         </div>
 
-        <nav aria-label="Mobile navigation" className="flex flex-col gap-5 px-8 pt-8">
-          {NAV_LINKS.map((item) =>
+        {/* Decorative divider */}
+        <div className="mx-auto h-px w-10 bg-stone" style={{ marginTop: 12, marginBottom: 12 }} />
+
+        {/* Nav links — centered */}
+        <nav aria-label="Mobile navigation" className="flex flex-1 flex-col items-center justify-center gap-7">
+          {NAV_LINKS.map((item, index) =>
             item.children ? (
-              <div key={item.label}>
+              <div
+                key={item.label}
+                className="flex flex-col items-center"
+                style={{
+                  transition: "opacity 0.4s ease, transform 0.4s ease",
+                  transitionDelay: `${index * 60}ms`,
+                  opacity: mobileOpen ? 1 : 0,
+                  transform: mobileOpen ? "translateY(0)" : "translateY(12px)",
+                }}
+              >
                 <button
-                  className="flex w-full items-center justify-between font-sans text-2xl font-medium text-carbon"
+                  className="flex items-center gap-2 font-serif text-[26px] text-carbon"
                   onClick={() => setMobileServicesOpen(!mobileServicesOpen)}
                 >
                   {item.label}
-                  <ChevronDownIcon
-                    size={20}
+                  {/* Custom chevron SVG */}
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 16 16"
+                    fill="none"
                     className={cn(
                       "transition-transform duration-200",
                       mobileServicesOpen && "rotate-180",
                     )}
-                  />
+                  >
+                    <path d="M4 6l4 4 4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
                 </button>
                 <div
                   className={cn(
-                    "grid transition-all duration-300",
+                    "grid transition-all duration-200 ease-out",
                     mobileServicesOpen
                       ? "grid-rows-[1fr] mt-3 opacity-100"
                       : "grid-rows-[0fr] opacity-0",
                   )}
                 >
                   <div className="overflow-hidden">
-                    <div className="flex flex-col gap-3 pl-4">
+                    <div className="flex flex-col items-center gap-3">
                       {item.children.map((child) => (
                         <Link
                           key={child.href}
                           href={child.href}
-                          className="font-sans text-lg font-medium text-muted transition-colors hover:text-carbon"
+                          className="font-sans text-base text-muted transition-colors hover:text-carbon"
                           onClick={closeMobile}
                         >
                           {child.label}
@@ -284,20 +312,45 @@ export default function Nav() {
               <Link
                 key={item.label}
                 href={item.href}
-                className="font-sans text-2xl font-medium text-carbon"
+                className="font-serif text-[26px] text-carbon"
                 onClick={closeMobile}
+                style={{
+                  transition: "opacity 0.4s ease, transform 0.4s ease",
+                  transitionDelay: `${index * 60}ms`,
+                  opacity: mobileOpen ? 1 : 0,
+                  transform: mobileOpen ? "translateY(0)" : "translateY(12px)",
+                }}
               >
                 {item.label}
               </Link>
             ),
           )}
-
-          <div className="mt-8">
-            <Button href={BUSINESS.phoneTel} className="w-full">
-              Call {BUSINESS.phone}
-            </Button>
-          </div>
         </nav>
+
+        {/* CTA button */}
+        <div className="px-6">
+          <a
+            href={BUSINESS.phoneTel}
+            className="flex w-full items-center justify-center rounded-[10px] bg-forest py-4 font-sans text-[15px] font-medium text-white transition-colors hover:bg-forest/90"
+          >
+            Call 24/7 — {BUSINESS.phone}
+          </a>
+        </div>
+
+        {/* Footer bar */}
+        <div className="mt-6 flex items-center justify-center gap-5 border-t border-stone px-6 py-4 pb-[calc(16px+env(safe-area-inset-bottom,0px))]">
+          <a
+            href={SOCIAL.facebook}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Facebook"
+            className="text-muted transition-opacity hover:opacity-70"
+          >
+            <FacebookIcon size={18} />
+          </a>
+          <span className="font-sans text-[11px] text-hint">CCB #{BUSINESS.ccb}</span>
+          <span className="font-sans text-[11px] text-hint">{BUSINESS.address.city}, {BUSINESS.address.state}</span>
+        </div>
       </div>
     </>
   );
