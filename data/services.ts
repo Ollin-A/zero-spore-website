@@ -3,7 +3,7 @@
 // ---------------------------------------------------------------------------
 
 export interface ServiceFeature {
-  icon: string; // Lucide icon component name
+  icon: string; // Icon key mapped in FeatureGrid ICON_MAP
   title: string;
   description: string;
 }
@@ -73,37 +73,37 @@ export const SERVICES: Record<string, ServiceData> = {
       "https://images.unsplash.com/photo-1585128792020-803d29415281?w=800&q=80", // TODO: REPLACE — Unsplash placeholder
     features: [
       {
-        icon: "Droplets",
+        icon: "Extractor",
         title: "Residential Water Extraction",
         description:
           "Quick removal of standing water from leaks, floods, appliance malfunctions, and plumbing failures.",
       },
       {
-        icon: "CloudRain",
+        icon: "Flood",
         title: "Flood Damage Cleanup",
         description:
           "Immediate response to storm or flash flood events.",
       },
       {
-        icon: "ThermometerSun",
+        icon: "Drying",
         title: "Ceiling, Wall and Floor Drying",
         description:
           "Preventing warping, swelling and secondary damage with industrial dehumidifiers and air movers.",
       },
       {
-        icon: "ShieldCheck",
+        icon: "MoldPrevent",
         title: "Mold Prevention and Moisture Control",
         description:
           "Minimizing the risk of mold growth after water intrusion with antimicrobial treatment and moisture monitoring.",
       },
       {
-        icon: "AlertTriangle",
+        icon: "Sewage",
         title: "Sewage Backup Mitigation",
         description:
           "Safe cleanup and disinfection for contaminated water events using EPA-approved, hospital-grade solutions.",
       },
       {
-        icon: "FileCheck",
+        icon: "InsuranceDoc",
         title: "Insurance Documentation Support",
         description:
           "Detailed reports to streamline your insurance claim process, including moisture readings, photo evidence, and progress logs.",
@@ -225,31 +225,31 @@ export const SERVICES: Record<string, ServiceData> = {
       "https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=800&q=80", // TODO: REPLACE — Unsplash placeholder
     features: [
       {
-        icon: "Shield",
+        icon: "MoldTarget",
         title: "Residential Mold Remediation",
         description:
           "Comprehensive mold treatment for homes, from initial inspection through complete remediation and verification.",
       },
       {
-        icon: "Microscope",
+        icon: "ShieldCheck",
         title: "Hidden Mold Detection Behind Walls and Ceilings",
         description:
           "Using moisture meters, infrared cameras and surface testing to pinpoint affected areas that may not be immediately visible.",
       },
       {
-        icon: "Wind",
+        icon: "Drying",
         title: "Crawl Space and Attic Mold Treatment",
         description:
           "Specialized treatment for hard-to-reach areas where moisture buildup commonly leads to hidden mold growth.",
       },
       {
-        icon: "Leaf",
+        icon: "MoldPrevent",
         title: "Air Quality Restoration and Mold Prevention",
         description:
           "HEPA air scrubbers and dehumidification to restore indoor air quality and prevent future mold recurrence.",
       },
       {
-        icon: "ClipboardCheck",
+        icon: "Extractor",
         title: "Post-Remediation Cleaning and Restoration",
         description:
           "Thorough cleaning of all treated areas and referrals for necessary repairs to return your home to a safe, livable condition.",
@@ -374,37 +374,37 @@ export const SERVICES: Record<string, ServiceData> = {
       "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&q=80", // TODO: REPLACE — Unsplash placeholder
     features: [
       {
-        icon: "Droplets",
+        icon: "Extractor",
         title: "Water Extraction and Water Damage Mitigation",
         description:
           "Fast removal of standing water and comprehensive drying to prevent structural damage and mold growth.",
       },
       {
-        icon: "CloudRain",
+        icon: "Storm",
         title: "Storm and Flood Damage Repair",
         description:
           "Immediate response to storm or flood events, including water removal, structural drying, and damage assessment.",
       },
       {
-        icon: "Shield",
+        icon: "MoldTarget",
         title: "Mold Remediation After Water Intrusion",
         description:
           "Professional mold containment and removal following water exposure to protect your family\u2019s health.",
       },
       {
-        icon: "Fan",
+        icon: "Drying",
         title: "Structural Drying and Dehumidification",
         description:
           "Industrial-grade drying equipment to eliminate moisture from walls, floors, and structural elements.",
       },
       {
-        icon: "Trash2",
+        icon: "Debris",
         title: "Debris Removal and Post-Emergency Cleaning",
         description:
           "Safe removal of damaged materials and thorough cleaning to prepare your property for restoration.",
       },
       {
-        icon: "Wrench",
+        icon: "BoardUp",
         title: "Board-Up and Securing Services",
         description:
           "Emergency tarping, board-up, and securing to protect your property from further exposure and damage.",

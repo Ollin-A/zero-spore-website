@@ -17,7 +17,7 @@ export default function TrustBadge({
   return (
     <div
       className={cn(
-        "flex flex-col items-center gap-2 rounded-(--radius-card) border border-stone bg-white px-6 py-5 text-center",
+        "flex h-full flex-col items-center gap-2 rounded-(--radius-card) border border-stone bg-white px-6 py-5 text-center",
         className,
       )}
     >

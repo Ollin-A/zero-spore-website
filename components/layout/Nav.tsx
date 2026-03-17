@@ -3,7 +3,7 @@
 import { useState, useEffect, useCallback, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { MenuIcon, ChevronDownIcon, PhoneIcon, FacebookIcon } from "@/components/icons";
 import { useMood } from "@/components/scroll/ScrollMoodProvider";
 import { NAV_LINKS } from "@/data/navigation";
@@ -14,6 +14,7 @@ import Button from "@/components/ui/Button";
 export default function Nav() {
   const { isDark } = useMood();
   const pathname = usePathname();
+  const router = useRouter();
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
@@ -61,6 +62,37 @@ export default function Nav() {
   }, [pathname]);
 
   const closeMobile = useCallback(() => setMobileOpen(false), []);
+
+  // Handle anchor links (e.g. /#process) with smooth scrolling
+  const handleAnchorClick = useCallback((e: React.MouseEvent, href: string) => {
+    e.preventDefault();
+    const hash = href.split("#")[1];
+    if (!hash) return;
+
+    const scrollToHash = () => {
+      const el = document.getElementById(hash);
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    };
+
+    if (pathname === "/") {
+      // Already on homepage — just scroll
+      scrollToHash();
+    } else {
+      // Navigate to homepage, then scroll after hydration
+      router.push("/");
+      const checkAndScroll = () => {
+        const el = document.getElementById(hash);
+        if (el) {
+          el.scrollIntoView({ behavior: "smooth", block: "start" });
+        } else {
+          requestAnimationFrame(checkAndScroll);
+        }
+      };
+      setTimeout(checkAndScroll, 400);
+    }
+  }, [pathname, router]);
 
   const isHomepage = pathname === "/";
 
@@ -170,6 +202,7 @@ export default function Nav() {
                 <li key={item.label}>
                   <Link
                     href={item.href}
+                    onClick={item.href.includes("#") ? (e) => handleAnchorClick(e, item.href) : undefined}
                     className={cn(
                       "font-sans font-medium transition-colors duration-200 text-(length:--font-nav-size) rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-forest focus-visible:ring-offset-2",
                       isActive(item.href)
@@ -313,7 +346,14 @@ export default function Nav() {
                 key={item.label}
                 href={item.href}
                 className="font-serif text-[26px] text-carbon"
-                onClick={closeMobile}
+                onClick={(e) => {
+                  if (item.href.includes("#")) {
+                    handleAnchorClick(e, item.href);
+                    closeMobile();
+                  } else {
+                    closeMobile();
+                  }
+                }}
                 style={{
                   transition: "opacity 0.4s ease, transform 0.4s ease",
                   transitionDelay: `${index * 60}ms`,

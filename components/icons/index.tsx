@@ -22,25 +22,29 @@ interface IconProps {
    SERVICE ICONS — 32×32 viewBox, duotone
    ═══════════════════════════════════════════════════════════════════════════ */
 
-/** Water droplet with ripple arcs underneath */
+/** Water droplet with smile curve */
 export function WaterDamageIcon({ className, size = 32 }: IconProps) {
   return (
     <svg width={size} height={size} viewBox="0 0 32 32" fill="none" className={className}>
-      <path d="M16 4c0 0-8 9.5-8 15a8 8 0 0 0 16 0c0-5.5-8-15-8-15z" fill="currentColor" opacity="0.12" />
-      <path d="M16 4c0 0-8 9.5-8 15a8 8 0 0 0 16 0c0-5.5-8-15-8-15z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-      <path d="M10 26c1.5 1.5 3.5 2 6 2s4.5-.5 6-2" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M16 4C12 10 7 15 7 20.5C7 25.5 11 29 16 29C21 29 25 25.5 25 20.5C25 15 20 10 16 4Z" fill="currentColor" opacity="0.12" />
+      <path d="M16 4C12 10 7 15 7 20.5C7 25.5 11 29 16 29C21 29 25 25.5 25 20.5C25 15 20 10 16 4Z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M11 22C11 22 13 25 16 25C19 25 21 22 21 22" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
     </svg>
   );
 }
 
-/** Target/crosshair with organic spore center */
+/** Target/crosshair with spore center dot */
 export function MoldRemediationIcon({ className, size = 32 }: IconProps) {
   return (
     <svg width={size} height={size} viewBox="0 0 32 32" fill="none" className={className}>
       <circle cx="16" cy="16" r="10" fill="currentColor" opacity="0.12" />
       <circle cx="16" cy="16" r="10" stroke="currentColor" strokeWidth="1.5" />
-      <path d="M16 2v6M16 24v6M2 16h6M24 16h6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-      <circle cx="16" cy="16" r="3" stroke="currentColor" strokeWidth="1.5" />
+      <circle cx="16" cy="16" r="5" stroke="currentColor" strokeWidth="1.5" />
+      <circle cx="16" cy="16" r="1.5" fill="currentColor" />
+      <line x1="16" y1="3" x2="16" y2="8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+      <line x1="16" y1="24" x2="16" y2="29" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+      <line x1="3" y1="16" x2="8" y2="16" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+      <line x1="24" y1="16" x2="29" y2="16" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
     </svg>
   );
 }
@@ -49,8 +53,8 @@ export function MoldRemediationIcon({ className, size = 32 }: IconProps) {
 export function EmergencyIcon({ className, size = 32 }: IconProps) {
   return (
     <svg width={size} height={size} viewBox="0 0 32 32" fill="none" className={className}>
-      <path d="M18 3L8 18h7l-1 11 10-15h-7l1-11z" fill="currentColor" opacity="0.12" />
-      <path d="M18 3L8 18h7l-1 11 10-15h-7l1-11z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M18 3L8 18H15L14 29L24 14H17L18 3Z" fill="currentColor" opacity="0.12" />
+      <path d="M18 3L8 18H15L14 29L24 14H17L18 3Z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
     </svg>
   );
 }
@@ -109,81 +113,82 @@ export function FollowUpIcon({ className, size = 32 }: IconProps) {
    TRUST BADGE ICONS — 24×24 viewBox, duotone
    ═══════════════════════════════════════════════════════════════════════════ */
 
-/** Rounded square with checkmark */
+/** Shield with checkmark — CCB License */
 export function CCBLicenseIcon({ className, size = 24 }: IconProps) {
   return (
     <svg width={size} height={size} viewBox="0 0 24 24" fill="none" className={className}>
-      <rect x="3" y="3" width="18" height="18" rx="4" fill="currentColor" opacity="0.12" />
-      <rect x="3" y="3" width="18" height="18" rx="4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-      <path d="M8 12.5l3 3 5-6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M12 2L4 6V12C4 17 7.6 21.1 12 22C16.4 21.1 20 17 20 12V6L12 2Z" fill="currentColor" opacity="0.12" />
+      <path d="M12 2L4 6V12C4 17 7.6 21.1 12 22C16.4 21.1 20 17 20 12V6L12 2Z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M9 12L11 14L15 10" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
     </svg>
   );
 }
 
-/** Medal with ribbon tails */
+/** Medal with ribbon tails and inner circle */
 export function IICRCCertifiedIcon({ className, size = 24 }: IconProps) {
   return (
     <svg width={size} height={size} viewBox="0 0 24 24" fill="none" className={className}>
       <circle cx="12" cy="9" r="6" fill="currentColor" opacity="0.12" />
       <circle cx="12" cy="9" r="6" stroke="currentColor" strokeWidth="1.5" />
-      <path d="M8.5 14l-1.5 7 5-2.5L17 21l-1.5-7" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M8.5 14L7 22L12 19L17 22L15.5 14" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+      <circle cx="12" cy="9" r="2" fill="currentColor" opacity="0.4" />
     </svg>
   );
 }
 
-/** Clock showing ~10 o'clock */
+/** Clock with bold hand — 10+ Years */
 export function ExperienceIcon({ className, size = 24 }: IconProps) {
   return (
     <svg width={size} height={size} viewBox="0 0 24 24" fill="none" className={className}>
       <circle cx="12" cy="12" r="9" fill="currentColor" opacity="0.12" />
       <circle cx="12" cy="12" r="9" stroke="currentColor" strokeWidth="1.5" />
-      <path d="M12 7v5l-3.5-2" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M12 6V12L16 14" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
     </svg>
   );
 }
 
-/** House silhouette with door */
+/** House with door — Family Owned */
 export function FamilyOwnedIcon({ className, size = 24 }: IconProps) {
   return (
     <svg width={size} height={size} viewBox="0 0 24 24" fill="none" className={className}>
-      <path d="M4 10l8-7 8 7v9a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-9z" fill="currentColor" opacity="0.12" />
-      <path d="M4 10l8-7 8 7v9a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-9z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-      <rect x="10" y="14" width="4" height="6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M4 10L12 3L20 10V20C20 20.6 19.6 21 19 21H5C4.4 21 4 20.6 4 20V10Z" fill="currentColor" opacity="0.12" />
+      <path d="M4 10L12 3L20 10V20C20 20.6 19.6 21 19 21H5C4.4 21 4 20.6 4 20V10Z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+      <rect x="9" y="14" width="6" height="7" rx="0.5" stroke="currentColor" strokeWidth="1.5" />
     </svg>
   );
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════
-   ABOUT PAGE VALUE ICONS — 32×32 viewBox, duotone
+   ABOUT PAGE VALUE ICONS — 24×24 viewBox, duotone
    ═══════════════════════════════════════════════════════════════════════════ */
 
 /** Eye — honesty/transparency */
-export function HonestyIcon({ className, size = 32 }: IconProps) {
+export function HonestyIcon({ className, size = 24 }: IconProps) {
   return (
-    <svg width={size} height={size} viewBox="0 0 32 32" fill="none" className={className}>
-      <path d="M2 16s5-10 14-10 14 10 14 10-5 10-14 10S2 16 2 16z" fill="currentColor" opacity="0.12" />
-      <path d="M2 16s5-10 14-10 14 10 14 10-5 10-14 10S2 16 2 16z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-      <circle cx="16" cy="16" r="4" stroke="currentColor" strokeWidth="1.5" />
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" className={className}>
+      <path d="M2 12C2 12 5 5 12 5C19 5 22 12 22 12C22 12 19 19 12 19C5 19 2 12 2 12Z" fill="currentColor" opacity="0.12" />
+      <path d="M2 12C2 12 5 5 12 5C19 5 22 12 22 12C22 12 19 19 12 19C5 19 2 12 2 12Z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+      <circle cx="12" cy="12" r="3" stroke="currentColor" strokeWidth="1.5" />
     </svg>
   );
 }
 
-/** Lightning/zap — speed */
-export function SpeedIcon({ className, size = 32 }: IconProps) {
+/** Lightning — speed */
+export function SpeedIcon({ className, size = 24 }: IconProps) {
   return (
-    <svg width={size} height={size} viewBox="0 0 32 32" fill="none" className={className}>
-      <path d="M18 3L8 18h7l-1 11 10-15h-7l1-11z" fill="currentColor" opacity="0.12" />
-      <path d="M18 3L8 18h7l-1 11 10-15h-7l1-11z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" className={className}>
+      <path d="M13 2L4 14H11L10 22L20 10H13L13 2Z" fill="currentColor" opacity="0.12" />
+      <path d="M13 2L4 14H11L10 22L20 10H13L13 2Z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
     </svg>
   );
 }
 
 /** Heart — care */
-export function CareIcon({ className, size = 32 }: IconProps) {
+export function CareIcon({ className, size = 24 }: IconProps) {
   return (
-    <svg width={size} height={size} viewBox="0 0 32 32" fill="none" className={className}>
-      <path d="M16 28s-11-6.5-11-14a6.5 6.5 0 0 1 11-4.7A6.5 6.5 0 0 1 27 14c0 7.5-11 14-11 14z" fill="currentColor" opacity="0.12" />
-      <path d="M16 28s-11-6.5-11-14a6.5 6.5 0 0 1 11-4.7A6.5 6.5 0 0 1 27 14c0 7.5-11 14-11 14z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" className={className}>
+      <path d="M12 21C12 21 4 15 4 9.5C4 7 6 5 8.5 5C10.1 5 11.4 5.8 12 7C12.6 5.8 13.9 5 15.5 5C18 5 20 7 20 9.5C20 15 12 21 12 21Z" fill="currentColor" opacity="0.12" />
+      <path d="M12 21C12 21 4 15 4 9.5C4 7 6 5 8.5 5C10.1 5 11.4 5.8 12 7C12.6 5.8 13.9 5 15.5 5C18 5 20 7 20 9.5C20 15 12 21 12 21Z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
     </svg>
   );
 }
@@ -303,169 +308,136 @@ export function StarIcon({ className, size = 24, filled = false }: StarIconProps
    Used in data/services.ts via string-keyed ICON_MAP in FeatureGrid
    ═══════════════════════════════════════════════════════════════════════════ */
 
-/** Thermometer with sun rays */
-export function ThermometerIcon({ className, size = 32 }: IconProps) {
+/** Water extractor — Residential Water Extraction */
+export function ExtractorIcon({ className, size = 32 }: IconProps) {
   return (
     <svg width={size} height={size} viewBox="0 0 32 32" fill="none" className={className}>
-      <rect x="12" y="4" width="6" height="18" rx="3" fill="currentColor" opacity="0.12" />
-      <rect x="12" y="4" width="6" height="18" rx="3" stroke="currentColor" strokeWidth="1.5" />
-      <circle cx="15" cy="24" r="4" fill="currentColor" opacity="0.12" />
-      <circle cx="15" cy="24" r="4" stroke="currentColor" strokeWidth="1.5" />
-      <path d="M15 18v-8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-      <path d="M24 8l2-2M24 14h3M24 20l2 2" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+      <path d="M8 26V18L16 10L24 18V26H8Z" fill="currentColor" opacity="0.10" />
+      <path d="M16 4V10" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+      <path d="M16 10L10 16V26H22V16L16 10Z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M13 22V20" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+      <path d="M16 22V19" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+      <path d="M19 22V20" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
     </svg>
   );
 }
 
-/** Fan / ventilation blades */
-export function FanIcon({ className, size = 32 }: IconProps) {
+/** Flood waves with droplet — Flood Damage Cleanup */
+export function FloodIcon({ className, size = 32 }: IconProps) {
   return (
     <svg width={size} height={size} viewBox="0 0 32 32" fill="none" className={className}>
-      <circle cx="16" cy="16" r="3" fill="currentColor" opacity="0.12" />
+      <path d="M4 22C4 22 8 18 12 22C16 26 20 18 24 22C28 26 28 22 28 22" fill="currentColor" opacity="0.10" />
+      <path d="M4 22C4 22 8 18 12 22C16 26 20 18 24 22C28 26 28 22 28 22" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+      <path d="M4 16C4 16 8 12 12 16C16 20 20 12 24 16C28 20 28 16 28 16" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+      <path d="M16 4L14 10H18L16 4Z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
+/** Drying unit — Ceiling, Wall and Floor Drying */
+export function DryingIcon({ className, size = 32 }: IconProps) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 32 32" fill="none" className={className}>
+      <rect x="6" y="8" width="20" height="16" rx="2" fill="currentColor" opacity="0.10" />
+      <rect x="6" y="8" width="20" height="16" rx="2" stroke="currentColor" strokeWidth="1.5" />
+      <path d="M12 14L16 18L20 14" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+      <line x1="16" y1="12" x2="16" y2="18" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+      <path d="M10 28H22" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+      <path d="M14 24V28" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+      <path d="M18 24V28" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+    </svg>
+  );
+}
+
+/** Circle with slash — Mold Prevention */
+export function MoldPreventIcon({ className, size = 32 }: IconProps) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 32 32" fill="none" className={className}>
+      <circle cx="16" cy="16" r="10" fill="currentColor" opacity="0.10" />
+      <circle cx="16" cy="16" r="10" stroke="currentColor" strokeWidth="1.5" />
+      <path d="M11 11L21 21" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
       <circle cx="16" cy="16" r="3" stroke="currentColor" strokeWidth="1.5" />
-      <path d="M16 13c0-5 2-9 0-9s-4 4-4 9" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-      <path d="M19 16c5 0 9 2 9 0s-4-4-9-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-      <path d="M16 19c0 5-2 9 0 9s4-4 4-9" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-      <path d="M13 16c-5 0-9-2-9 0s4 4 9 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
     </svg>
   );
 }
 
-/** Shield with checkmark */
+/** Container with drips — Sewage Backup */
+export function SewageIcon({ className, size = 32 }: IconProps) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 32 32" fill="none" className={className}>
+      <path d="M8 8H24V20C24 22.2 22.2 24 20 24H12C9.8 24 8 22.2 8 20V8Z" fill="currentColor" opacity="0.10" />
+      <path d="M8 8H24V20C24 22.2 22.2 24 20 24H12C9.8 24 8 22.2 8 20V8Z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M6 8H26" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+      <path d="M13 13V16" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+      <path d="M16 12V17" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+      <path d="M19 13V16" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+      <path d="M16 24V28" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+    </svg>
+  );
+}
+
+/** Document with lines — Insurance Documentation */
+export function InsuranceDocIcon({ className, size = 32 }: IconProps) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 32 32" fill="none" className={className}>
+      <path d="M8 4H20L24 8V28H8V4Z" fill="currentColor" opacity="0.10" />
+      <path d="M8 4H20L24 8V28H8V4Z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M20 4V8H24" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M12 14H20" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+      <path d="M12 18H20" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+      <path d="M12 22H16" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+    </svg>
+  );
+}
+
+/** Cloud with rain — Storm and Flood Damage */
+export function StormIcon({ className, size = 32 }: IconProps) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 32 32" fill="none" className={className}>
+      <path d="M8 14C8 10 11 6 16 6C21 6 24 10 24 14" fill="currentColor" opacity="0.10" />
+      <path d="M6 14H4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+      <path d="M28 14H26" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+      <path d="M8 14C8 10 11 6 16 6C21 6 24 10 24 14" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+      <path d="M6 14H26" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+      <path d="M12 18L10 24" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+      <path d="M17 18L15 26" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+      <path d="M22 18L20 24" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+    </svg>
+  );
+}
+
+/** Dumpster — Debris Removal */
+export function DebrisIcon({ className, size = 32 }: IconProps) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 32 32" fill="none" className={className}>
+      <rect x="6" y="14" width="20" height="12" rx="2" fill="currentColor" opacity="0.10" />
+      <rect x="6" y="14" width="20" height="12" rx="2" stroke="currentColor" strokeWidth="1.5" />
+      <path d="M4 14L8 8H24L28 14" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+      <line x1="16" y1="14" x2="16" y2="26" stroke="currentColor" strokeWidth="1.5" />
+    </svg>
+  );
+}
+
+/** Boarded window — Board-Up and Securing */
+export function BoardUpIcon({ className, size = 32 }: IconProps) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 32 32" fill="none" className={className}>
+      <rect x="7" y="4" width="18" height="24" rx="1" fill="currentColor" opacity="0.10" />
+      <rect x="7" y="4" width="18" height="24" rx="1" stroke="currentColor" strokeWidth="1.5" />
+      <line x1="7" y1="12" x2="25" y2="12" stroke="currentColor" strokeWidth="1.5" />
+      <line x1="7" y1="20" x2="25" y2="20" stroke="currentColor" strokeWidth="1.5" />
+      <line x1="16" y1="4" x2="16" y2="28" stroke="currentColor" strokeWidth="1.5" />
+    </svg>
+  );
+}
+
+/** Shield with checkmark — 32×32 version for feature grids */
 export function ShieldCheckIcon({ className, size = 32 }: IconProps) {
   return (
     <svg width={size} height={size} viewBox="0 0 32 32" fill="none" className={className}>
       <path d="M16 3L5 8v7c0 7.5 4.7 14.5 11 17 6.3-2.5 11-9.5 11-17V8L16 3z" fill="currentColor" opacity="0.12" />
       <path d="M16 3L5 8v7c0 7.5 4.7 14.5 11 17 6.3-2.5 11-9.5 11-17V8L16 3z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
       <path d="M11 16l3.5 3.5L21 13" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-    </svg>
-  );
-}
-
-/** Document with checkmark */
-export function FileCheckIcon({ className, size = 32 }: IconProps) {
-  return (
-    <svg width={size} height={size} viewBox="0 0 32 32" fill="none" className={className}>
-      <path d="M7 4h12l6 6v17a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1V4z" fill="currentColor" opacity="0.12" />
-      <path d="M7 4h12l6 6v17a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-      <path d="M19 4v6h6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-      <path d="M12 20l3 3 5-6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-    </svg>
-  );
-}
-
-/** Simple shield outline */
-export function ShieldIcon({ className, size = 32 }: IconProps) {
-  return (
-    <svg width={size} height={size} viewBox="0 0 32 32" fill="none" className={className}>
-      <path d="M16 3L5 8v7c0 7.5 4.7 14.5 11 17 6.3-2.5 11-9.5 11-17V8L16 3z" fill="currentColor" opacity="0.12" />
-      <path d="M16 3L5 8v7c0 7.5 4.7 14.5 11 17 6.3-2.5 11-9.5 11-17V8L16 3z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-    </svg>
-  );
-}
-
-/** Microscope */
-export function MicroscopeIcon({ className, size = 32 }: IconProps) {
-  return (
-    <svg width={size} height={size} viewBox="0 0 32 32" fill="none" className={className}>
-      <circle cx="16" cy="10" r="4" fill="currentColor" opacity="0.12" />
-      <path d="M14 6l4 8M12 14h8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-      <path d="M16 14v8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-      <path d="M10 28h12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-      <path d="M12 28v-4a4 4 0 0 1 8 0v4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-      <circle cx="16" cy="10" r="4" stroke="currentColor" strokeWidth="1.5" />
-    </svg>
-  );
-}
-
-/** Wind / air flow lines */
-export function WindIcon({ className, size = 32 }: IconProps) {
-  return (
-    <svg width={size} height={size} viewBox="0 0 32 32" fill="none" className={className}>
-      <path d="M4 10h16a3 3 0 1 0-3-3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-      <path d="M4 16h20a3 3 0 1 1-3 3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-      <path d="M4 22h12a3 3 0 1 0-3-3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-    </svg>
-  );
-}
-
-/** Leaf / organic */
-export function LeafIcon({ className, size = 32 }: IconProps) {
-  return (
-    <svg width={size} height={size} viewBox="0 0 32 32" fill="none" className={className}>
-      <path d="M6 28C6 28 8 8 26 4c0 0 0 18-14 22" fill="currentColor" opacity="0.12" />
-      <path d="M6 28C6 28 8 8 26 4c0 0 0 18-14 22" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-      <path d="M10 22c4-4 10-8 16-10" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-    </svg>
-  );
-}
-
-/** Clipboard with checkmark */
-export function ClipboardCheckIcon({ className, size = 32 }: IconProps) {
-  return (
-    <svg width={size} height={size} viewBox="0 0 32 32" fill="none" className={className}>
-      <rect x="7" y="4" width="18" height="24" rx="2" fill="currentColor" opacity="0.12" />
-      <rect x="7" y="4" width="18" height="24" rx="2" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-      <path d="M13 4V3a3 3 0 0 1 6 0v1" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-      <path d="M12 18l3.5 3.5L22 15" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-    </svg>
-  );
-}
-
-/** Heart with pulse line */
-export function HeartPulseIcon({ className, size = 32 }: IconProps) {
-  return (
-    <svg width={size} height={size} viewBox="0 0 32 32" fill="none" className={className}>
-      <path d="M16 28s-11-6.5-11-14a6.5 6.5 0 0 1 11-4.7A6.5 6.5 0 0 1 27 14c0 7.5-11 14-11 14z" fill="currentColor" opacity="0.12" />
-      <path d="M16 28s-11-6.5-11-14a6.5 6.5 0 0 1 11-4.7A6.5 6.5 0 0 1 27 14c0 7.5-11 14-11 14z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-      <path d="M8 16h4l2-3 3 6 2-3h5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-    </svg>
-  );
-}
-
-/** Siren / alarm light */
-export function SirenIcon({ className, size = 32 }: IconProps) {
-  return (
-    <svg width={size} height={size} viewBox="0 0 32 32" fill="none" className={className}>
-      <path d="M10 20h12a2 2 0 0 1 2 2v2H8v-2a2 2 0 0 1 2-2z" fill="currentColor" opacity="0.12" />
-      <path d="M10 20a6 6 0 0 1 12 0" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-      <rect x="8" y="20" width="16" height="4" rx="1" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-      <path d="M16 8v-4M6 14l-3-2M26 14l3-2" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-      <path d="M10 28h12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-    </svg>
-  );
-}
-
-/** Wrench tool */
-export function WrenchIcon({ className, size = 32 }: IconProps) {
-  return (
-    <svg width={size} height={size} viewBox="0 0 32 32" fill="none" className={className}>
-      <path d="M20 6a6 6 0 0 0-5.7 7.9L6 22.2a2.8 2.8 0 1 0 3.8 3.8l8.3-8.3A6 6 0 0 0 20 6z" fill="currentColor" opacity="0.12" />
-      <path d="M20 6a6 6 0 0 0-5.7 7.9L6 22.2a2.8 2.8 0 1 0 3.8 3.8l8.3-8.3A6 6 0 0 0 20 6z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-    </svg>
-  );
-}
-
-/** Shield with alert/exclamation */
-export function ShieldAlertIcon({ className, size = 32 }: IconProps) {
-  return (
-    <svg width={size} height={size} viewBox="0 0 32 32" fill="none" className={className}>
-      <path d="M16 3L5 8v7c0 7.5 4.7 14.5 11 17 6.3-2.5 11-9.5 11-17V8L16 3z" fill="currentColor" opacity="0.12" />
-      <path d="M16 3L5 8v7c0 7.5 4.7 14.5 11 17 6.3-2.5 11-9.5 11-17V8L16 3z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-      <path d="M16 12v5M16 21h.01" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-    </svg>
-  );
-}
-
-/** Delivery truck */
-export function TruckIcon({ className, size = 32 }: IconProps) {
-  return (
-    <svg width={size} height={size} viewBox="0 0 32 32" fill="none" className={className}>
-      <rect x="2" y="8" width="18" height="14" rx="1" fill="currentColor" opacity="0.12" />
-      <rect x="2" y="8" width="18" height="14" rx="1" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-      <path d="M20 14h5l4 4v4h-9v-8z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-      <circle cx="9" cy="24" r="2" stroke="currentColor" strokeWidth="1.5" />
-      <circle cx="25" cy="24" r="2" stroke="currentColor" strokeWidth="1.5" />
     </svg>
   );
 }

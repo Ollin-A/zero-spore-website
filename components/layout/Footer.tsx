@@ -11,7 +11,25 @@ const MOBILE_FOOTER_NAV = [
   { label: "Blog", href: "/blog" },
 ];
 
-function BuiltByOllin({ className }: { className?: string }) {
+function BuiltByOllin({ className, variant = "desktop" }: { className?: string; variant?: "desktop" | "mobile" }) {
+  if (variant === "mobile") {
+    return (
+      <a
+        href={OLLIN.url}
+        target="_blank"
+        rel="noopener noreferrer"
+        className={`group inline-flex min-h-[44px] items-center no-underline ${className ?? ""}`}
+      >
+        <span className="text-[11px] text-[#555] transition-colors duration-200 group-hover:text-[#9C9790]">
+          Built by{" "}
+          <span className="font-medium text-[#777]">
+            {OLLIN.name}
+          </span>
+        </span>
+      </a>
+    );
+  }
+
   return (
     <a
       href={OLLIN.url}
@@ -19,9 +37,9 @@ function BuiltByOllin({ className }: { className?: string }) {
       rel="noopener noreferrer"
       className={`group inline-flex min-h-[44px] items-center no-underline ${className ?? ""}`}
     >
-      <span className="text-[11px] text-[#444]">
+      <span className="text-[11px] text-[#4ECDC4] transition-colors duration-200 group-hover:text-[#F5F0EB]">
         Built by{" "}
-        <span className="font-medium text-ivory-dim transition-colors duration-200 group-hover:text-ivory">
+        <span className="font-medium">
           {OLLIN.name}
         </span>
       </span>
@@ -151,28 +169,28 @@ export default function Footer() {
             height={32}
             className="h-8 w-8"
           />
-          <span className="mt-3 font-serif text-base text-ivory">
+          <span className="mt-4 font-serif text-base text-ivory">
             {BUSINESS.name.replace(" LLC", "")}
           </span>
 
           {/* Location + CCB */}
-          <p className="mt-2 text-[13px] text-ivory-dim">
+          <p className="mt-5 text-[13px] text-ivory-dim">
             {BUSINESS.address.city}, {BUSINESS.address.state} &middot; CCB #{BUSINESS.ccb}
           </p>
 
           {/* Phone */}
           <a
             href={BUSINESS.phoneTel}
-            className="mt-2 font-sans text-[15px] font-medium text-cyan transition-opacity hover:opacity-80"
+            className="mt-4 font-sans text-[15px] font-medium text-cyan transition-opacity hover:opacity-80"
           >
             {BUSINESS.phone}
           </a>
 
           {/* Divider */}
-          <div className="my-4 w-full border-t" style={{ borderColor: "#333" }} />
+          <div className="my-6 w-full border-t" style={{ borderColor: "#333" }} />
 
           {/* Nav row */}
-          <div className="flex items-center justify-center gap-4">
+          <div className="flex items-center justify-center gap-5">
             {MOBILE_FOOTER_NAV.map((link) => (
               <Link
                 key={link.href}
@@ -190,20 +208,20 @@ export default function Footer() {
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Facebook"
-            className="mt-4 flex h-7 w-7 items-center justify-center rounded-md bg-[#2A2A2A] text-ivory-dim transition-opacity hover:opacity-80"
+            className="mt-5 flex h-7 w-7 items-center justify-center rounded-md bg-[#2A2A2A] text-ivory-dim transition-opacity hover:opacity-80"
           >
             <FacebookIcon size={14} />
           </a>
 
           {/* Copyright block */}
-          <div className="mt-5 flex flex-col items-center gap-1 text-xs text-[#555]">
+          <div className="mt-6 flex flex-col items-center gap-2 text-xs text-[#555]">
             <p>&copy; {year} {BUSINESS.name}</p>
             <p>
               <Link href="/terms" className="transition-opacity hover:opacity-80">Terms</Link>
               <span className="mx-1.5">&middot;</span>
               <Link href="/privacy" className="transition-opacity hover:opacity-80">Privacy</Link>
             </p>
-            <BuiltByOllin className="mt-0.5" />
+            <BuiltByOllin variant="mobile" className="mt-3" />
           </div>
         </div>
       </div>

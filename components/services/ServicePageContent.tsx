@@ -11,8 +11,6 @@ import RelatedServices from "@/components/services/RelatedServices";
 import SchemaMarkup from "@/components/shared/SchemaMarkup";
 import MoodSection from "@/components/scroll/MoodSection";
 import FadeUp from "@/components/scroll/FadeUp";
-import Button from "@/components/ui/Button";
-import { BUSINESS } from "@/data/constants";
 import type { ServiceData } from "@/data/services";
 
 // useLayoutEffect on client, useEffect on server (SSR safety)
@@ -104,8 +102,8 @@ export default function ServicePageContent({
           </FadeUp>
           <div className="mt-10 grid gap-(--grid-gap) sm:grid-cols-2 lg:grid-cols-3">
             {service.whyChooseUs.items.map((item, i) => (
-              <FadeUp key={item.title} delay={0.1 + i * 0.05}>
-                <div className="rounded-(--radius-card) border border-stone bg-white p-(--card-padding)">
+              <FadeUp key={item.title} delay={0.1 + i * 0.05} className="h-full">
+                <div className="flex h-full flex-col rounded-(--radius-card) border border-stone bg-white p-(--card-padding)">
                   <h3 className="font-medium">{item.title}</h3>
                   <p className="mt-2 text-sm leading-relaxed text-muted">
                     {item.description}
@@ -127,25 +125,6 @@ export default function ServicePageContent({
       <MoodSection mood="services">
         <FAQAccordion items={service.faqs} serviceName={service.title} />
       </MoodSection>
-
-      {/* Closing CTA */}
-      {service.closingCta && (
-        <MoodSection mood="about">
-          <FadeUp>
-            <div className="mx-auto max-w-(--text-max) text-center">
-              <p className="leading-relaxed text-muted">{service.closingCta}</p>
-              <div className="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
-                <Button variant="primary" href="/contact">
-                  Schedule your free inspection
-                </Button>
-                <Button variant="secondary" href={BUSINESS.phoneTel}>
-                  Call {BUSINESS.phone}
-                </Button>
-              </div>
-            </div>
-          </FadeUp>
-        </MoodSection>
-      )}
 
       <RelatedServices relatedSlugs={service.relatedSlugs} />
     </>

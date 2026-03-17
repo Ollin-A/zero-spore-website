@@ -135,7 +135,7 @@ export default function ProcessTimeline() {
   );
 
   return (
-    <MoodSection mood="process" id="process" noPadding>
+    <MoodSection mood="process" id="process" noPadding className="scroll-mt-20">
       {/* Desktop: horizontal pin scroll */}
       <div ref={sectionRef} className="hidden md:block">
         {/* Progress bar */}
