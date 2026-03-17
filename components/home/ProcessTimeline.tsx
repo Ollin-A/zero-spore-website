@@ -19,7 +19,7 @@ const STEPS: Step[] = [
     number: "01",
     title: "Assessment",
     description:
-      "Once we have your contact information, we schedule an inspection at your convenience. Then, our experts evaluate the damage, determine the scope of work, and provide a detailed estimate.",
+      "We inspect every affected area, document the damage, and provide a detailed estimate \u2014 so you know exactly what to expect.",
     icon: AssessmentIcon,
     /* TODO: REPLACE — Unsplash placeholder */
     image:
@@ -27,9 +27,9 @@ const STEPS: Step[] = [
   },
   {
     number: "02",
-    title: "Emergency Response",
+    title: "Mitigation",
     description:
-      "In urgent situations, we respond quickly to stabilize your property and prevent further damage. This may include water shut off, water extraction, tarping or board ups.",
+      "Extract standing water, stabilize the structure, and set up industrial drying equipment to prevent further damage.",
     icon: MitigationIcon,
     /* TODO: REPLACE — Unsplash placeholder */
     image:
@@ -39,7 +39,7 @@ const STEPS: Step[] = [
     number: "03",
     title: "Restoration",
     description:
-      "Our certified team contains the affected area, removes damaged materials and mitigates mold, if present. We use professional-grade drying and dehumidification equipment to ensure your home is safe and habitable as soon as possible.",
+      "Remove damaged materials, clean and sanitize every surface, and restore your home to pre-damage condition.",
     icon: RestorationIcon,
     /* TODO: REPLACE — Unsplash placeholder */
     image:
@@ -47,9 +47,9 @@ const STEPS: Step[] = [
   },
   {
     number: "04",
-    title: "Quality Assurance",
+    title: "Follow-up",
     description:
-      "We are committed to customer satisfaction. When necessary, we confirm our results through professional, independent environmental testing and provide continuous follow-up support.",
+      "Final moisture testing, quality verification, and follow-up support \u2014 because the job isn\u2019t done until you\u2019re confident.",
     icon: FollowUpIcon,
     /* TODO: REPLACE — Unsplash placeholder */
     image:

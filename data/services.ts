@@ -60,15 +60,10 @@ export const SERVICES: Record<string, ServiceData> = {
     headline: "Professional Water Damage Mitigation",
     subline:
       "Fast extraction, professional drying, and full mitigation \u2014 from the moment we arrive until the job is done.",
-    body: "When water damage strikes your home, the risk of structural compromise, mold growth and expensive repairs is immediate. Zero Spore Restoration LLC is your trusted source for fast and professional Water Damage Mitigation Services.",
+    body: "When water damage strikes, the risk of structural compromise and mold growth is immediate. Zero Spore Restoration LLC is your trusted source for fast, professional water damage mitigation \u2014 24/7.",
     bodyParagraphs: [
-      "When water damage strikes your home, the risk of structural compromise, mold growth and expensive repairs is immediate. Zero Spore Restoration LLC is your trusted source for fast and professional Water Damage Mitigation Services.",
-      "We work 24/7, combining expert, hands-on service with specialized, industry-leading equipment to quickly assess, contain and fully mitigate water damage of any size.",
-      "Don\u2019t wait! \u2014 protect your property and peace of mind. Call us today at 503-302-0557 for emergency response.",
-      "We handle every job \u2014 from minor leaks to major flooding \u2014 with urgency and precision. Zero Spore Restoration is dedicated to not only containing the immediate damage, but also preventing long-term issues like structural weakening, mold and health hazards. When you choose us, you are selecting a partner that prioritizes the quality of every service and genuinely cares about your home and your family.",
-      "Water damage can extend far beyond what the eye can see. Water can quickly and silently seep into floors, walls, ceilings and any nearby porous materials creating hidden moisture pockets that eventually compromise structural integrity.",
-      "If left unmanaged, water damage can lead to substantial long-term property damage such as mold and mildew growth, rotting wood and weakened structures, electrical hazards, reduced indoor air quality and potentially serious health issues, and long-term repair costs.",
-      "At Zero Spore Restoration we understand that, during water damage, time is of the essence! Fast intervention can significantly reduce the damage, lower restoration and reconstruction costs and protect your health. Using professional, industry-established mitigation procedures, we thoroughly extract water, dry and clean all affected areas to protect your home and prevent future complications.",
+      "When water damage strikes, the risk of structural compromise and mold growth is immediate. Zero Spore Restoration LLC is your trusted source for fast, professional water damage mitigation \u2014 24/7.",
+      "From minor leaks to major flooding, we combine expert service with specialized equipment to quickly assess, contain, and fully mitigate water damage of any size. Call (503) 302-0557.",
     ],
     metaTitle:
       "Professional Water Damage Mitigation Oregon | Zero Spore Restoration",
@@ -119,25 +114,25 @@ export const SERVICES: Record<string, ServiceData> = {
         number: 1,
         title: "Assessment",
         description:
-          "We conduct a thorough visual evaluation of the affected areas to identify the source of the water and stop it, when necessary. We use advanced tools to accurately measure moisture levels and map out the extent of the damage. This allows us to develop a detailed and transparent mitigation plan.",
+          "We evaluate affected areas, identify the water source, and use advanced tools to map moisture levels. This allows us to develop a detailed, transparent mitigation plan.",
       },
       {
         number: 2,
         title: "Water Extraction and Drying",
         description:
-          "We use commercial-grade extractors to remove standing water and accelerate the drying process. These swift actions minimize secondary damage like swelling and warping and prevent mold growth in porous materials such as ceilings, walls, flooring, cabinetry, etc. During this process, our team continuously monitors moisture levels to ensure the structure is completely dry.",
+          "Commercial-grade extractors remove standing water while industrial drying equipment prevents secondary damage like swelling, warping and mold growth. We continuously monitor moisture levels until the structure is completely dry.",
       },
       {
         number: 3,
         title: "Cleaning and Sanitization",
         description:
-          "Water intrusion, particularly from floods or sewage leaks, often brings harmful contaminants. We clean and disinfect affected areas, using safe, EPA-approved, hospital-grade solutions to eliminate bacteria, viruses, and allergens. This critical step protects your family\u2019s health and prevents lingering odors.",
+          "We clean and disinfect affected areas using EPA-approved, hospital-grade solutions to eliminate bacteria, viruses and allergens. This protects your family\u2019s health and prevents lingering odors.",
       },
       {
         number: 4,
         title: "Damage Containment",
         description:
-          "This mitigation phase focuses on structural stabilization to prevent further damage. It involves the necessary removal of damaged and compromised materials, such as drywall, insulation, flooring and cabinetry \u2014 a process commonly referred to as demolition. Containment areas are meticulously set up to contain dust and debris, preparing your home for full restoration. Our goal is to minimize disruption to your life as much as possible.",
+          "We remove compromised materials \u2014 drywall, insulation, flooring \u2014 and set up containment areas to control dust and debris. Our goal is to stabilize the structure while minimizing disruption to your daily life.",
       },
       {
         number: 5,
@@ -179,7 +174,7 @@ export const SERVICES: Record<string, ServiceData> = {
     accentBg: "bg-sky",
     whyChooseUs: {
       intro:
-        "Restoration is not just about drying your home \u2014 it\u2019s about trust, quality and reliability. Homeowners in Oregon choose Zero Spore Restoration LLC because of:",
+        "Homeowners in Oregon choose Zero Spore Restoration LLC because of:",
       items: [
         {
           title: "24/7 Emergency Availability",
@@ -209,7 +204,7 @@ export const SERVICES: Record<string, ServiceData> = {
       ],
     },
     closingCta:
-      "Don\u2019t wait for water damage to escalate. Zero Spore Restoration LLC offers professional, prompt and reliable water damage mitigation services across the Willamette Valley, Portland Metro area and many other communities in between. Our certified team is ready to protect your home from further damage and support you through every stage of the mitigation process.",
+      "Don\u2019t wait for water damage to escalate. Call (503) 302-0557 for fast, professional restoration.",
   },
 
   "mold-remediation": {
@@ -218,10 +213,10 @@ export const SERVICES: Record<string, ServiceData> = {
     headline: "Mold remediation you can trust",
     subline:
       "Thorough inspection, safe containment, and professional remediation \u2014 so your family breathes easy again.",
-    body: "At Zero Spore Restoration we specialize in the safe and effective treatment and removal of mold. We understand that mold can develop silently in your property posing significant structural and health risks, often before visible signs appear. Our expert team is dedicated to identifying, containing and treating mold so you can breathe easier in your own home.",
+    body: "Mold can develop silently, posing structural and health risks before visible signs appear. Our team specializes in identifying, containing, and treating mold so you can breathe easier.",
     bodyParagraphs: [
-      "At Zero Spore Restoration we specialize in the safe and effective treatment and removal of mold. We understand that mold can develop silently in your property posing significant structural and health risks, often before visible signs appear. Our expert team is dedicated to identifying, containing and treating mold so you can breathe easier in your own home.",
-      "Every mold situation presents a unique challenge, ranging from visible growth in a bathroom ceiling to hidden mold within walls and extensive damage caused by water. Our remediation process combines a detailed, professional inspection, the use of advanced technology and a personalized remediation plan to fit your needs. Our training and extensive experience ensure professional service and invaluable peace of mind.",
+      "Mold can develop silently, posing structural and health risks before visible signs appear. Our team specializes in identifying, containing, and treating mold so you can breathe easier.",
+      "Every situation is unique \u2014 from hidden growth behind walls to extensive water-related damage. We combine detailed inspection with advanced technology and a personalized plan for your home.",
     ],
     metaTitle: "Mold Remediation Oregon | Zero Spore Restoration",
     metaDescription:
@@ -265,19 +260,19 @@ export const SERVICES: Record<string, ServiceData> = {
         number: 1,
         title: "Inspection",
         description:
-          "We begin with a detailed inspection to determine the existence and extent of the mold growth. We use specialized tools such as moisture meters, infrared cameras and surface testing to accurately pinpoint affected areas that may not be immediately visible. This helps us create an effective remediation strategy.",
+          "We use moisture meters, infrared cameras and surface testing to determine the extent of mold growth, including areas not immediately visible. This helps us create an effective remediation strategy.",
       },
       {
         number: 2,
         title: "Containment",
         description:
-          "Before any demolition, we establish containment zones to prevent mold spores from spreading to other areas. We use negative air pressure machines, protective barriers, and HEPA filtration systems to ensure the rest of your home stays safe and clean during the entire process.",
+          "We establish containment zones with negative air pressure, protective barriers and HEPA filtration to prevent spores from spreading. The rest of your home stays safe and clean during the entire process.",
       },
       {
         number: 3,
         title: "Removal and Cleaning",
         description:
-          "We carefully remove or treat all affected materials \u2014 such as drywall, insulation and flooring. Then, we clean and disinfect all surfaces using professional-grade, EPA-approved solutions. Our goal is to reduce mold spore count to safe levels while preserving your property as much as possible.",
+          "We carefully remove or treat affected materials, then clean and disinfect all surfaces using EPA-approved solutions. Our goal is to reduce mold spore count to safe levels while preserving your property.",
       },
       {
         number: 4,
@@ -289,7 +284,7 @@ export const SERVICES: Record<string, ServiceData> = {
         number: 5,
         title: "Final Inspection",
         description:
-          "Once the process is complete, we perform a final inspection to confirm mold has been reduced to safe levels. We can also provide references for necessary repairs or reconstruction of damaged areas, ensuring your home returns to a safe, livable condition.",
+          "We perform a final inspection to confirm mold has been reduced to safe levels. We can also provide references for necessary repairs to return your home to a safe, livable condition.",
       },
     ],
     faqs: [
@@ -324,7 +319,7 @@ export const SERVICES: Record<string, ServiceData> = {
     accentColor: "text-forest",
     accentBg: "bg-moss",
     disclaimer:
-      "Some severe mold cases require pre and post-remediation testing, which must be conducted by an independent Environmental Mold Inspector. The inspector collects mold samples for lab analysis and identification. From the lab results, the inspector creates a comprehensive report and develops a protocol with specific recommendations for professional mold remediation. When remediation is complete, the inspector will often retest to verify treatment was successful and provide a clearance report or make further recommendations to make the environment safe.",
+      "Some severe mold cases require pre and post-remediation testing by an independent Environmental Mold Inspector, who collects samples for lab analysis and develops a protocol with specific remediation recommendations. When remediation is complete, the inspector retests to verify treatment was successful and provide clearance.",
     whyChooseUs: {
       intro:
         "Homeowners across Oregon trust Zero Spore Restoration for mold remediation because of:",
@@ -355,11 +350,9 @@ export const SERVICES: Record<string, ServiceData> = {
             "We focus on restoring homes and protecting families, treating every property with the care it deserves.",
         },
       ],
-      closing:
-        "We treat every customer with care and compassion, creating a customized mold remediation plan for each property based on the extent of the damage and minimizing disruption to your daily life as much as possible. Our comprehensive approach not only protects your health but also preserves your property\u2019s value.",
     },
     closingCta:
-      "Don\u2019t let mold compromise the safety of your home. Early detection and professional remediation are critical to prevent costly damage and potential health problems. Zero Spore Restoration LLC offers reliable and comprehensive mold remediation services. Our experts are ready to respond quickly when you need us. Protect your family and home. Call us today at 503-302-0557 to schedule an inspection or emergency service.",
+      "Don\u2019t let mold compromise the safety of your home. Call us today at 503-302-0557 to schedule an inspection or emergency service.",
   },
 
   emergency: {
@@ -368,14 +361,10 @@ export const SERVICES: Record<string, ServiceData> = {
     headline: "Emergency response when every minute counts",
     subline:
       "24/7 dispatch, rapid on-site arrival, and immediate mitigation \u2014 because emergencies don\u2019t wait for business hours.",
-    body: "When disaster strikes, bringing unexpected water, mold, or storm damage, prompt action is essential for homeowners and businesses. Zero Spore Restoration LLC offers fast, reliable emergency restoration services. We are committed to helping property owners recover safely and efficiently, knowing that in these critical moments, every minute is vital.",
+    body: "When disaster brings unexpected water, mold, or storm damage, prompt action is essential. Zero Spore Restoration LLC offers fast, reliable emergency services \u2014 available 24/7.",
     bodyParagraphs: [
-      "When disaster strikes, bringing unexpected water, mold, or storm damage, prompt action is essential for homeowners and businesses. Zero Spore Restoration LLC offers fast, reliable emergency restoration services. We are committed to helping property owners recover safely and efficiently, knowing that in these critical moments, every minute is vital.",
-      "Facing a sudden pipe burst, a flooded basement, or storm damage? Our trained experts are ready to handle any emergency with precision. We use advanced equipment and proven restoration methods coupled with a personal, compassionate approach, to ensure your property is restored quickly and effectively.",
-      "Emergencies are stressful, but you are not alone! Zero Spore Restoration, LLC is here to guide you every step of the way. From the initial assessment to completion, we work diligently to minimize damage and prevent long-term issues so you can breathe easy again.",
-      "In an emergency, time is critical. Within hours, water can seep into your walls, floors, and ceilings, creating immediate mold risks. Storm damage exposes your property to additional dangers like wind and water intrusion. Fast action is essential \u2014 it prevents further damage, significantly reduces restoration costs, and minimizes downtime.",
-      "Zero Spore Restoration LLC prioritizes this immediate action. Our rapid response team in Sheridan, OR is available 24/7, ready to assess, contain, and restore your property the moment disaster strikes.",
-      "When emergencies strike, it\u2019s natural to feel overwhelmed. That\u2019s why the Zero Spore Restoration team is committed to guiding you through the entire recovery process. We ensure you are informed, supported, and confident throughout the entire process. We do this by communicating clearly, explaining every step, and providing solutions tailored to your specific needs.",
+      "When disaster brings unexpected water, mold, or storm damage, prompt action is essential. Zero Spore Restoration LLC offers fast, reliable emergency services \u2014 available 24/7.",
+      "Facing a sudden pipe burst, a flooded basement, or storm damage? Our trained experts handle every emergency with precision, advanced equipment, and a personal, compassionate approach.",
     ],
     metaTitle:
       "24/7 Emergency Restoration Oregon | Zero Spore Restoration",
@@ -426,7 +415,7 @@ export const SERVICES: Record<string, ServiceData> = {
         number: 1,
         title: "Immediate Response",
         description:
-          "Once you contact us, our team immediately responds to assess the damage. We thoroughly inspect affected areas, determine the extent of the damage and develop a comprehensive plan of action. This crucial initial assessment allows us to quickly address urgent concerns and prevent further damage.",
+          "Our team responds immediately to assess the damage, inspect affected areas, and develop a plan of action. This crucial initial assessment allows us to address urgent concerns and prevent further damage.",
       },
       {
         number: 2,
@@ -444,7 +433,7 @@ export const SERVICES: Record<string, ServiceData> = {
         number: 4,
         title: "Final Inspection",
         description:
-          "Our commitment to your safety and satisfaction is paramount. Following restoration, we conduct a detailed, professional inspection to confirm the work is complete. This includes critical steps like verifying all repairs were performed correctly, conducting comprehensive moisture checks, and performing air quality testing, whenever necessary. Our ultimate goal is to return your property to you fully mitigated and remediated.",
+          "Following restoration, we conduct a detailed inspection to confirm all work is complete \u2014 including moisture checks and air quality testing when necessary. Our goal is to return your property fully mitigated and remediated.",
       },
     ],
     faqs: [
@@ -508,7 +497,7 @@ export const SERVICES: Record<string, ServiceData> = {
         },
       ],
       closing:
-        "For fast, responsive and compassionate care, call 503-302-0557. Our highly trained team genuinely cares about your safety and comfort, providing a clear, tailored plan for your unique emergency.",
+        "For fast, responsive and compassionate emergency care, call 503-302-0557.",
     },
     closingCta:
       "Call us anytime at 503-302-0557 for fast, professional emergency restoration services. Our certified experts are ready to help you safely and efficiently recover and restore your property.",

@@ -41,34 +41,23 @@ export default function AboutPreview() {
 
           <FadeUp delay={0.15}>
             <p className="mt-6 max-w-(--text-max) leading-relaxed text-muted">
-              When water or mold threatens your home, you need people who
-              understand what&apos;s at stake. We&apos;re a family-owned
-              restoration company based in Sheridan, Oregon — and we treat every
-              home like our own.
+              We&apos;re a family-owned restoration company based in Sheridan,
+              Oregon — and we treat every home like our own. Our approach is
+              hands-on and personal, from the first phone call to the final
+              inspection.
             </p>
           </FadeUp>
 
           <FadeUp delay={0.25}>
             <p className="mt-4 max-w-(--text-max) leading-relaxed text-muted">
-              We are a family-owned and locally operated business in Sheridan,
-              OR. Our approach is hands-on and personal. From the first phone
-              call to the final inspection, we work closely with each client
-              offering clear guidance, honest recommendations and thorough
-              support every step of the way.
+              We provide expert residential service across the Willamette
+              Valley, Portland Metro, and communities in between. As locals, we
+              understand the challenges of Pacific Northwest humidity and the
+              architectural diversity of Oregon homes.
             </p>
           </FadeUp>
 
           <FadeUp delay={0.3}>
-            <p className="mt-4 max-w-(--text-max) leading-relaxed text-muted">
-              We provide expert residential service to the Willamette Valley,
-              Portland Metro area and many other cities and communities in
-              between. Because we are locally owned and operated, we are familiar
-              with the challenges of high humidity in the Pacific Northwest as
-              well as the architectural diversity of our area.
-            </p>
-          </FadeUp>
-
-          <FadeUp delay={0.4}>
             <Link
               href="/about"
               className="mt-6 inline-flex items-center font-medium text-forest hover:underline"
