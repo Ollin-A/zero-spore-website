@@ -49,9 +49,9 @@ export default function Nav() {
   // Focus management for mobile menu
   useEffect(() => {
     if (mobileOpen) {
-      closeRef.current?.focus();
+      closeRef.current?.focus({ focusVisible: false } as FocusOptions);
     } else {
-      hamburgerRef.current?.focus();
+      hamburgerRef.current?.focus({ focusVisible: false } as FocusOptions);
     }
   }, [mobileOpen]);
 
@@ -201,7 +201,7 @@ export default function Nav() {
           {/* Mobile hamburger */}
           <button
             ref={hamburgerRef}
-            className="flex h-12 w-12 items-center justify-center rounded-sm lg:hidden outline-none focus-visible:ring-2 focus-visible:ring-forest focus-visible:ring-offset-2"
+            className="flex h-12 w-12 items-center justify-center rounded-lg lg:hidden outline-none focus:outline-none focus-visible:ring-2 focus-visible:ring-forest focus-visible:ring-offset-2"
             onClick={() => setMobileOpen(true)}
             aria-label="Open menu"
           >
@@ -234,7 +234,7 @@ export default function Nav() {
             ref={closeRef}
             onClick={closeMobile}
             aria-label="Close menu"
-            className="flex h-12 w-12 items-center justify-center rounded-sm text-carbon outline-none focus-visible:ring-2 focus-visible:ring-forest focus-visible:ring-offset-2"
+            className="flex h-12 w-12 items-center justify-center rounded-lg text-carbon outline-none focus:outline-none focus-visible:ring-2 focus-visible:ring-forest focus-visible:ring-offset-2"
           >
             <X size={28} strokeWidth={1.5} />
           </button>
