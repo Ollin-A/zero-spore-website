@@ -10,6 +10,9 @@ import FAQAccordion from "@/components/ui/FAQAccordion";
 import RelatedServices from "@/components/services/RelatedServices";
 import SchemaMarkup from "@/components/shared/SchemaMarkup";
 import MoodSection from "@/components/scroll/MoodSection";
+import FadeUp from "@/components/scroll/FadeUp";
+import Button from "@/components/ui/Button";
+import { BUSINESS } from "@/data/constants";
 import type { ServiceData } from "@/data/services";
 
 // useLayoutEffect on client, useEffect on server (SSR safety)
@@ -67,9 +70,83 @@ export default function ServicePageContent({
         accentColor={service.accentColor}
       />
       <ProcessVertical steps={service.process} />
+
+      {/* Disclaimer callout (mold page) */}
+      {service.disclaimer && (
+        <MoodSection mood="about">
+          <FadeUp>
+            <div className="mx-auto max-w-(--text-max) rounded-(--radius-card) border border-stone bg-warm p-6 text-sm leading-relaxed text-muted">
+              <p className="mb-2 font-medium text-carbon">Important note</p>
+              <p>{service.disclaimer}</p>
+            </div>
+          </FadeUp>
+        </MoodSection>
+      )}
+
+      {/* Why Choose Us section */}
+      {service.whyChooseUs && (
+        <MoodSection mood="services">
+          <FadeUp>
+            <h2
+              className="font-serif"
+              style={{
+                fontSize: "var(--font-h2-size)",
+                lineHeight: "var(--font-h2-lh)",
+              }}
+            >
+              Why choose us
+            </h2>
+          </FadeUp>
+          <FadeUp delay={0.1}>
+            <p className="mt-4 max-w-(--text-max) leading-relaxed text-muted">
+              {service.whyChooseUs.intro}
+            </p>
+          </FadeUp>
+          <div className="mt-10 grid gap-(--grid-gap) sm:grid-cols-2 lg:grid-cols-3">
+            {service.whyChooseUs.items.map((item, i) => (
+              <FadeUp key={item.title} delay={0.1 + i * 0.05}>
+                <div className="rounded-(--radius-card) border border-stone bg-white p-(--card-padding)">
+                  <h3 className="font-medium">{item.title}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-muted">
+                    {item.description}
+                  </p>
+                </div>
+              </FadeUp>
+            ))}
+          </div>
+          {service.whyChooseUs.closing && (
+            <FadeUp delay={0.3}>
+              <p className="mt-8 max-w-(--text-max) leading-relaxed text-muted">
+                {service.whyChooseUs.closing}
+              </p>
+            </FadeUp>
+          )}
+        </MoodSection>
+      )}
+
       <MoodSection mood="services">
         <FAQAccordion items={service.faqs} serviceName={service.title} />
       </MoodSection>
+
+      {/* Closing CTA */}
+      {service.closingCta && (
+        <MoodSection mood="about">
+          <FadeUp>
+            <div className="mx-auto max-w-(--text-max) text-center">
+              <p className="leading-relaxed text-muted">{service.closingCta}</p>
+              <div className="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
+                <Button variant="primary" href="/contact">
+                  Schedule your free inspection
+                </Button>
+                <Button variant="secondary" href={BUSINESS.phoneTel}>
+                  Call {BUSINESS.phone}
+                </Button>
+              </div>
+            </div>
+          </FadeUp>
+        </MoodSection>
+      )}
+
       <RelatedServices relatedSlugs={service.relatedSlugs} />
     </>
   );

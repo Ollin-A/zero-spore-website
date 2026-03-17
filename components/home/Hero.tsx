@@ -72,9 +72,9 @@ export default function Hero() {
               letterSpacing: "var(--font-display-ls)",
             }}
           >
-            Your home deserves
+            Water or mold damage?
             <br />
-            immediate response
+            Call us 24/7 for fast restoration
           </h1>
         </FadeUp>
 

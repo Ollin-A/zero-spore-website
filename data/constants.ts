@@ -12,6 +12,12 @@ export const BUSINESS = {
   },
   domain: "zerosporerestoration.com",
   url: "https://zerosporerestoration.com",
+  certifications: [
+    "Licensed and Bonded Contractor, CCB #244908",
+    "IICRC Certified (Institute of Inspection, Cleaning and Restoration)",
+    "AHERA Certified (Asbestos Hazard Emergency Response Act)",
+    "Lead-Based Paint/RRP Certified (Renovation, Repair and Painting)",
+  ],
 } as const;
 
 export const LEAD_GATEWAY = {

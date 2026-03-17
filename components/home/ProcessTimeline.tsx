@@ -19,7 +19,7 @@ const STEPS: Step[] = [
     number: "01",
     title: "Assessment",
     description:
-      "We arrive fast, inspect every affected area, document the damage with photos, and provide a detailed estimate — so you know exactly what to expect.",
+      "Once we have your contact information, we schedule an inspection at your convenience. Then, our experts evaluate the damage, determine the scope of work, and provide a detailed estimate.",
     icon: AssessmentIcon,
     /* TODO: REPLACE — Unsplash placeholder */
     image:
@@ -27,9 +27,9 @@ const STEPS: Step[] = [
   },
   {
     number: "02",
-    title: "Mitigation",
+    title: "Emergency Response",
     description:
-      "Extract standing water, stabilize the structure, set up industrial drying equipment, and prevent further damage from spreading through your home.",
+      "In urgent situations, we respond quickly to stabilize your property and prevent further damage. This may include water shut off, water extraction, tarping or board ups.",
     icon: MitigationIcon,
     /* TODO: REPLACE — Unsplash placeholder */
     image:
@@ -39,7 +39,7 @@ const STEPS: Step[] = [
     number: "03",
     title: "Restoration",
     description:
-      "Remove damaged materials, clean and sanitize every surface, complete structural drying, and restore your home to its pre-damage condition.",
+      "Our certified team contains the affected area, removes damaged materials and mitigates mold, if present. We use professional-grade drying and dehumidification equipment to ensure your home is safe and habitable as soon as possible.",
     icon: RestorationIcon,
     /* TODO: REPLACE — Unsplash placeholder */
     image:
@@ -47,9 +47,9 @@ const STEPS: Step[] = [
   },
   {
     number: "04",
-    title: "Follow-up",
+    title: "Quality Assurance",
     description:
-      "Final moisture testing, air quality verification, a thorough walkthrough, and quality assurance — because the job isn't done until you're confident.",
+      "We are committed to customer satisfaction. When necessary, we confirm our results through professional, independent environmental testing and provide continuous follow-up support.",
     icon: FollowUpIcon,
     /* TODO: REPLACE — Unsplash placeholder */
     image:

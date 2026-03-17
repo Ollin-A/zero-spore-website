@@ -34,8 +34,8 @@ const TRUST_BADGES = [
   },
   {
     icon: IICRCCertifiedIcon,
-    label: "IICRC Certified",
-    sublabel: "Industry Standard",
+    label: "IICRC, AHERA, RRP",
+    sublabel: "Certified Team",
   },
   {
     icon: ExperienceIcon,

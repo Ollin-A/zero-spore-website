@@ -40,6 +40,15 @@ export default function ServiceHero({ service }: ServiceHeroProps) {
             </p>
           </FadeUp>
 
+          {service.bodyParagraphs &&
+            service.bodyParagraphs.slice(1).map((paragraph, i) => (
+              <FadeUp key={i} delay={0.3 + i * 0.05}>
+                <p className="mt-4 max-w-(--text-max) leading-relaxed text-muted">
+                  {paragraph}
+                </p>
+              </FadeUp>
+            ))}
+
           <FadeUp delay={0.35}>
             <div className="mt-8 flex flex-col gap-4 sm:flex-row">
               <Button

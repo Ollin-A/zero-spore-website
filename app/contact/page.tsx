@@ -4,7 +4,7 @@ import FadeUp from "@/components/scroll/FadeUp";
 import ContactForm from "@/components/ui/ContactForm";
 import { BUSINESS } from "@/data/constants";
 import { PAGE_SEO } from "@/data/seo";
-import { PhoneIcon, MailIcon, MapPinIcon, ExperienceIcon, CCBLicenseIcon } from "@/components/icons";
+import { PhoneIcon, MailIcon, MapPinIcon, CCBLicenseIcon } from "@/components/icons";
 
 export const metadata: Metadata = {
   title: PAGE_SEO.contact.title,
@@ -32,11 +32,7 @@ const CONTACT_ITEMS = [
   },
   {
     icon: MapPinIcon,
-    label: `${BUSINESS.address.city}, ${BUSINESS.address.state} — serving all of Oregon`,
-  },
-  {
-    icon: ExperienceIcon,
-    label: "Open 24/7 for emergencies",
+    label: "Serving the Willamette Valley, Portland Metro & beyond",
   },
   {
     icon: CCBLicenseIcon,

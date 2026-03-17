@@ -50,15 +50,25 @@ export default function AboutPreview() {
 
           <FadeUp delay={0.25}>
             <p className="mt-4 max-w-(--text-max) leading-relaxed text-muted">
-              With over a decade of experience in emergency restoration,
-              we&apos;ve built our reputation on showing up fast, communicating
-              honestly, and restoring homes to their best condition. Every job
-              gets our full attention — because for us, this isn&apos;t just
-              work. It&apos;s personal.
+              We are a family-owned and locally operated business in Sheridan,
+              OR. Our approach is hands-on and personal. From the first phone
+              call to the final inspection, we work closely with each client
+              offering clear guidance, honest recommendations and thorough
+              support every step of the way.
             </p>
           </FadeUp>
 
-          <FadeUp delay={0.35}>
+          <FadeUp delay={0.3}>
+            <p className="mt-4 max-w-(--text-max) leading-relaxed text-muted">
+              We provide expert residential service to the Willamette Valley,
+              Portland Metro area and many other cities and communities in
+              between. Because we are locally owned and operated, we are familiar
+              with the challenges of high humidity in the Pacific Northwest as
+              well as the architectural diversity of our area.
+            </p>
+          </FadeUp>
+
+          <FadeUp delay={0.4}>
             <Link
               href="/about"
               className="mt-6 inline-flex items-center font-medium text-forest hover:underline"
