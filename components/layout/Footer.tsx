@@ -11,38 +11,15 @@ const MOBILE_FOOTER_NAV = [
   { label: "Blog", href: "/blog" },
 ];
 
-function BuiltByOllin({ className, variant = "desktop" }: { className?: string; variant?: "desktop" | "mobile" }) {
-  if (variant === "mobile") {
-    return (
-      <a
-        href={OLLIN.url}
-        target="_blank"
-        rel="noopener noreferrer"
-        className={`group inline-flex min-h-[44px] items-center no-underline ${className ?? ""}`}
-      >
-        <span className="text-[11px] text-[#555] transition-colors duration-200 group-hover:text-[#9C9790]">
-          Built by{" "}
-          <span className="font-medium text-[#777]">
-            {OLLIN.name}
-          </span>
-        </span>
-      </a>
-    );
-  }
-
+function BuiltByOllin({ className }: { className?: string }) {
   return (
     <a
       href={OLLIN.url}
       target="_blank"
       rel="noopener noreferrer"
-      className={`group inline-flex min-h-[44px] items-center no-underline ${className ?? ""}`}
+      className={`inline-flex min-h-[44px] items-center no-underline transition-opacity hover:opacity-80 ${className ?? ""}`}
     >
-      <span className="text-[11px] text-[#4ECDC4] transition-colors duration-200 group-hover:text-[#F5F0EB]">
-        Built by{" "}
-        <span className="font-medium">
-          {OLLIN.name}
-        </span>
-      </span>
+      Built by {OLLIN.name}
     </a>
   );
 }
@@ -221,7 +198,7 @@ export default function Footer() {
               <span className="mx-1.5">&middot;</span>
               <Link href="/privacy" className="transition-opacity hover:opacity-80">Privacy</Link>
             </p>
-            <BuiltByOllin variant="mobile" className="mt-3" />
+            <BuiltByOllin className="mt-3" />
           </div>
         </div>
       </div>

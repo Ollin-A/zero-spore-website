@@ -7,22 +7,21 @@ import BeforeAfterSlider from "@/components/ui/BeforeAfterSlider";
 import TrustBadge from "@/components/ui/TrustBadge";
 import { BUSINESS } from "@/data/constants";
 
-/* TODO: REPLACE — move to data/constants.ts when real reviews arrive */
-const PLACEHOLDER_REVIEWS = [
+const REVIEWS = [
   {
-    author: "Sarah M.",
+    author: "Anne W.",
     rating: 5,
-    text: "They arrived within an hour of our call. Professional, thorough, and genuinely caring about our home. We couldn't have asked for a better team during such a stressful time.",
+    text: "Rogelio (Roger) is the best mold remediation specialist I could hope for. He is kind, personable, honest, an excellent communicator, generous with his time and information and does a great job. He is less expensive than many of the other mold remediation companies because there is no middle man and because he understands that many people have financial constraints but want to keep themselves and their families healthy. I couldn\u2019t recommend him more highly.",
   },
   {
-    author: "David R.",
+    author: "Dina G.",
     rating: 5,
-    text: "After our basement flooded, Zero Spore handled everything. They explained every step, worked quickly, and left our home better than before. Highly recommend.",
+    text: "Roger provided mold remediation services for me which included building an airtight containment and careful removal of contaminated surfaces. He was extremely responsive, professional and a pleasure to work with. Highly recommended.",
   },
   {
-    author: "Maria L.",
+    author: "CD Olsen.",
     rating: 5,
-    text: "Found mold in our crawlspace and panicked. These folks calmed us down, contained the problem, and remediated it completely. True professionals.",
+    text: "Rogelio Caudillo is professional, thorough, extremely knowledgeable and dependable. At the conclusion of the work he provided me with a comprehensive report including pictures of before, during and after. He was a pleasure to work with and I highly recommend him and Zero Spore!",
   },
 ];
 
@@ -80,24 +79,24 @@ export default function SocialProof() {
       </FadeUp>
 
       {/* Before/After + Reviews — 50/50 */}
-      <div className="mt-12 grid items-start gap-(--grid-gap) lg:grid-cols-2">
-        {/* Before/After Slider */}
-        <FadeUp>
-          <BeforeAfterSlider
-            /* TODO: REPLACE — Unsplash placeholders */
-            beforeSrc="https://images.unsplash.com/photo-1585128903994-9788298932a4?w=800&q=80"
-            afterSrc="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80"
-            beforeAlt="Water damaged living room before restoration"
-            afterAlt="Restored living room after Zero Spore treatment"
-          />
-          <p className="mt-3 text-center text-xs text-muted">
-            Drag to compare &mdash; before &amp; after restoration
-          </p>
-        </FadeUp>
+<div className="mt-12 grid gap-(--grid-gap) lg:grid-cols-2 lg:items-stretch">
+  {/* Before/After Slider */}
+  <FadeUp className="flex flex-col">
+    <BeforeAfterSlider
+      className="min-h-[400px] flex-1"
+      beforeSrc="https://images.unsplash.com/photo-1585128903994-9788298932a4?w=800&q=80"
+      afterSrc="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80"
+      beforeAlt="Water damaged living room before restoration"
+      afterAlt="Restored living room after Zero Spore treatment"
+    />
+    <p className="mt-3 text-center text-xs text-muted">
+      Drag to compare &mdash; before &amp; after restoration
+    </p>
+  </FadeUp>
 
         {/* Review Cards */}
         <div className="flex flex-col gap-4">
-          {PLACEHOLDER_REVIEWS.map((review, i) => (
+          {REVIEWS.map((review, i) => (
             <FadeUp key={review.author} delay={i * 0.1}>
               <div className="rounded-(--radius-card) border border-stone bg-white p-(--card-padding)">
                 <StarRating rating={review.rating} />
@@ -112,8 +111,15 @@ export default function SocialProof() {
           ))}
           <FadeUp delay={0.3}>
             <p className="text-center text-xs text-muted">
-              {/* TODO: REPLACE — link to real Google reviews */}
-              Reviews from Google &middot; See all reviews
+              Reviews from Google &middot;{" "}
+              <a
+                href="https://www.google.com/maps/place/Zero+Spore+Restoration/@45.0960811,-123.4460466,28997m/data=!3m1!1e3!4m8!3m7!1s0xa2b29b894bf4172f:0x826abf49a50a1517!8m2!3d45.096028!4d-123.4047616!9m1!1b1!16s%2Fg%2F11xryqhnwq?entry=ttu&g_ep=EgoyMDI2MDMxNS4wIKXMDSoASAFQAw%3D%3D"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline transition-opacity hover:opacity-70"
+              >
+                See all reviews
+              </a>
             </p>
           </FadeUp>
         </div>

@@ -93,17 +93,17 @@ export default function ContactPage() {
               })}
             </div>
 
-            {/* Google Maps — desktop only */}
-            <div className="mt-8 hidden lg:block">
+            {/* Google Maps */}
+            <div className="mt-8 overflow-hidden rounded-(--radius-card) border border-stone">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d22500!2d-123.3947!3d45.0989!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x54eab9d5e7e8f8e7%3A0x4c0b0b5b0b5b0b5b!2sSheridan%2C%20OR!5e0!3m2!1sen!2sus!4v1700000000000"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d9210!2d-123.4114563!3d45.0959674!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xa2b29b894bf4172f%3A0x826abf49a50a1517!2sZero%20Spore%20Restoration!5e1!3m2!1sen!2sus!4v1"
                 width="100%"
                 height="250"
-                className="rounded-(--radius-card) border border-stone"
+                className="h-[250px] lg:h-[300px]"
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
-                title="Zero Spore Restoration location — Sheridan, Oregon"
-                allowFullScreen={false}
+                title="Zero Spore Restoration location on Google Maps"
+                allowFullScreen
               />
             </div>
           </FadeUp>

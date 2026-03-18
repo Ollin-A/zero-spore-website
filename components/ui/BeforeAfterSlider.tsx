@@ -88,13 +88,12 @@ export default function BeforeAfterSlider({
         if (e.key === "ArrowRight") setPosition((p) => Math.min(100, p + 2));
       }}
     >
-      {/* After (background, full width) */}
-      {/* TODO: REPLACE — Unsplash placeholder */}
+      {/* After (background, fills container) */}
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
         src={afterSrc}
         alt={afterAlt}
-        className="block aspect-4/3 w-full object-cover"
+        className="block h-full w-full object-cover"
         draggable={false}
       />
 
@@ -103,12 +102,11 @@ export default function BeforeAfterSlider({
         className="absolute inset-0 overflow-hidden"
         style={{ clipPath: `inset(0 ${100 - position}% 0 0)` }}
       >
-        {/* TODO: REPLACE — Unsplash placeholder */}
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={beforeSrc}
           alt={beforeAlt}
-          className="block aspect-4/3 w-full object-cover"
+          className="block h-full w-full object-cover"
           draggable={false}
         />
       </div>
