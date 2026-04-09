@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { submitContactForm } from "@/lib/lead-gateway";
 import { PhoneIcon } from "@/components/icons";
 import MoodSection from "@/components/scroll/MoodSection";
 import FadeUp from "@/components/scroll/FadeUp";
@@ -13,32 +14,18 @@ export default function EmergencySection() {
     "idle",
   );
 
-  function handleSubmit(e: React.FormEvent) {
+  async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     if (!form.name.trim() || !form.phone.trim()) return;
 
     setStatus("sending");
-    // Quick callback request — full form is on /contact
-    fetch(
-      `${process.env.NEXT_PUBLIC_LEAD_GATEWAY_URL || "https://api.ollin.agency"}/api/clients/leads`,
-      {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          tenantId: "zero-spore",
-          fullName: form.name,
-          phone: form.phone,
-          isEmergency: true,
-          serviceNeeded: "emergency",
-          company_fax: "", // honeypot
-        }),
-      },
-    )
-      .then((r) => {
-        if (r.ok) setStatus("sent");
-        else setStatus("error");
-      })
-      .catch(() => setStatus("error"));
+    const result = await submitContactForm({
+      fullName: form.name.trim(),
+      phone: form.phone.trim(),
+      isEmergency: true,
+      serviceNeeded: "emergency",
+    });
+    setStatus(result.ok ? "sent" : "error");
   }
 
   return (

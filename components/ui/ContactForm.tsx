@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { submitContactForm } from "@/lib/lead-gateway";
-import { LEAD_GATEWAY, BUSINESS } from "@/data/constants";
+import { BUSINESS } from "@/data/constants";
 import Button from "@/components/ui/Button";
 import { AlertTriangleIcon, FollowUpIcon } from "@/components/icons";
 
@@ -44,7 +44,6 @@ export default function ContactForm() {
     setStatus("submitting");
 
     const result = await submitContactForm({
-      tenantId: LEAD_GATEWAY.tenantId,
       fullName: formData.fullName.trim(),
       phone: formData.phone.trim(),
       email: formData.email.trim() || undefined,

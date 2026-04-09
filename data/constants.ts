@@ -20,12 +20,6 @@ export const BUSINESS = {
   ],
 } as const;
 
-export const LEAD_GATEWAY = {
-  url: process.env.NEXT_PUBLIC_LEAD_GATEWAY_URL || "https://api.ollin.agency",
-  endpoint: "/api/clients/leads",
-  tenantId: "zero-spore",
-} as const;
-
 export const SOCIAL = {
   facebook: "https://www.facebook.com/p/Zero-Spore-Restoration-LLC-61577018135633/",
 } as const;

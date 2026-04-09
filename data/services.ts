@@ -43,6 +43,7 @@ export interface ServiceData {
   whyChooseUs?: {
     intro: string;
     items: WhyChooseUsItem[];
+    trustMarkers?: string[];
     closing?: string;
   };
   closingCta?: string;
@@ -174,17 +175,17 @@ export const SERVICES: Record<string, ServiceData> = {
     accentBg: "bg-sky",
     whyChooseUs: {
       intro:
-        "Homeowners in Oregon choose Zero Spore Restoration LLC because of:",
+        "Homeowners across Oregon choose Zero Spore Restoration for water damage mitigation because of:",
       items: [
         {
           title: "24/7 Emergency Availability",
           description:
-            "Water damage doesn\u2019t follow a schedule. Neither do we. We are ready to respond to your call!",
+            "Water damage doesn\u2019t follow a schedule. Neither do we. Our team is ready to respond to your call any time \u2014 day, night, weekends, and holidays.",
         },
         {
           title: "Certified Experts",
           description:
-            "Our team is trained and equipped to handle water damage emergencies quickly and effectively.",
+            "Our team is trained and equipped to handle water damage emergencies quickly and effectively, with IICRC, AHERA, and RRP certifications.",
         },
         {
           title: "Transparent Pricing",
@@ -201,6 +202,13 @@ export const SERVICES: Record<string, ServiceData> = {
           description:
             "Based in Sheridan and serving the Willamette Valley, Portland Metro area and many communities in between, we understand Oregon\u2019s unique climate challenges.",
         },
+      ],
+      trustMarkers: [
+        "CCB #244908",
+        "IICRC Certified",
+        "AHERA Certified",
+        "Lead-Based Paint/RRP",
+        "Free estimates",
       ],
     },
     closingCta:
@@ -322,33 +330,40 @@ export const SERVICES: Record<string, ServiceData> = {
       "Some severe mold cases require pre and post-remediation testing by an independent Environmental Mold Inspector, who collects samples for lab analysis and develops a protocol with specific remediation recommendations. When remediation is complete, the inspector retests to verify treatment was successful and provide clearance.",
     whyChooseUs: {
       intro:
-        "Homeowners across Oregon trust Zero Spore Restoration for mold remediation because of:",
+        "Choosing the right mold remediation company matters. Our clients trust us because we prioritize safety, thoroughness, and communication:",
       items: [
         {
-          title: "Experienced and Certified Specialists",
+          title: "Certified Mold Remediation Specialists",
           description:
-            "Our team brings years of hands-on experience and holds IICRC, AHERA, and Lead-Based Paint/RRP certifications.",
+            "Our team holds IICRC, AHERA, and Lead-Based Paint/RRP certifications \u2014 trained to handle any level of contamination safely.",
         },
         {
           title: "Rapid Response",
           description:
-            "We respond quickly to prevent further property damage and health risks from mold exposure.",
+            "Mold spreads fast. We respond quickly to contain the problem and prevent further damage to your property.",
         },
         {
-          title: "EPA-Approved Products and Containment",
+          title: "EPA-Approved Methods",
           description:
-            "We use only EPA-approved products and follow strict containment procedures to protect your home during remediation.",
+            "We use EPA-approved products and professional containment procedures to protect your family during the entire remediation process.",
         },
         {
-          title: "Transparent Pricing",
+          title: "Transparent Process",
           description:
-            "Detailed service explanations and clear pricing so you know exactly what to expect before work begins.",
+            "We explain every step before we take it \u2014 detailed service explanations, clear pricing, and no surprises.",
         },
         {
-          title: "Commitment to Residential Properties",
+          title: "Personalized Care",
           description:
-            "We focus on restoring homes and protecting families, treating every property with the care it deserves.",
+            "We treat every customer with compassion, creating a customized remediation plan based on the extent of the damage and your specific situation.",
         },
+      ],
+      trustMarkers: [
+        "CCB #244908",
+        "IICRC Certified",
+        "AHERA Certified",
+        "EPA-approved products",
+        "Independent testing",
       ],
     },
     closingCta:
@@ -496,8 +511,13 @@ export const SERVICES: Record<string, ServiceData> = {
             "We understand how stressful emergencies are. We provide a clear, tailored plan and support you through every step of recovery.",
         },
       ],
-      closing:
-        "For fast, responsive and compassionate emergency care, call 503-302-0557.",
+      trustMarkers: [
+        "CCB #244908",
+        "IICRC Certified",
+        "AHERA Certified",
+        "Lead-Based Paint/RRP",
+        "Free estimates",
+      ],
     },
     closingCta:
       "Call us anytime at 503-302-0557 for fast, professional emergency restoration services. Our certified experts are ready to help you safely and efficiently recover and restore your property.",

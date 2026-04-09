@@ -100,23 +100,26 @@ export default function ServicePageContent({
               {service.whyChooseUs.intro}
             </p>
           </FadeUp>
-          <div className="mt-10 grid gap-(--grid-gap) sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-10 grid gap-8 lg:grid-cols-2 lg:gap-x-16 lg:gap-y-10">
             {service.whyChooseUs.items.map((item, i) => (
-              <FadeUp key={item.title} delay={0.1 + i * 0.05} className="h-full">
-                <div className="flex h-full flex-col rounded-(--radius-card) border border-stone bg-white p-(--card-padding)">
-                  <h3 className="font-medium">{item.title}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-muted">
-                    {item.description}
-                  </p>
-                </div>
+              <FadeUp key={item.title} delay={0.1 + i * 0.05}>
+                <h3 className="font-serif text-lg text-carbon">{item.title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-muted">
+                  {item.description}
+                </p>
               </FadeUp>
             ))}
           </div>
-          {service.whyChooseUs.closing && (
-            <FadeUp delay={0.3}>
-              <p className="mt-8 max-w-(--text-max) leading-relaxed text-muted">
-                {service.whyChooseUs.closing}
-              </p>
+          {service.whyChooseUs.trustMarkers && (
+            <FadeUp delay={0.1 + service.whyChooseUs.items.length * 0.05}>
+              <div className="mt-12 flex flex-wrap gap-x-5 gap-y-2 border-t border-stone pt-6">
+                {service.whyChooseUs.trustMarkers.map((marker) => (
+                  <span key={marker} className="text-xs text-hint">
+                    <span className="mr-1.5 text-forest">✓</span>
+                    {marker}
+                  </span>
+                ))}
+              </div>
             </FadeUp>
           )}
         </MoodSection>
