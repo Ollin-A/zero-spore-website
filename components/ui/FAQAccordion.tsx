@@ -4,6 +4,7 @@ import { useState } from "react";
 import { ChevronDownIcon } from "@/components/icons";
 import { cn } from "@/lib/utils";
 import type { FAQItem } from "@/data/services";
+import { useDict } from "@/lib/use-dict";
 
 interface FAQAccordionProps {
   items: FAQItem[];
@@ -11,6 +12,7 @@ interface FAQAccordionProps {
 }
 
 export default function FAQAccordion({ items, serviceName }: FAQAccordionProps) {
+  const dict = useDict();
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   const toggle = (index: number) => {
@@ -44,10 +46,10 @@ export default function FAQAccordion({ items, serviceName }: FAQAccordionProps) 
           lineHeight: "var(--font-h2-lh)",
         }}
       >
-        Frequently asked questions
+        {dict.faq.heading}
       </h2>
       <p className="mx-auto mt-4 max-w-(--text-max) text-center text-muted">
-        Common questions about our {serviceName.toLowerCase()} services.
+        {dict.faq.subheadingPrefix}{serviceName.toLowerCase()}{dict.faq.subheadingSuffix}
       </p>
 
       <div className="mx-auto mt-12 max-w-(--text-max)">

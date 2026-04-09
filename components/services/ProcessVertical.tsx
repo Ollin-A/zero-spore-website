@@ -1,12 +1,16 @@
+"use client";
+
 import MoodSection from "@/components/scroll/MoodSection";
 import FadeUp from "@/components/scroll/FadeUp";
 import type { ProcessStep } from "@/data/services";
+import { useDict } from "@/lib/use-dict";
 
 interface ProcessVerticalProps {
   steps: ProcessStep[];
 }
 
 export default function ProcessVertical({ steps }: ProcessVerticalProps) {
+  const dict = useDict();
   return (
     <MoodSection mood="about">
       <FadeUp>
@@ -17,7 +21,7 @@ export default function ProcessVertical({ steps }: ProcessVerticalProps) {
             lineHeight: "var(--font-h2-lh)",
           }}
         >
-          Our process
+          {dict.servicePage.ourProcess}
         </h2>
       </FadeUp>
 

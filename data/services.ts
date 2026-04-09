@@ -19,9 +19,9 @@ export interface FAQItem {
   answer: string;
 }
 
-export interface WhyChooseUsItem {
-  title: string;
-  description: string;
+export interface ContrastPoint {
+  them: string;
+  us: string;
 }
 
 export interface ServiceData {
@@ -42,7 +42,7 @@ export interface ServiceData {
   accentBg: string; // Tailwind class for tinted bg, e.g. "bg-sky"
   whyChooseUs?: {
     intro: string;
-    items: WhyChooseUsItem[];
+    points: ContrastPoint[];
     trustMarkers?: string[];
     closing?: string;
   };
@@ -176,31 +176,20 @@ export const SERVICES: Record<string, ServiceData> = {
     whyChooseUs: {
       intro:
         "Homeowners across Oregon choose Zero Spore Restoration for water damage mitigation because of:",
-      items: [
+      points: [
+        { them: "Call centers", us: "Direct line to our family" },
         {
-          title: "24/7 Emergency Availability",
-          description:
-            "Water damage doesn\u2019t follow a schedule. Neither do we. Our team is ready to respond to your call any time \u2014 day, night, weekends, and holidays.",
+          them: "Hidden fees and surprise charges",
+          us: "Transparent estimates, always",
+        },
+        { them: "Cookie-cutter solutions", us: "Plans built for your home" },
+        {
+          them: "Next-day response, maybe",
+          us: "We\u2019re there within the hour",
         },
         {
-          title: "Certified Experts",
-          description:
-            "Our team is trained and equipped to handle water damage emergencies quickly and effectively, with IICRC, AHERA, and RRP certifications.",
-        },
-        {
-          title: "Transparent Pricing",
-          description:
-            "We provide clear, upfront estimates before any work begins. No hidden fees, no surprise charges.",
-        },
-        {
-          title: "Personalized Service",
-          description:
-            "Every home and situation is different. We tailor our approach to your specific needs and keep you informed at every step.",
-        },
-        {
-          title: "Local Knowledge",
-          description:
-            "Based in Sheridan and serving the Willamette Valley, Portland Metro area and many communities in between, we understand Oregon\u2019s unique climate challenges.",
+          them: "Subcontractors you\u2019ve never met",
+          us: "Our certified team, every time",
         },
       ],
       trustMarkers: [
@@ -229,8 +218,7 @@ export const SERVICES: Record<string, ServiceData> = {
     metaTitle: "Mold Remediation Oregon | Zero Spore Restoration",
     metaDescription:
       "Certified mold remediation across the Willamette Valley and Portland Metro area. Inspection, containment, HEPA filtration, and verified removal. Family-owned, CCB #244908.",
-    heroImage:
-      "https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=800&q=80", // TODO: REPLACE — Unsplash placeholder
+    heroImage: "/images/services/mold-remediation-hero.webp",
     features: [
       {
         icon: "MoldTarget",
@@ -330,32 +318,24 @@ export const SERVICES: Record<string, ServiceData> = {
       "Some severe mold cases require pre and post-remediation testing by an independent Environmental Mold Inspector, who collects samples for lab analysis and develops a protocol with specific remediation recommendations. When remediation is complete, the inspector retests to verify treatment was successful and provide clearance.",
     whyChooseUs: {
       intro:
-        "Choosing the right mold remediation company matters. Our clients trust us because we prioritize safety, thoroughness, and communication:",
-      items: [
+        "Choosing the right mold remediation company matters. Our clients trust us because:",
+      points: [
+        { them: "Generic cleaning crews", us: "Certified mold specialists" },
         {
-          title: "Certified Mold Remediation Specialists",
-          description:
-            "Our team holds IICRC, AHERA, and Lead-Based Paint/RRP certifications \u2014 trained to handle any level of contamination safely.",
+          them: "Guesswork and shortcuts",
+          us: "EPA-approved containment protocols",
         },
         {
-          title: "Rapid Response",
-          description:
-            "Mold spreads fast. We respond quickly to contain the problem and prevent further damage to your property.",
+          them: "Vague timelines and surprises",
+          us: "Clear plan before we start",
         },
         {
-          title: "EPA-Approved Methods",
-          description:
-            "We use EPA-approved products and professional containment procedures to protect your family during the entire remediation process.",
+          them: "Hidden costs after the fact",
+          us: "Transparent pricing upfront",
         },
         {
-          title: "Transparent Process",
-          description:
-            "We explain every step before we take it \u2014 detailed service explanations, clear pricing, and no surprises.",
-        },
-        {
-          title: "Personalized Care",
-          description:
-            "We treat every customer with compassion, creating a customized remediation plan based on the extent of the damage and your specific situation.",
+          them: "One-size-fits-all approach",
+          us: "Custom remediation for your home",
         },
       ],
       trustMarkers: [
@@ -385,8 +365,7 @@ export const SERVICES: Record<string, ServiceData> = {
       "24/7 Emergency Restoration Oregon | Zero Spore Restoration",
     metaDescription:
       "24/7 emergency restoration services across Oregon. Immediate response for water damage, flooding, and storm damage. Family-owned, CCB #244908.",
-    heroImage:
-      "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&q=80", // TODO: REPLACE — Unsplash placeholder
+    heroImage: "/images/services/emergency-response-hero.webp",
     features: [
       {
         icon: "Extractor",
@@ -483,32 +462,24 @@ export const SERVICES: Record<string, ServiceData> = {
     accentBg: "bg-alert-bg",
     whyChooseUs: {
       intro:
-        "When disaster strikes, you need a team you can count on. Homeowners across Oregon choose Zero Spore Restoration for emergency services because of:",
-      items: [
+        "When disaster strikes, you need a team you can count on. Oregon homeowners choose us because:",
+      points: [
         {
-          title: "24/7 Availability",
-          description:
-            "Emergencies don\u2019t follow a schedule. Our team is ready to respond any time \u2014 day, night, weekends, and holidays.",
+          them: "Call centers and hold music",
+          us: "Direct line to our family",
+        },
+        { them: "Next-day scheduling", us: "We dispatch within minutes" },
+        {
+          them: "Unqualified temp workers",
+          us: "IICRC, AHERA, and RRP certified",
         },
         {
-          title: "Rapid Response Time",
-          description:
-            "We dispatch within minutes from Sheridan and arrive prepared with commercial-grade equipment to start work immediately.",
+          them: "You figure out the paperwork",
+          us: "We guide you through insurance",
         },
         {
-          title: "Certified and Trained Experts",
-          description:
-            "Our team holds IICRC, AHERA, and RRP certifications and is equipped to handle any water, mold, or storm emergency.",
-        },
-        {
-          title: "Direct Communication",
-          description:
-            "No call centers. When you call, you reach our family directly. We guide you through immediate steps while on the way.",
-        },
-        {
-          title: "Compassionate, Personal Service",
-          description:
-            "We understand how stressful emergencies are. We provide a clear, tailored plan and support you through every step of recovery.",
+          them: "Just another job ticket",
+          us: "Your emergency is personal to us",
         },
       ],
       trustMarkers: [
@@ -525,11 +496,470 @@ export const SERVICES: Record<string, ServiceData> = {
 };
 
 // ---------------------------------------------------------------------------
-// Helper
+// Spanish service content
+// ---------------------------------------------------------------------------
+
+export const SERVICES_ES: Record<string, ServiceData> = {
+  "danos-por-agua": {
+    slug: "danos-por-agua",
+    title: "Daños por Agua",
+    headline: "Mitigación profesional de daños por agua",
+    subline: "Extracción rápida. Secado completo. Prevención a largo plazo.",
+    body: "Cuando el agua invade tu hogar, el riesgo de daño estructural y crecimiento de moho es inmediato. Zero Spore Restoration es tu fuente confiable para mitigación rápida y profesional — 24/7.",
+    bodyParagraphs: [
+      "Cuando el agua invade tu hogar, el riesgo de daño estructural y crecimiento de moho es inmediato. Zero Spore Restoration es tu fuente confiable para mitigación rápida y profesional — 24/7.",
+      "Desde fugas menores hasta inundaciones mayores, combinamos servicio experto con equipo especializado para evaluar, contener y mitigar daños por agua de cualquier escala. Llama al (503) 302-0557.",
+    ],
+    metaTitle:
+      "Mitigación de Daños por Agua | Oregon | Zero Spore Restoration",
+    metaDescription:
+      "Servicio profesional de mitigación de daños por agua en Oregon. Extracción, secado estructural y respuesta 24/7. Empresa familiar. Hablamos español. CCB #244908.",
+    heroImage:
+      "https://images.unsplash.com/photo-1585128792020-803d29415281?w=800&q=80",
+    features: [
+      {
+        icon: "Extractor",
+        title: "Extracción residencial de agua",
+        description:
+          "Remoción rápida de agua estancada por fugas, inundaciones y fallas de plomería.",
+      },
+      {
+        icon: "Flood",
+        title: "Limpieza por inundación",
+        description:
+          "Respuesta inmediata a eventos de tormenta o inundación repentina.",
+      },
+      {
+        icon: "Drying",
+        title: "Secado de techos, paredes y pisos",
+        description:
+          "Prevención de deformaciones, hinchazón y daño secundario con deshumidificadores industriales.",
+      },
+      {
+        icon: "MoldPrevent",
+        title: "Prevención de moho",
+        description:
+          "Minimizar el riesgo de crecimiento de moho después de intrusión de agua con tratamiento antimicrobiano.",
+      },
+      {
+        icon: "Sewage",
+        title: "Mitigación de aguas residuales",
+        description:
+          "Limpieza y desinfección segura para eventos de agua contaminada con soluciones aprobadas por la EPA.",
+      },
+      {
+        icon: "InsuranceDoc",
+        title: "Documentación para seguros",
+        description:
+          "Reportes detallados para facilitar tu proceso de reclamación, incluyendo lecturas de humedad y evidencia fotográfica.",
+      },
+    ],
+    process: [
+      {
+        number: 1,
+        title: "Evaluación de emergencia",
+        description:
+          "Realizamos una evaluación visual completa para identificar la fuente del agua y mapear la extensión del daño con herramientas avanzadas.",
+      },
+      {
+        number: 2,
+        title: "Extracción y secado",
+        description:
+          "Usamos extractores comerciales para remover el agua y acelerar el secado, previniendo daño secundario en materiales porosos.",
+      },
+      {
+        number: 3,
+        title: "Limpieza y desinfección",
+        description:
+          "Limpiamos y desinfectamos áreas afectadas con soluciones hospitalarias aprobadas por la EPA para eliminar contaminantes.",
+      },
+      {
+        number: 4,
+        title: "Contención de daños",
+        description:
+          "Estabilizamos estructuras y removemos materiales comprometidos, preparando tu hogar para la restauración completa.",
+      },
+      {
+        number: 5,
+        title: "Inspección final",
+        description:
+          "Verificamos que tu hogar esté seco, seguro y listo para restauración. Ofrecemos asesoría para prevención futura.",
+      },
+    ],
+    faqs: [
+      {
+        question: "¿Qué tan rápido pueden responder?",
+        answer:
+          "Generalmente 1-2 horas en el área de Sheridan, el mismo día para áreas más lejanas.",
+      },
+      {
+        question: "¿Los daños por agua siempre causan moho?",
+        answer:
+          "El moho puede comenzar a crecer en 24-48 horas. La mitigación rápida es crítica para prevenirlo.",
+      },
+      {
+        question: "¿Trabajan con seguros?",
+        answer:
+          "Proporcionamos documentación completa y apoyo para tu proceso de reclamación.",
+      },
+      {
+        question: "¿Qué equipo utilizan?",
+        answer:
+          "Extractores comerciales, deshumidificadores industriales, ventiladores de aire y cámaras infrarrojas.",
+      },
+      {
+        question: "¿Cuánto tarda el secado?",
+        answer:
+          "Típicamente 3-5 días, con monitoreo diario de niveles de humedad.",
+      },
+    ],
+    relatedSlugs: ["remediacion-de-moho", "emergencias"],
+    accentColor: "text-ocean",
+    accentBg: "bg-sky",
+    whyChooseUs: {
+      intro:
+        "Los propietarios en Oregon eligen Zero Spore Restoration para mitigación de daños por agua porque ofrecemos:",
+      points: [
+        {
+          them: "Centros de llamadas",
+          us: "Línea directa con nuestra familia",
+        },
+        {
+          them: "Cargos ocultos y sorpresas",
+          us: "Presupuestos transparentes, siempre",
+        },
+        {
+          them: "Soluciones genéricas",
+          us: "Planes hechos para su hogar",
+        },
+        {
+          them: "Respuesta al día siguiente, tal vez",
+          us: "Llegamos en menos de una hora",
+        },
+        {
+          them: "Subcontratistas que nunca conoció",
+          us: "Nuestro equipo certificado, cada vez",
+        },
+      ],
+      trustMarkers: [
+        "CCB #244908",
+        "Certificación IICRC",
+        "Certificación AHERA",
+        "Lead-Based Paint/RRP",
+        "Presupuestos gratuitos",
+      ],
+    },
+    closingCta:
+      "No esperes a que los daños por agua escalen. Llama al (503) 302-0557 para restauración rápida y profesional.",
+  },
+
+  "remediacion-de-moho": {
+    slug: "remediacion-de-moho",
+    title: "Remediación de Moho",
+    headline: "Remediación de moho en la que puedes confiar",
+    subline: "Identificar. Contener. Eliminar. Verificar.",
+    body: "En Zero Spore Restoration nos especializamos en el tratamiento y eliminación segura del moho. Entendemos que el moho puede desarrollarse silenciosamente, representando riesgos estructurales y de salud antes de que aparezcan señales visibles.",
+    bodyParagraphs: [
+      "En Zero Spore Restoration nos especializamos en el tratamiento y eliminación segura del moho. Entendemos que el moho puede desarrollarse silenciosamente, representando riesgos estructurales y de salud antes de que aparezcan señales visibles.",
+      "Cada situación de moho presenta un desafío único. Nuestro proceso combina inspección detallada, tecnología avanzada y un plan de remediación personalizado para tu hogar.",
+    ],
+    metaTitle:
+      "Remediación de Moho Profesional | Oregon | Zero Spore Restoration",
+    metaDescription:
+      "Servicio experto de remediación de moho en Oregon. Contención, tratamiento y eliminación segura. Respuesta rápida. Hablamos español. CCB #244908.",
+    heroImage: "/images/services/mold-remediation-hero.webp",
+    features: [
+      {
+        icon: "ShieldCheck",
+        title: "Inspección y evaluación",
+        description:
+          "Evaluación detallada con medidores de humedad y cámaras infrarrojas para localizar áreas afectadas.",
+      },
+      {
+        icon: "MoldTarget",
+        title: "Contención profesional",
+        description:
+          "Barreras de presión negativa y filtración HEPA para evitar propagación de esporas.",
+      },
+      {
+        icon: "Extractor",
+        title: "Remoción segura de moho",
+        description:
+          "Remoción cuidadosa de materiales afectados con soluciones aprobadas por la EPA.",
+      },
+      {
+        icon: "MoldPrevent",
+        title: "Tratamiento y desinfección",
+        description:
+          "Limpieza de superficies con antimicrobianos profesionales para reducir esporas a niveles seguros.",
+      },
+      {
+        icon: "Drying",
+        title: "Restauración del aire",
+        description:
+          "Filtración HEPA y depuración del aire para restaurar la calidad del ambiente interior.",
+      },
+      {
+        icon: "InsuranceDoc",
+        title: "Inspección post-remediación",
+        description:
+          "Verificación final para confirmar que el moho se redujo a niveles seguros.",
+      },
+    ],
+    process: [
+      {
+        number: 1,
+        title: "Inspección y evaluación",
+        description:
+          "Comenzamos con una inspección detallada usando medidores de humedad y cámaras infrarrojas para localizar áreas afectadas que pueden no ser visibles.",
+      },
+      {
+        number: 2,
+        title: "Contención",
+        description:
+          "Establecemos zonas de contención con presión negativa y filtración HEPA para evitar la propagación de esporas a otras áreas.",
+      },
+      {
+        number: 3,
+        title: "Remoción y limpieza",
+        description:
+          "Removemos materiales afectados y desinfectamos todas las superficies con soluciones profesionales aprobadas por la EPA.",
+      },
+      {
+        number: 4,
+        title: "Secado y deshumidificación",
+        description:
+          "Usamos equipo industrial de secado para reducir los niveles de humedad, crucial para prevenir la reaparición del moho.",
+      },
+      {
+        number: 5,
+        title: "Inspección final",
+        description:
+          "Realizamos una inspección final para confirmar que el moho se ha reducido a niveles seguros.",
+      },
+    ],
+    faqs: [
+      {
+        question: "¿Cómo sé si tengo moho?",
+        answer:
+          "Olor a humedad, manchas oscuras en paredes, síntomas de alergia o daños recientes por agua son señales comunes.",
+      },
+      {
+        question: "¿El moho es peligroso?",
+        answer:
+          "Ciertos tipos pueden causar problemas respiratorios e irritaciones. La remediación profesional protege tu salud.",
+      },
+      {
+        question: "¿Puedo remover el moho yo mismo?",
+        answer:
+          "Áreas pequeñas (menos de 1 metro cuadrado) pueden ser limpiadas. Áreas más grandes requieren contención profesional.",
+      },
+      {
+        question: "¿Cuánto tarda la remediación?",
+        answer:
+          "Típicamente de 1 a 5 días, dependiendo de la extensión del daño.",
+      },
+      {
+        question: "¿El moho regresa?",
+        answer: "No si la fuente de humedad se elimina correctamente.",
+      },
+    ],
+    relatedSlugs: ["danos-por-agua", "emergencias"],
+    accentColor: "text-forest",
+    accentBg: "bg-moss",
+    disclaimer:
+      "Algunos casos severos de moho requieren pruebas pre y post-remediación, las cuales deben ser realizadas por un Inspector Ambiental de Moho independiente con licencia. El inspector recolecta muestras para análisis de laboratorio y crea un informe completo con recomendaciones específicas. En Zero Spore Restoration cumplimos con todos los requisitos de seguridad del estado de Oregon.",
+    whyChooseUs: {
+      intro:
+        "Elegir la empresa correcta para remediación de moho importa. Nuestros clientes confían en nosotros porque ofrecemos:",
+      points: [
+        {
+          them: "Equipos de limpieza genéricos",
+          us: "Especialistas certificados en moho",
+        },
+        {
+          them: "Suposiciones y atajos",
+          us: "Protocolos de contención aprobados por la EPA",
+        },
+        {
+          them: "Tiempos vagos y sorpresas",
+          us: "Plan claro antes de comenzar",
+        },
+        {
+          them: "Costos ocultos al final",
+          us: "Precios transparentes desde el inicio",
+        },
+        {
+          them: "Enfoque genérico",
+          us: "Remediación personalizada para su hogar",
+        },
+      ],
+      trustMarkers: [
+        "CCB #244908",
+        "Certificación IICRC",
+        "Certificación AHERA",
+        "Productos aprobados por la EPA",
+        "Pruebas independientes",
+      ],
+    },
+  },
+
+  emergencias: {
+    slug: "emergencias",
+    title: "Servicios de Emergencia",
+    headline: "Respuesta de emergencia cuando cada minuto cuenta",
+    subline: "Disponibilidad 24/7. Despacho rápido. Protección inmediata.",
+    body: "Cuando un desastre trae daños inesperados por agua, moho o tormenta, la acción inmediata es esencial. Zero Spore Restoration ofrece servicios rápidos y confiables de restauración de emergencia — disponibles 24/7.",
+    bodyParagraphs: [
+      "Cuando un desastre trae daños inesperados por agua, moho o tormenta, la acción inmediata es esencial. Zero Spore Restoration ofrece servicios rápidos y confiables de restauración de emergencia — disponibles 24/7.",
+      "¿Tubería rota, sótano inundado o daño por tormenta? Nuestros expertos manejan cada emergencia con precisión, equipo avanzado y un trato personal y compasivo.",
+    ],
+    metaTitle:
+      "Servicios de Restauración de Emergencia 24/7 | Oregon | Zero Spore Restoration",
+    metaDescription:
+      "Restauración de emergencia 24/7 en Oregon. Daños por agua, inundaciones y tormentas. Respuesta rápida. Hablamos español. CCB #244908.",
+    heroImage: "/images/services/emergency-response-hero.webp",
+    features: [
+      {
+        icon: "Extractor",
+        title: "Extracción de agua y mitigación",
+        description:
+          "Remoción rápida de agua estancada y secado completo para prevenir daño estructural y crecimiento de moho.",
+      },
+      {
+        icon: "Storm",
+        title: "Reparación por tormenta e inundación",
+        description:
+          "Respuesta inmediata a eventos de tormenta o inundación, incluyendo remoción de agua y evaluación de daños.",
+      },
+      {
+        icon: "MoldTarget",
+        title: "Remediación de moho post-agua",
+        description:
+          "Contención y remoción profesional de moho después de exposición al agua para proteger la salud de tu familia.",
+      },
+      {
+        icon: "Drying",
+        title: "Secado estructural y deshumidificación",
+        description:
+          "Equipo industrial de secado para eliminar humedad de paredes, pisos y elementos estructurales.",
+      },
+      {
+        icon: "Debris",
+        title: "Remoción de escombros y limpieza",
+        description:
+          "Remoción segura de materiales dañados y limpieza completa para preparar tu propiedad para restauración.",
+      },
+      {
+        icon: "BoardUp",
+        title: "Servicios de protección y aseguramiento",
+        description:
+          "Protección de emergencia con lonas y tablas para asegurar tu propiedad contra mayor exposición y daño.",
+      },
+    ],
+    process: [
+      {
+        number: 1,
+        title: "Respuesta inmediata",
+        description:
+          "Nuestro equipo responde inmediatamente para evaluar el daño, inspeccionar áreas afectadas y desarrollar un plan de acción integral.",
+      },
+      {
+        number: 2,
+        title: "Contención de daños",
+        description:
+          "Extraemos agua, secamos estructuras y prevenimos crecimiento de moho para limitar el daño a tu propiedad.",
+      },
+      {
+        number: 3,
+        title: "Restauración y limpieza",
+        description:
+          "Nuestros servicios incluyen extracción de agua, secado estructural, remediación de moho, restauración por tormenta y limpieza post-emergencia.",
+      },
+      {
+        number: 4,
+        title: "Inspección final",
+        description:
+          "Realizamos una inspección profesional detallada incluyendo verificación de humedad y calidad del aire para confirmar que el trabajo está completo.",
+      },
+    ],
+    faqs: [
+      {
+        question: "¿Qué califica como emergencia?",
+        answer:
+          "Tuberías rotas, inundaciones, tormentas, fugas activas, o cualquier situación que requiera acción inmediata para proteger tu propiedad.",
+      },
+      {
+        question: "¿Qué tan rápido pueden llegar?",
+        answer: "Típicamente 1-2 horas en el área de Sheridan.",
+      },
+      {
+        question: "¿Qué debo hacer antes de que lleguen?",
+        answer:
+          "Si es seguro, cierra la válvula de agua, no entres a áreas inundadas y documenta con fotos.",
+      },
+      {
+        question: "¿Manejan reclamaciones de seguro?",
+        answer:
+          "Proporcionamos documentación completa y apoyo para facilitar tu reclamación.",
+      },
+      {
+        question: "¿En qué áreas dan servicio?",
+        answer:
+          "Sheridan, Portland, Salem, Lincoln City, todo el condado de Yamhill y muchas comunidades más en Oregon.",
+      },
+    ],
+    relatedSlugs: ["danos-por-agua", "remediacion-de-moho"],
+    accentColor: "text-alert",
+    accentBg: "bg-alert-bg",
+    whyChooseUs: {
+      intro:
+        "Cuando ocurre un desastre, necesita un equipo en el que pueda confiar. Los propietarios en Oregon nos eligen porque ofrecemos:",
+      points: [
+        {
+          them: "Centros de llamadas y música de espera",
+          us: "Línea directa con nuestra familia",
+        },
+        {
+          them: "Citas para el día siguiente",
+          us: "Despachamos en minutos",
+        },
+        {
+          them: "Trabajadores temporales sin certificación",
+          us: "Certificados IICRC, AHERA y RRP",
+        },
+        {
+          them: "Usted resuelve el papeleo solo",
+          us: "Le guiamos con su seguro",
+        },
+        {
+          them: "Solo un ticket más",
+          us: "Su emergencia es personal para nosotros",
+        },
+      ],
+      trustMarkers: [
+        "CCB #244908",
+        "Certificación IICRC",
+        "Certificación AHERA",
+        "Lead-Based Paint/RRP",
+        "Presupuestos gratuitos",
+      ],
+    },
+  },
+};
+
+// ---------------------------------------------------------------------------
+// Helpers
 // ---------------------------------------------------------------------------
 
 export function getService(slug: string): ServiceData {
   const service = SERVICES[slug];
   if (!service) throw new Error(`Service not found: ${slug}`);
+  return service;
+}
+
+export function getServiceES(slug: string): ServiceData {
+  const service = SERVICES_ES[slug];
+  if (!service) throw new Error(`Spanish service not found: ${slug}`);
   return service;
 }

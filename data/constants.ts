@@ -30,5 +30,4 @@ export const OLLIN = {
 } as const;
 
 export const HERO_VIDEO_SRC = ""; // TODO: replace with actual video URL
-export const HERO_POSTER_SRC =
-  "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1920&q=80"; // TODO: REPLACE — Unsplash placeholder
+export const HERO_POSTER_SRC = "/images/services/emergency-response-hero.webp";

@@ -5,7 +5,7 @@ import MoodSection from "@/components/scroll/MoodSection";
 import FadeUp from "@/components/scroll/FadeUp";
 import BeforeAfterSlider from "@/components/ui/BeforeAfterSlider";
 import TrustBadge from "@/components/ui/TrustBadge";
-import { BUSINESS } from "@/data/constants";
+import { useDict } from "@/lib/use-dict";
 
 const REVIEWS = [
   {
@@ -25,27 +25,11 @@ const REVIEWS = [
   },
 ];
 
-const TRUST_BADGES = [
-  {
-    icon: CCBLicenseIcon,
-    label: `CCB #${BUSINESS.ccb}`,
-    sublabel: "Licensed Contractor",
-  },
-  {
-    icon: IICRCCertifiedIcon,
-    label: "IICRC, AHERA, RRP",
-    sublabel: "Certified Team",
-  },
-  {
-    icon: ExperienceIcon,
-    label: "10+ Years",
-    sublabel: "Experience",
-  },
-  {
-    icon: FamilyOwnedIcon,
-    label: "Family Owned",
-    sublabel: "Sheridan, Oregon",
-  },
+const TRUST_ICONS = [
+  CCBLicenseIcon,
+  IICRCCertifiedIcon,
+  ExperienceIcon,
+  FamilyOwnedIcon,
 ];
 
 function StarRating({ rating }: { rating: number }) {
@@ -64,6 +48,7 @@ function StarRating({ rating }: { rating: number }) {
 }
 
 export default function SocialProof() {
+  const dict = useDict();
   return (
     <MoodSection mood="social">
       <FadeUp>
@@ -74,7 +59,7 @@ export default function SocialProof() {
             lineHeight: "var(--font-h2-lh)",
           }}
         >
-          Trusted by Oregon homeowners
+          {dict.social.heading}
         </h2>
       </FadeUp>
 
@@ -84,13 +69,13 @@ export default function SocialProof() {
   <FadeUp className="flex flex-col">
     <BeforeAfterSlider
       className="min-h-[400px] flex-1"
-      beforeSrc="https://images.unsplash.com/photo-1585128903994-9788298932a4?w=800&q=80"
-      afterSrc="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80"
-      beforeAlt="Water damaged living room before restoration"
-      afterAlt="Restored living room after Zero Spore treatment"
+      beforeSrc="/images/portfolio/before-mold-room.webp"
+      afterSrc="/images/portfolio/after-mold-room.webp"
+      beforeAlt="Mold-covered room before Zero Spore remediation"
+      afterAlt="Clean room after Zero Spore mold remediation"
     />
     <p className="mt-3 text-center text-xs text-muted">
-      Drag to compare &mdash; before &amp; after restoration
+      {dict.social.beforeAfterCaption}
     </p>
   </FadeUp>
 
@@ -111,14 +96,14 @@ export default function SocialProof() {
           ))}
           <FadeUp delay={0.3}>
             <p className="text-center text-xs text-muted">
-              Reviews from Google &middot;{" "}
+              {dict.social.reviewsLine} &middot;{" "}
               <a
                 href="https://www.google.com/maps/place/Zero+Spore+Restoration/@45.0960811,-123.4460466,28997m/data=!3m1!1e3!4m8!3m7!1s0xa2b29b894bf4172f:0x826abf49a50a1517!8m2!3d45.096028!4d-123.4047616!9m1!1b1!16s%2Fg%2F11xryqhnwq?entry=ttu&g_ep=EgoyMDI2MDMxNS4wIKXMDSoASAFQAw%3D%3D"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="underline transition-opacity hover:opacity-70"
               >
-                See all reviews
+                {dict.social.reviewsLink}
               </a>
             </p>
           </FadeUp>
@@ -128,10 +113,10 @@ export default function SocialProof() {
       {/* Trust Badges */}
       <FadeUp delay={0.2}>
         <div className="mt-16 grid grid-cols-2 gap-4 lg:grid-cols-4">
-          {TRUST_BADGES.map((badge) => (
+          {dict.social.badges.map((badge, i) => (
             <TrustBadge
               key={badge.label}
-              icon={badge.icon}
+              icon={TRUST_ICONS[i]}
               label={badge.label}
               sublabel={badge.sublabel}
             />

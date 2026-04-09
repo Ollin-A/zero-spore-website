@@ -5,6 +5,7 @@ import { gsap, useGSAP } from "@/lib/gsap";
 import { AssessmentIcon, MitigationIcon, RestorationIcon, FollowUpIcon, type IconComponent } from "@/components/icons";
 import MoodSection from "@/components/scroll/MoodSection";
 import FadeUp from "@/components/scroll/FadeUp";
+import { useDict } from "@/lib/use-dict";
 
 interface Step {
   number: string;
@@ -14,50 +15,29 @@ interface Step {
   image: string;
 }
 
-const STEPS: Step[] = [
-  {
-    number: "01",
-    title: "Assessment",
-    description:
-      "We inspect every affected area, document the damage, and provide a detailed estimate \u2014 so you know exactly what to expect.",
-    icon: AssessmentIcon,
-    /* TODO: REPLACE — Unsplash placeholder */
-    image:
-      "https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=600&q=80",
-  },
-  {
-    number: "02",
-    title: "Mitigation",
-    description:
-      "Extract standing water, stabilize the structure, and set up industrial drying equipment to prevent further damage.",
-    icon: MitigationIcon,
-    /* TODO: REPLACE — Unsplash placeholder */
-    image:
-      "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=600&q=80",
-  },
-  {
-    number: "03",
-    title: "Restoration",
-    description:
-      "Remove damaged materials, clean and sanitize every surface, and restore your home to pre-damage condition.",
-    icon: RestorationIcon,
-    /* TODO: REPLACE — Unsplash placeholder */
-    image:
-      "https://images.unsplash.com/photo-1593642632559-0c6d3fc62b89?w=600&q=80",
-  },
-  {
-    number: "04",
-    title: "Follow-up",
-    description:
-      "Final moisture testing, quality verification, and follow-up support \u2014 because the job isn\u2019t done until you\u2019re confident.",
-    icon: FollowUpIcon,
-    /* TODO: REPLACE — Unsplash placeholder */
-    image:
-      "https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=600&q=80",
-  },
+const STEP_ICONS: IconComponent[] = [
+  AssessmentIcon,
+  MitigationIcon,
+  RestorationIcon,
+  FollowUpIcon,
+];
+
+const STEP_IMAGES: string[] = [
+  "/images/services/mold-inspection.webp",
+  "/images/services/mold-remediation-hero.webp",
+  "/images/portfolio/after-mold-room.webp",
+  "/images/services/emergency-response-hero.webp",
 ];
 
 export default function ProcessTimeline() {
+  const dict = useDict();
+  const STEPS: Step[] = dict.process.steps.map((s, i) => ({
+    number: s.number,
+    title: s.title,
+    description: s.description,
+    icon: STEP_ICONS[i],
+    image: STEP_IMAGES[i],
+  }));
   const sectionRef = useRef<HTMLDivElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
   const progressRef = useRef<HTMLDivElement>(null);
@@ -135,7 +115,7 @@ export default function ProcessTimeline() {
   );
 
   return (
-    <MoodSection mood="process" id="process" noPadding className="scroll-mt-20">
+    <MoodSection mood="process" id={dict.locale === "es" ? "proceso" : "process"} noPadding className="scroll-mt-20">
       {/* Desktop: horizontal pin scroll */}
       <div ref={sectionRef} className="hidden md:block">
         {/* Progress bar */}
@@ -149,7 +129,7 @@ export default function ProcessTimeline() {
                   lineHeight: "var(--font-h2-lh)",
                 }}
               >
-                How we restore your home
+                {dict.process.heading}
               </h2>
             </FadeUp>
             {/* Progress indicator */}

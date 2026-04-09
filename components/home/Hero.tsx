@@ -8,8 +8,10 @@ import FadeUp from "@/components/scroll/FadeUp";
 import Button from "@/components/ui/Button";
 import StatCounter from "@/components/ui/StatCounter";
 import { BUSINESS, HERO_VIDEO_SRC, HERO_POSTER_SRC } from "@/data/constants";
+import { useDict } from "@/lib/use-dict";
 
 export default function Hero() {
+  const dict = useDict();
   const indicatorRef = useRef<HTMLDivElement>(null);
 
   useGSAP(
@@ -72,38 +74,44 @@ export default function Hero() {
               letterSpacing: "var(--font-display-ls)",
             }}
           >
-            Water or mold damage?
+            {dict.hero.headlineLine1}
             <br />
-            Call us 24/7 for fast restoration
+            {dict.hero.headlineLine2}
           </h1>
         </FadeUp>
 
         <FadeUp delay={0.2}>
           <p className="mx-auto mt-6 max-w-(--text-max) text-ivory-dim text-(length:--font-body-size)">
-            Emergency restoration services. Family-owned. Sheridan, Oregon. 24/7.
+            {dict.hero.subline}
           </p>
         </FadeUp>
 
         <FadeUp delay={0.4}>
           <div className="mt-10 flex flex-col items-center gap-4 sm:flex-row">
             <Button dark href={BUSINESS.phoneTel}>
-              Call 24/7 &mdash; {BUSINESS.phone}
+              {dict.hero.cta1} &mdash; {BUSINESS.phone}
             </Button>
             <Button
               variant="secondary"
               dark
-              href="/contact"
+              href={dict.nav.contact.href}
             >
-              Schedule inspection
+              {dict.hero.cta2}
             </Button>
           </div>
         </FadeUp>
 
         <FadeUp delay={0.6}>
           <div className="mt-12 flex gap-8 md:gap-16">
-            <StatCounter value={10} suffix="+" label="Years Experience" />
-            <StatCounter value="24/7" label="Response" />
-            <StatCounter value="244908" prefix="#" label="CCB Licensed" />
+            {dict.hero.badges.map((badge) => (
+              <StatCounter
+                key={badge.label}
+                value={badge.value}
+                prefix={badge.prefix}
+                suffix={badge.suffix}
+                label={badge.label}
+              />
+            ))}
           </div>
         </FadeUp>
 

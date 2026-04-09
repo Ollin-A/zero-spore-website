@@ -1,16 +1,20 @@
+"use client";
+
 import Image from "next/image";
 import MoodSection from "@/components/scroll/MoodSection";
 import FadeUp from "@/components/scroll/FadeUp";
 import Button from "@/components/ui/Button";
 import { BUSINESS } from "@/data/constants";
 import type { ServiceData } from "@/data/services";
+import { useDict } from "@/lib/use-dict";
 
 interface ServiceHeroProps {
   service: ServiceData;
 }
 
 export default function ServiceHero({ service }: ServiceHeroProps) {
-  const isEmergency = service.slug === "emergency";
+  const dict = useDict();
+  const isEmergency = service.slug === "emergency" || service.slug === "emergencias";
 
   return (
     <MoodSection mood="about" id={`${service.slug}-hero`}>
@@ -53,12 +57,12 @@ export default function ServiceHero({ service }: ServiceHeroProps) {
             <div className="mt-8 flex flex-col gap-4 sm:flex-row">
               <Button
                 variant={isEmergency ? "emergency" : "primary"}
-                href="/contact"
+                href={dict.nav.contact.href}
               >
-                Schedule your free inspection
+                {dict.servicePage.ctaPrimary}
               </Button>
               <Button variant="secondary" href={BUSINESS.phoneTel}>
-                Emergency? Call now
+                {dict.servicePage.ctaEmergency}
               </Button>
             </div>
           </FadeUp>
@@ -67,7 +71,6 @@ export default function ServiceHero({ service }: ServiceHeroProps) {
         {/* Image column */}
         <FadeUp delay={0.2}>
           <div className="relative aspect-4/3 overflow-hidden rounded-(--radius-image)">
-            {/* TODO: REPLACE — Unsplash placeholder */}
             <Image
               src={service.heroImage}
               alt={service.title}

@@ -4,8 +4,16 @@ import { useState, useEffect } from "react";
 import { PhoneIcon } from "@/components/icons";
 import { BUSINESS } from "@/data/constants";
 import { cn } from "@/lib/utils";
+import { en } from "@/data/i18n/en";
+import { es } from "@/data/i18n/es";
+import type { Locale } from "@/data/i18n/routes";
 
-export default function MobileCTABar() {
+interface MobileCTABarProps {
+  locale?: Locale;
+}
+
+export default function MobileCTABar({ locale = "en" }: MobileCTABarProps) {
+  const dict = locale === "es" ? es : en;
   const [visible, setVisible] = useState(true);
   const [inEmergency, setInEmergency] = useState(false);
 
@@ -47,7 +55,7 @@ export default function MobileCTABar() {
       style={{ paddingBottom: "env(safe-area-inset-bottom, 8px)" }}
     >
       <PhoneIcon size={18} />
-      Call Now &mdash; {BUSINESS.phone}
+      {dict.mobileCTA} &mdash; {BUSINESS.phone}
     </a>
   );
 }

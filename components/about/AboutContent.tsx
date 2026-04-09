@@ -1,73 +1,44 @@
-import type { Metadata } from "next";
+"use client";
+
 import Image from "next/image";
 import MoodSection from "@/components/scroll/MoodSection";
 import FadeUp from "@/components/scroll/FadeUp";
 import ParallaxImage from "@/components/scroll/ParallaxImage";
 import Button from "@/components/ui/Button";
 import { BUSINESS } from "@/data/constants";
-import { PAGE_SEO } from "@/data/seo";
 import { HonestyIcon, SpeedIcon, CareIcon } from "@/components/icons";
+import { useDict } from "@/lib/use-dict";
 
-export const metadata: Metadata = {
-  title: PAGE_SEO.about.title,
-  description: PAGE_SEO.about.description,
-  alternates: { canonical: PAGE_SEO.about.canonical },
-  openGraph: {
-    title: PAGE_SEO.about.title,
-    description: PAGE_SEO.about.description,
-    url: PAGE_SEO.about.canonical,
-  },
-};
+const VALUE_ICONS = [HonestyIcon, SpeedIcon, CareIcon];
 
-const STORY_BLOCKS = [
+const STORY_IMAGES = [
   {
-    heading: "How it started",
-    copy1: "We didn\u2019t set out to start a restoration company. It started with our own home \u2014 a water leak we caught too late, and a remediation crew that cut corners and overcharged. We saw the damage that careless work leaves behind, and we knew Oregon families deserved better. So we got trained, got certified, and got to work.",
-    copy2: "That was over a decade ago. Since then, we\u2019ve restored hundreds of homes across the Willamette Valley, from flooded basements in Sheridan to mold-damaged crawlspaces in McMinnville. Every job still feels personal, because it is.",
-    image: "https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=800&q=80",
-    imageAlt: "Restoration team working on a home project",
+    src: "/images/services/mold-remediation-hero.webp",
+    alt: "Zero Spore Restoration technician removing mold from a wall",
     reverse: false,
   },
   {
-    heading: "What drives us",
-    copy1: "We\u2019ve seen what happens when water sits too long or mold goes untreated. We\u2019ve seen families displaced, belongings ruined, and insurance claims denied because the previous company didn\u2019t document properly. That\u2019s not how we operate.",
-    copy2: "Every home we walk into gets the same treatment: honest assessment, clear communication, thorough work, and documentation your insurance company can actually use. We answer our own phone, we show up when we say we will, and we don\u2019t leave until the job is done right.",
-    image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80",
-    imageAlt: "Beautiful Oregon home exterior",
+    src: "/images/services/mold-inspection.webp",
+    alt: "Zero Spore technician inspecting a room for mold damage",
     reverse: true,
   },
   {
-    heading: "Rooted in Oregon",
-    copy1: "Sheridan is home. We know the climate here \u2014 the relentless rain, the coastal storms that sweep through the Valley, the damp crawlspaces that come with older Pacific Northwest homes. We understand the specific challenges Oregon homeowners face because we face them too.",
-    copy2: "From our base in Sheridan, we serve communities across the state \u2014 Portland, Salem, McMinnville, Lincoln City, Newberg, and everywhere in between. No matter where you are in Oregon, we\u2019ll get to you.",
-    image: "https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?w=800&q=80",
-    imageAlt: "Oregon Pacific Northwest forest landscape",
+    src: "/images/about/portland-oregon.webp",
+    alt: "Aerial view of Portland, Oregon — Broadway Bridge and downtown skyline",
     reverse: false,
   },
 ];
 
-const VALUES = [
-  {
-    icon: HonestyIcon,
-    title: "Honesty",
-    description:
-      "We tell you exactly what we find, what it will take to fix, and what it will cost. No upselling, no surprise charges, no pressure. If something doesn\u2019t need to be replaced, we\u2019ll say so.",
-  },
-  {
-    icon: SpeedIcon,
-    title: "Speed",
-    description:
-      "Water and mold don\u2019t wait, and neither do we. We respond within the hour across Sheridan and surrounding areas, 24 hours a day, 7 days a week. Every minute we save is damage we prevent.",
-  },
-  {
-    icon: CareIcon,
-    title: "Care",
-    description:
-      "Your home holds your life. We understand that, and we treat every job with the respect it deserves. We protect your belongings, communicate at every step, and leave your home better than we found it.",
-  },
-];
+export default function AboutContent() {
+  const dict = useDict();
+  const t = dict.aboutPage;
+  const storyBlocks = t.storyBlocks.map((block, i) => ({
+    ...block,
+    image: STORY_IMAGES[i].src,
+    imageAlt: STORY_IMAGES[i].alt,
+    reverse: STORY_IMAGES[i].reverse,
+  }));
 
-export default function AboutPage() {
   return (
     <>
       {/* Hero */}
@@ -81,20 +52,17 @@ export default function AboutPage() {
               letterSpacing: "var(--font-h1-ls)",
             }}
           >
-            More than a restoration company
+            {t.heroHeadline}
           </h1>
         </FadeUp>
         <FadeUp delay={0.15}>
-          <p className="mt-4 text-lg text-muted">
-            We&apos;re a family protecting families
-          </p>
+          <p className="mt-4 text-lg text-muted">{t.heroSubline}</p>
         </FadeUp>
         <FadeUp delay={0.25}>
-          {/* TODO: REPLACE — Unsplash placeholder */}
           <div className="relative mt-10 aspect-21/9 overflow-hidden rounded-(--radius-image)">
             <Image
-              src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1600&q=80"
-              alt="Oregon home in the Willamette Valley"
+              src="/images/about/portland-oregon.webp"
+              alt="Aerial view of Portland, Oregon"
               fill
               className="object-cover"
               sizes="100vw"
@@ -106,13 +74,9 @@ export default function AboutPage() {
 
       {/* Our Story */}
       <MoodSection mood="services">
-        {STORY_BLOCKS.map((block, i) => (
-          <div
-            key={block.heading}
-            className={i > 0 ? "mt-20 lg:mt-28" : ""}
-          >
+        {storyBlocks.map((block, i) => (
+          <div key={block.heading} className={i > 0 ? "mt-20 lg:mt-28" : ""}>
             <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
-              {/* Text */}
               <div className={block.reverse ? "lg:order-2" : ""}>
                 <FadeUp>
                   <h2
@@ -137,7 +101,6 @@ export default function AboutPage() {
                 </FadeUp>
               </div>
 
-              {/* Photo */}
               <div className={block.reverse ? "lg:order-1" : ""}>
                 <FadeUp delay={0.2}>
                   {/* TODO: REPLACE — Unsplash placeholder */}
@@ -167,18 +130,16 @@ export default function AboutPage() {
               lineHeight: "var(--font-h2-lh)",
             }}
           >
-            What we stand for
+            {t.valuesHeading}
           </h2>
         </FadeUp>
         <div className="mt-12 grid gap-(--grid-gap) md:grid-cols-3">
-          {VALUES.map((value, i) => {
-            const Icon = value.icon;
+          {t.values.map((value, i) => {
+            const Icon = VALUE_ICONS[i];
             return (
               <FadeUp key={value.title} delay={i * 0.1}>
                 <div className="rounded-(--radius-card) border border-stone bg-white p-(--card-padding) text-center">
-                  <Icon
-                    className="mx-auto h-10 w-10 text-forest"
-                  />
+                  <Icon className="mx-auto h-10 w-10 text-forest" />
                   <h3
                     className="mt-4 font-sans font-medium"
                     style={{
@@ -208,16 +169,15 @@ export default function AboutPage() {
               lineHeight: "var(--font-h2-lh)",
             }}
           >
-            The team behind Zero Spore
+            {t.teamHeading}
           </h2>
         </FadeUp>
         <FadeUp delay={0.15}>
           <div className="mx-auto mt-12 max-w-md text-center">
-            {/* TODO: REPLACE — Unsplash placeholder */}
             <div className="mx-auto aspect-square w-48 overflow-hidden rounded-full">
               <Image
-                src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&q=80"
-                alt="Owner of Zero Spore Restoration"
+                src="/images/team/rogelio-portrait.webp"
+                alt="Rogelio Caudillo, owner of Zero Spore Restoration"
                 width={400}
                 height={400}
                 className="h-full w-full object-cover"
@@ -231,16 +191,11 @@ export default function AboutPage() {
               }}
             >
               {/* TODO: REPLACE — real owner name */}
-              Owner &amp; Lead Technician
+              {t.teamRole}
             </h3>
-            <p className="mt-1 text-sm text-forest">
-              Founder, Zero Spore Restoration
-            </p>
+            <p className="mt-1 text-sm text-forest">{t.teamFounder}</p>
             <p className="mx-auto mt-4 max-w-(--text-max) leading-relaxed text-muted">
-              With over a decade of hands-on experience in water damage
-              mitigation and mold remediation, our founder built Zero Spore on a
-              simple principle: treat every home like your own. Based in
-              Sheridan, Oregon, and serving communities across the state.
+              {t.teamBio}
             </p>
           </div>
         </FadeUp>
@@ -257,21 +212,20 @@ export default function AboutPage() {
                 lineHeight: "var(--font-h2-lh)",
               }}
             >
-              Ready to work with a team that truly cares?
+              {t.ctaHeading}
             </h2>
           </FadeUp>
           <FadeUp delay={0.15}>
             <p className="mx-auto mt-4 max-w-(--text-max) text-lg text-muted">
-              Whether you&apos;re facing an emergency or planning ahead,
-              we&apos;re here to help. Reach out and let&apos;s talk about your
-              home.
+              {t.ctaBody}
             </p>
           </FadeUp>
           <FadeUp delay={0.25}>
             <div className="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
-              <Button href="/contact">Schedule your free inspection</Button>
+              <Button href={dict.nav.contact.href}>{t.ctaPrimary}</Button>
               <Button variant="secondary" href={BUSINESS.phoneTel}>
-                Call {BUSINESS.phone}
+                {t.ctaSecondaryPrefix}
+                {BUSINESS.phone}
               </Button>
             </div>
           </FadeUp>

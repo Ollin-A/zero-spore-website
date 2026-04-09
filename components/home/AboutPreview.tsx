@@ -4,18 +4,19 @@ import Link from "next/link";
 import MoodSection from "@/components/scroll/MoodSection";
 import FadeUp from "@/components/scroll/FadeUp";
 import ParallaxImage from "@/components/scroll/ParallaxImage";
+import { useDict } from "@/lib/use-dict";
 
 export default function AboutPreview() {
+  const dict = useDict();
   return (
     <MoodSection mood="about">
       <div className="grid gap-12 lg:grid-cols-5 lg:gap-16">
         {/* Photo — left on desktop, top on mobile */}
         <div className="lg:col-span-2">
           <FadeUp>
-            {/* TODO: REPLACE — Unsplash placeholder */}
             <ParallaxImage
-              src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=800&q=80"
-              alt="Zero Spore Restoration team at work"
+              src="/images/services/mold-remediation-hero.webp"
+              alt="Zero Spore Restoration technician at work"
               width={600}
               height={800}
               rate={0.1}
@@ -35,34 +36,28 @@ export default function AboutPreview() {
                 lineHeight: "var(--font-h2-lh)",
               }}
             >
-              A family restoring families&apos; homes
+              {dict.about.headline}
             </h2>
           </FadeUp>
 
           <FadeUp delay={0.15}>
             <p className="mt-6 max-w-(--text-max) leading-relaxed text-muted">
-              We&apos;re a family-owned restoration company based in Sheridan,
-              Oregon — and we treat every home like our own. Our approach is
-              hands-on and personal, from the first phone call to the final
-              inspection.
+              {dict.about.body1}
             </p>
           </FadeUp>
 
           <FadeUp delay={0.25}>
             <p className="mt-4 max-w-(--text-max) leading-relaxed text-muted">
-              We provide expert residential service across the Willamette
-              Valley, Portland Metro, and communities in between. As locals, we
-              understand the challenges of Pacific Northwest humidity and the
-              architectural diversity of Oregon homes.
+              {dict.about.body2}
             </p>
           </FadeUp>
 
           <FadeUp delay={0.3}>
             <Link
-              href="/about"
+              href={dict.nav.about.href}
               className="mt-6 inline-flex items-center font-medium text-forest hover:underline"
             >
-              Learn our story <span className="ml-1">→</span>
+              {dict.about.link} <span className="ml-1">→</span>
             </Link>
           </FadeUp>
         </div>

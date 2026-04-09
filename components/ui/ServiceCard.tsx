@@ -9,6 +9,8 @@ interface ServiceCardProps {
   href: string;
   accentColor?: string;
   className?: string;
+  /** "Learn more →" label. Defaults to English. */
+  learnMoreLabel?: string;
 }
 
 export default function ServiceCard({
@@ -18,6 +20,7 @@ export default function ServiceCard({
   href,
   accentColor = "text-forest",
   className,
+  learnMoreLabel = "Learn more",
 }: ServiceCardProps) {
   return (
     <Link href={href} className={cn("group block h-full", className)}>
@@ -41,7 +44,7 @@ export default function ServiceCard({
             accentColor,
           )}
         >
-          Learn more{" "}
+          {learnMoreLabel}{" "}
           <span className="ml-1 transition-transform duration-200 group-hover:translate-x-1">
             →
           </span>

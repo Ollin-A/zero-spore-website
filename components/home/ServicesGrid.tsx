@@ -4,35 +4,13 @@ import { WaterDamageIcon, MoldRemediationIcon, EmergencyIcon } from "@/component
 import MoodSection from "@/components/scroll/MoodSection";
 import FadeUp from "@/components/scroll/FadeUp";
 import ServiceCard from "@/components/ui/ServiceCard";
+import { useDict } from "@/lib/use-dict";
 
-const SERVICES = [
-  {
-    icon: WaterDamageIcon,
-    title: "Water Damage",
-    description:
-      "Fast water extraction, structural drying, and moisture monitoring to protect your home from lasting damage.",
-    href: "/services/water-damage",
-    accentColor: "text-ocean",
-  },
-  {
-    icon: MoldRemediationIcon,
-    title: "Mold Remediation",
-    description:
-      "Safe, thorough mold removal with containment protocols that protect your family\u2019s health.",
-    href: "/services/mold-remediation",
-    accentColor: "text-forest",
-  },
-  {
-    icon: EmergencyIcon,
-    title: "Emergency Services",
-    description:
-      "24/7 emergency response when every minute counts. We arrive fast and work until your home is safe.",
-    href: "/services/emergency",
-    accentColor: "text-alert",
-  },
-] as const;
+const ICONS = [WaterDamageIcon, MoldRemediationIcon, EmergencyIcon];
+const ACCENTS = ["text-ocean", "text-forest", "text-alert"];
 
 export default function ServicesGrid() {
+  const dict = useDict();
   return (
     <MoodSection mood="services">
       <div className="text-center">
@@ -44,25 +22,26 @@ export default function ServicesGrid() {
               lineHeight: "var(--font-h2-lh)",
             }}
           >
-            What we restore
+            {dict.services.heading}
           </h2>
         </FadeUp>
         <FadeUp delay={0.1}>
           <p className="mx-auto mt-4 max-w-(--text-max) text-muted">
-            Comprehensive emergency restoration for Oregon homeowners
+            {dict.services.subheading}
           </p>
         </FadeUp>
       </div>
 
       <div className="mt-12 grid gap-(--grid-gap) md:grid-cols-3">
-        {SERVICES.map((service, i) => (
+        {dict.services.cards.map((service, i) => (
           <FadeUp key={service.title} delay={0.1 + i * 0.1}>
             <ServiceCard
-              icon={service.icon}
+              icon={ICONS[i]}
               title={service.title}
               description={service.description}
               href={service.href}
-              accentColor={service.accentColor}
+              accentColor={ACCENTS[i]}
+              learnMoreLabel={dict.services.learnMore}
             />
           </FadeUp>
         ))}

@@ -5,8 +5,16 @@ import { usePathname } from "next/navigation";
 import { PhoneIcon } from "@/components/icons";
 import { BUSINESS } from "@/data/constants";
 import { cn } from "@/lib/utils";
+import { en } from "@/data/i18n/en";
+import { es } from "@/data/i18n/es";
+import type { Locale } from "@/data/i18n/routes";
 
-export default function EmergencyBadge() {
+interface EmergencyBadgeProps {
+  locale?: Locale;
+}
+
+export default function EmergencyBadge({ locale = "en" }: EmergencyBadgeProps) {
+  const dict = locale === "es" ? es : en;
   const pathname = usePathname();
   const [footerVisible, setFooterVisible] = useState(false);
 
@@ -23,7 +31,7 @@ export default function EmergencyBadge() {
   }, []);
 
   // Hidden on homepage and mobile
-  if (pathname === "/") return null;
+  if (pathname === "/" || pathname === "/es" || pathname === "/es/") return null;
 
   return (
     <a
@@ -34,7 +42,7 @@ export default function EmergencyBadge() {
       )}
     >
       <PhoneIcon size={16} />
-      <span>24/7 Emergency</span>
+      <span>{dict.emergencyBadge.label}</span>
       <span className="text-cyan">{BUSINESS.phone}</span>
     </a>
   );

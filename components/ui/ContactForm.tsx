@@ -5,16 +5,9 @@ import { submitContactForm } from "@/lib/lead-gateway";
 import { BUSINESS } from "@/data/constants";
 import Button from "@/components/ui/Button";
 import { AlertTriangleIcon, FollowUpIcon } from "@/components/icons";
+import { useDict } from "@/lib/use-dict";
 
 type FormStatus = "idle" | "submitting" | "success" | "error";
-
-const SERVICE_OPTIONS = [
-  { value: "", label: "Select a service" },
-  { value: "water-damage", label: "Water damage restoration" },
-  { value: "mold", label: "Mold remediation" },
-  { value: "emergency", label: "Emergency response" },
-  { value: "other", label: "Something else" },
-];
 
 const inputClass =
   "w-full rounded-(--radius-button) border border-stone bg-white px-4 py-3 text-carbon placeholder:text-hint focus:border-forest focus:outline-none focus:ring-1 focus:ring-forest transition-colors";
@@ -22,6 +15,9 @@ const inputClass =
 const labelClass = "block text-sm font-medium text-carbon mb-1.5";
 
 export default function ContactForm() {
+  const dict = useDict();
+  const t = dict.contact;
+
   const [status, setStatus] = useState<FormStatus>("idle");
   const [formData, setFormData] = useState({
     fullName: "",
@@ -67,11 +63,10 @@ export default function ContactForm() {
             lineHeight: "var(--font-h3-lh)",
           }}
         >
-          Thank you for reaching out
+          {t.successTitle}
         </h3>
         <p className="mt-3 text-muted">
-          We&apos;ll contact you within 2 hours. For immediate assistance, call
-          us at{" "}
+          {t.successBodyPrefix}
           <a href={BUSINESS.phoneTel} className="font-medium text-forest">
             {BUSINESS.phone}
           </a>
@@ -86,11 +81,11 @@ export default function ContactForm() {
       {status === "error" && (
         <div aria-live="polite" className="rounded-(--radius-button) border border-alert/20 bg-alert-bg p-4">
           <p className="text-sm text-carbon">
-            Something went wrong. Please call us directly at{" "}
+            {t.errorBodyPrefix}
             <a href={BUSINESS.phoneTel} className="font-medium text-forest">
               {BUSINESS.phone}
             </a>
-            .
+            {t.errorBodySuffix}
           </p>
         </div>
       )}
@@ -98,7 +93,7 @@ export default function ContactForm() {
       {/* Full name */}
       <div>
         <label htmlFor="fullName" className={labelClass}>
-          Full name <span className="text-alert">*</span>
+          {t.fullNameLabel} <span className="text-alert">*</span>
         </label>
         <input
           id="fullName"
@@ -107,7 +102,7 @@ export default function ContactForm() {
           required
           value={formData.fullName}
           onChange={(e) => updateField("fullName", e.target.value)}
-          placeholder="Your full name"
+          placeholder={t.fullNamePlaceholder}
           className={inputClass}
         />
       </div>
@@ -115,7 +110,7 @@ export default function ContactForm() {
       {/* Phone */}
       <div>
         <label htmlFor="phone" className={labelClass}>
-          Phone number <span className="text-alert">*</span>
+          {t.phoneLabel} <span className="text-alert">*</span>
         </label>
         <input
           id="phone"
@@ -125,7 +120,7 @@ export default function ContactForm() {
           required
           value={formData.phone}
           onChange={(e) => updateField("phone", e.target.value)}
-          placeholder="(503) 555-0123"
+          placeholder={t.phonePlaceholder}
           className={inputClass}
         />
       </div>
@@ -133,7 +128,7 @@ export default function ContactForm() {
       {/* Email */}
       <div>
         <label htmlFor="email" className={labelClass}>
-          Email <span className="text-hint">(optional)</span>
+          {t.emailLabel} <span className="text-hint">{t.emailOptional}</span>
         </label>
         <input
           id="email"
@@ -142,7 +137,7 @@ export default function ContactForm() {
           inputMode="email"
           value={formData.email}
           onChange={(e) => updateField("email", e.target.value)}
-          placeholder="you@example.com"
+          placeholder={t.emailPlaceholder}
           className={inputClass}
         />
       </div>
@@ -150,7 +145,7 @@ export default function ContactForm() {
       {/* Service needed */}
       <div>
         <label htmlFor="serviceNeeded" className={labelClass}>
-          What do you need help with?
+          {t.serviceLabel}
         </label>
         <select
           id="serviceNeeded"
@@ -159,7 +154,7 @@ export default function ContactForm() {
           onChange={(e) => updateField("serviceNeeded", e.target.value)}
           className={inputClass}
         >
-          {SERVICE_OPTIONS.map((opt) => (
+          {t.serviceOptions.map((opt) => (
             <option key={opt.value} value={opt.value} disabled={opt.value === ""}>
               {opt.label}
             </option>
@@ -169,7 +164,7 @@ export default function ContactForm() {
 
       {/* Emergency radio */}
       <fieldset>
-        <legend className={labelClass}>Is this an emergency?</legend>
+        <legend className={labelClass}>{t.emergencyLegend}</legend>
         <div className="mt-1 flex gap-6">
           <label className="flex items-center gap-2 cursor-pointer">
             <input
@@ -179,7 +174,7 @@ export default function ContactForm() {
               onChange={() => updateField("isEmergency", true)}
               className="h-4 w-4 accent-forest"
             />
-            <span className="text-sm text-carbon">Yes</span>
+            <span className="text-sm text-carbon">{t.emergencyYes}</span>
           </label>
           <label className="flex items-center gap-2 cursor-pointer">
             <input
@@ -189,7 +184,7 @@ export default function ContactForm() {
               onChange={() => updateField("isEmergency", false)}
               className="h-4 w-4 accent-forest"
             />
-            <span className="text-sm text-carbon">No</span>
+            <span className="text-sm text-carbon">{t.emergencyNo}</span>
           </label>
         </div>
       </fieldset>
@@ -199,11 +194,11 @@ export default function ContactForm() {
         <div className="flex gap-3 rounded-(--radius-button) border border-alert/20 bg-alert-bg p-4">
           <AlertTriangleIcon className="h-5 w-5 shrink-0 text-alert mt-0.5" />
           <p className="text-sm text-carbon">
-            For immediate emergency response, call us directly at{" "}
+            {t.emergencyAlertPrefix}
             <a href={BUSINESS.phoneTel} className="font-medium text-forest">
               {BUSINESS.phone}
             </a>
-            . We answer 24/7.
+            {t.emergencyAlertSuffix}
           </p>
         </div>
       )}
@@ -211,7 +206,7 @@ export default function ContactForm() {
       {/* Message */}
       <div>
         <label htmlFor="message" className={labelClass}>
-          Tell us about your situation
+          {t.messageLabel}
         </label>
         <textarea
           id="message"
@@ -219,7 +214,7 @@ export default function ContactForm() {
           rows={4}
           value={formData.message}
           onChange={(e) => updateField("message", e.target.value)}
-          placeholder="Describe what's happening with your home..."
+          placeholder={t.messagePlaceholder}
           className={inputClass + " resize-y"}
         />
       </div>
@@ -243,7 +238,7 @@ export default function ContactForm() {
 
       {/* Submit */}
       <Button type="submit" className="w-full">
-        {status === "submitting" ? "Sending..." : "Send request"}
+        {status === "submitting" ? t.submitting : t.submit}
       </Button>
     </form>
   );

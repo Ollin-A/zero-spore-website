@@ -1,17 +1,41 @@
 "use client";
 
-import { useState, useEffect, useCallback, useRef } from "react";
+import { useState, useEffect, useCallback, useRef, useMemo } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
 import { MenuIcon, ChevronDownIcon, PhoneIcon, FacebookIcon } from "@/components/icons";
 import { useMood } from "@/components/scroll/ScrollMoodProvider";
-import { NAV_LINKS } from "@/data/navigation";
 import { BUSINESS, SOCIAL } from "@/data/constants";
 import { cn } from "@/lib/utils";
-import Button from "@/components/ui/Button";
+import { en } from "@/data/i18n/en";
+import { es } from "@/data/i18n/es";
+import type { Locale } from "@/data/i18n/routes";
+import LanguageSwitcher from "@/components/shared/LanguageSwitcher";
 
-export default function Nav() {
+interface NavProps {
+  locale?: Locale;
+}
+
+export default function Nav({ locale = "en" }: NavProps) {
+  const dict = locale === "es" ? es : en;
+  const homeHref = locale === "es" ? "/es" : "/";
+
+  // Build a flat NavLinks list compatible with the existing rendering logic.
+  const NAV_LINKS = useMemo(
+    () => [
+      {
+        label: dict.nav.servicesLabel,
+        href: dict.nav.servicesHref,
+        children: dict.nav.serviceItems,
+      },
+      { label: dict.nav.process.label, href: dict.nav.process.href },
+      { label: dict.nav.about.label, href: dict.nav.about.href },
+      { label: dict.nav.contact.label, href: dict.nav.contact.href },
+    ],
+    [dict],
+  );
+
   const { isDark } = useMood();
   const pathname = usePathname();
   const router = useRouter();
@@ -63,43 +87,42 @@ export default function Nav() {
 
   const closeMobile = useCallback(() => setMobileOpen(false), []);
 
-  // Handle anchor links (e.g. /#process) with smooth scrolling
-  const handleAnchorClick = useCallback((e: React.MouseEvent, href: string) => {
-    e.preventDefault();
-    const hash = href.split("#")[1];
-    if (!hash) return;
+  // Handle anchor links (e.g. /#process or /es/#proceso) with smooth scrolling
+  const handleAnchorClick = useCallback(
+    (e: React.MouseEvent, href: string) => {
+      e.preventDefault();
+      const [base, hash] = href.split("#");
+      if (!hash) return;
 
-    const scrollToHash = () => {
-      const el = document.getElementById(hash);
-      if (el) {
-        el.scrollIntoView({ behavior: "smooth", block: "start" });
-      }
-    };
-
-    if (pathname === "/") {
-      // Already on homepage — just scroll
-      scrollToHash();
-    } else {
-      // Navigate to homepage, then scroll after hydration
-      router.push("/");
-      const checkAndScroll = () => {
+      const scrollToHash = () => {
         const el = document.getElementById(hash);
         if (el) {
           el.scrollIntoView({ behavior: "smooth", block: "start" });
-        } else {
-          requestAnimationFrame(checkAndScroll);
         }
       };
-      setTimeout(checkAndScroll, 400);
-    }
-  }, [pathname, router]);
 
-  const isHomepage = pathname === "/";
+      const targetBase = base || "/";
+      if (pathname === targetBase || pathname === targetBase.replace(/\/$/, "")) {
+        scrollToHash();
+      } else {
+        router.push(targetBase);
+        const checkAndScroll = () => {
+          const el = document.getElementById(hash);
+          if (el) {
+            el.scrollIntoView({ behavior: "smooth", block: "start" });
+          } else {
+            requestAnimationFrame(checkAndScroll);
+          }
+        };
+        setTimeout(checkAndScroll, 400);
+      }
+    },
+    [pathname, router],
+  );
+
+  const isHomepage = pathname === "/" || pathname === "/es" || pathname === "/es/";
 
   // Nav colors based on mood + scroll state
-  // On homepage hero (dark bg, not scrolled): transparent + ivory text
-  // On inner pages (light bg, not scrolled): transparent + carbon text
-  // Once scrolled: solid bg matching mood + appropriate text
   const navBg = scrolled
     ? isDark
       ? "rgba(0, 0, 0, 0.3)"
@@ -111,7 +134,7 @@ export default function Nav() {
   const backdrop = scrolled ? "blur(16px)" : "none";
 
   const isActive = (href: string) => {
-    if (href === "/") return pathname === "/";
+    if (href === "/" || href === "/es") return pathname === href;
     return pathname.startsWith(href);
   };
 
@@ -129,7 +152,7 @@ export default function Nav() {
       >
         <div className="mx-auto flex h-16 max-w-(--max-width) items-center justify-between px-5 lg:h-[72px] lg:px-8">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2.5 rounded-sm outline-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-forest focus-visible:ring-offset-2">
+          <Link href={homeHref} className="flex items-center gap-2.5 rounded-sm outline-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-forest focus-visible:ring-offset-2">
             <Image
               src="/logo/isotipo-color.png"
               alt="Zero Spore"
@@ -221,14 +244,17 @@ export default function Nav() {
             )}
           </ul>
 
-          {/* Desktop phone */}
-          <a
-            href={BUSINESS.phoneTel}
-            className="hidden items-center gap-2 font-sans text-(length:--font-nav-size) font-medium transition-opacity hover:opacity-75 lg:flex rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-forest focus-visible:ring-offset-2"
-          >
-            <PhoneIcon size={16} />
-            {BUSINESS.phone}
-          </a>
+          {/* Desktop right side: language switcher + phone */}
+          <div className="hidden items-center gap-5 lg:flex">
+            <LanguageSwitcher />
+            <a
+              href={BUSINESS.phoneTel}
+              className="flex items-center gap-2 font-sans text-(length:--font-nav-size) font-medium transition-opacity hover:opacity-75 rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-forest focus-visible:ring-offset-2"
+            >
+              <PhoneIcon size={16} />
+              {BUSINESS.phone}
+            </a>
+          </div>
 
           {/* Mobile hamburger */}
           <button
@@ -266,19 +292,18 @@ export default function Nav() {
 
           {/* Brand name — centered */}
           <Link
-            href="/"
+            href={homeHref}
             onClick={closeMobile}
             className="absolute left-1/2 -translate-x-1/2 font-serif text-lg text-carbon"
           >
             {BUSINESS.shortName}
           </Link>
 
-          {/* Language toggle — placeholder */}
-          <span className="flex items-center gap-1 font-sans text-xs">
-            <span className="font-medium text-forest">EN</span>
-            <span className="text-hint">|</span>
-            <span className="text-hint">ES</span>
-          </span>
+          {/* Language toggle */}
+          <LanguageSwitcher
+            activeClassName="font-medium text-forest"
+            inactiveClassName="text-hint"
+          />
         </div>
 
         {/* Decorative divider */}
@@ -303,7 +328,6 @@ export default function Nav() {
                   onClick={() => setMobileServicesOpen(!mobileServicesOpen)}
                 >
                   {item.label}
-                  {/* Custom chevron SVG */}
                   <svg
                     width="16"
                     height="16"
@@ -373,7 +397,7 @@ export default function Nav() {
             href={BUSINESS.phoneTel}
             className="flex w-full items-center justify-center rounded-[10px] bg-forest py-4 font-sans text-[15px] font-medium text-white transition-colors hover:bg-forest/90"
           >
-            Call 24/7 — {BUSINESS.phone}
+            {dict.nav.callCta} — {BUSINESS.phone}
           </a>
         </div>
 

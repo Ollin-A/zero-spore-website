@@ -1,15 +1,21 @@
+"use client";
+
 import { WaterDamageIcon, MoldRemediationIcon, EmergencyIcon, type IconComponent } from "@/components/icons";
 import MoodSection from "@/components/scroll/MoodSection";
 import FadeUp from "@/components/scroll/FadeUp";
 import Button from "@/components/ui/Button";
 import ServiceCard from "@/components/ui/ServiceCard";
 import { BUSINESS } from "@/data/constants";
-import { SERVICES } from "@/data/services";
+import { SERVICES, SERVICES_ES } from "@/data/services";
+import { useDict } from "@/lib/use-dict";
 
 const PRIMARY_ICONS: Record<string, IconComponent> = {
   "water-damage": WaterDamageIcon,
   "mold-remediation": MoldRemediationIcon,
   emergency: EmergencyIcon,
+  "danos-por-agua": WaterDamageIcon,
+  "remediacion-de-moho": MoldRemediationIcon,
+  emergencias: EmergencyIcon,
 };
 
 interface RelatedServicesProps {
@@ -17,6 +23,11 @@ interface RelatedServicesProps {
 }
 
 export default function RelatedServices({ relatedSlugs }: RelatedServicesProps) {
+  const dict = useDict();
+  const isSpanish = dict.locale === "es";
+  const servicesMap = isSpanish ? SERVICES_ES : SERVICES;
+  const basePath = isSpanish ? "/es/servicios" : "/services";
+
   return (
     <MoodSection mood="about">
       {/* CTA block */}
@@ -29,20 +40,19 @@ export default function RelatedServices({ relatedSlugs }: RelatedServicesProps) 
               lineHeight: "var(--font-h2-lh)",
             }}
           >
-            Ready to restore your home?
+            {dict.related.heading}
           </h2>
           <p className="mx-auto mt-4 max-w-(--text-max) text-muted">
-            Whether it&rsquo;s an emergency or a planned inspection, we&rsquo;re
-            here to help. Reach out and we&rsquo;ll respond within hours.
+            {dict.related.body}
           </p>
           <div className="mt-8">
-            <Button href="/contact">Schedule your free inspection</Button>
+            <Button href={dict.nav.contact.href}>{dict.related.primary}</Button>
           </div>
           <a
             href={BUSINESS.phoneTel}
             className="mt-4 inline-block font-medium text-forest transition-colors hover:text-[#156835]"
           >
-            Or call {BUSINESS.phone}
+            {dict.related.secondaryPrefix}{BUSINESS.phone}
           </a>
         </div>
       </FadeUp>
@@ -56,13 +66,13 @@ export default function RelatedServices({ relatedSlugs }: RelatedServicesProps) 
             lineHeight: "var(--font-h3-lh)",
           }}
         >
-          Related services
+          {dict.related.relatedHeading}
         </h3>
       </FadeUp>
 
       <div className="mx-auto mt-8 grid max-w-3xl gap-(--grid-gap) md:grid-cols-2">
         {relatedSlugs.map((slug, i) => {
-          const related = SERVICES[slug];
+          const related = servicesMap[slug];
           if (!related) return null;
           const Icon = PRIMARY_ICONS[slug];
           return (
@@ -71,8 +81,9 @@ export default function RelatedServices({ relatedSlugs }: RelatedServicesProps) 
                 icon={Icon}
                 title={related.title}
                 description={related.subline}
-                href={`/services/${slug}`}
+                href={`${basePath}/${slug}`}
                 accentColor={related.accentColor}
+                learnMoreLabel={dict.services.learnMore}
               />
             </FadeUp>
           );

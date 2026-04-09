@@ -8,10 +8,12 @@ import FeatureGrid from "@/components/services/FeatureGrid";
 import ProcessVertical from "@/components/services/ProcessVertical";
 import FAQAccordion from "@/components/ui/FAQAccordion";
 import RelatedServices from "@/components/services/RelatedServices";
+import WhyChooseContrast from "@/components/services/WhyChooseContrast";
 import SchemaMarkup from "@/components/shared/SchemaMarkup";
 import MoodSection from "@/components/scroll/MoodSection";
 import FadeUp from "@/components/scroll/FadeUp";
 import type { ServiceData } from "@/data/services";
+import { useDict } from "@/lib/use-dict";
 
 // useLayoutEffect on client, useEffect on server (SSR safety)
 const useIsomorphicLayoutEffect =
@@ -24,6 +26,7 @@ interface ServicePageContentProps {
 export default function ServicePageContent({
   service,
 }: ServicePageContentProps) {
+  const dict = useDict();
   const pathname = usePathname();
   const [isReady, setIsReady] = useState(false);
 
@@ -56,6 +59,7 @@ export default function ServicePageContent({
     <>
       <SchemaMarkup
         type="service"
+        locale={dict.locale}
         serviceData={{
           name: service.title,
           description: service.metaDescription,
@@ -74,7 +78,7 @@ export default function ServicePageContent({
         <MoodSection mood="about">
           <FadeUp>
             <div className="mx-auto max-w-(--text-max) rounded-(--radius-card) border border-stone bg-warm p-6 text-sm leading-relaxed text-muted">
-              <p className="mb-2 font-medium text-carbon">Important note</p>
+              <p className="mb-2 font-medium text-carbon">{dict.servicePage.importantNote}</p>
               <p>{service.disclaimer}</p>
             </div>
           </FadeUp>
@@ -84,44 +88,12 @@ export default function ServicePageContent({
       {/* Why Choose Us section */}
       {service.whyChooseUs && (
         <MoodSection mood="services">
-          <FadeUp>
-            <h2
-              className="font-serif"
-              style={{
-                fontSize: "var(--font-h2-size)",
-                lineHeight: "var(--font-h2-lh)",
-              }}
-            >
-              Why choose us
-            </h2>
-          </FadeUp>
-          <FadeUp delay={0.1}>
-            <p className="mt-4 max-w-(--text-max) leading-relaxed text-muted">
-              {service.whyChooseUs.intro}
-            </p>
-          </FadeUp>
-          <div className="mt-10 grid gap-8 lg:grid-cols-2 lg:gap-x-16 lg:gap-y-10">
-            {service.whyChooseUs.items.map((item, i) => (
-              <FadeUp key={item.title} delay={0.1 + i * 0.05}>
-                <h3 className="font-serif text-lg text-carbon">{item.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-muted">
-                  {item.description}
-                </p>
-              </FadeUp>
-            ))}
-          </div>
-          {service.whyChooseUs.trustMarkers && (
-            <FadeUp delay={0.1 + service.whyChooseUs.items.length * 0.05}>
-              <div className="mt-12 flex flex-wrap gap-x-5 gap-y-2 border-t border-stone pt-6">
-                {service.whyChooseUs.trustMarkers.map((marker) => (
-                  <span key={marker} className="text-xs text-hint">
-                    <span className="mr-1.5 text-forest">✓</span>
-                    {marker}
-                  </span>
-                ))}
-              </div>
-            </FadeUp>
-          )}
+          <WhyChooseContrast
+            headingText={dict.servicePage.whyChooseUs}
+            intro={service.whyChooseUs.intro}
+            points={service.whyChooseUs.points}
+            trustMarkers={service.whyChooseUs.trustMarkers ?? []}
+          />
         </MoodSection>
       )}
 

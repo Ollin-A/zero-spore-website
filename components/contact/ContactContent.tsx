@@ -1,46 +1,39 @@
-import type { Metadata } from "next";
+"use client";
+
 import MoodSection from "@/components/scroll/MoodSection";
 import FadeUp from "@/components/scroll/FadeUp";
 import ContactForm from "@/components/ui/ContactForm";
 import { BUSINESS } from "@/data/constants";
-import { PAGE_SEO } from "@/data/seo";
 import { PhoneIcon, MailIcon, MapPinIcon, CCBLicenseIcon } from "@/components/icons";
+import { useDict } from "@/lib/use-dict";
 
-export const metadata: Metadata = {
-  title: PAGE_SEO.contact.title,
-  description: PAGE_SEO.contact.description,
-  alternates: { canonical: PAGE_SEO.contact.canonical },
-  openGraph: {
-    title: PAGE_SEO.contact.title,
-    description: PAGE_SEO.contact.description,
-    url: PAGE_SEO.contact.canonical,
-  },
-};
+export default function ContactContent() {
+  const dict = useDict();
+  const t = dict.contact;
 
-const CONTACT_ITEMS = [
-  {
-    icon: PhoneIcon,
-    label: BUSINESS.phone,
-    href: BUSINESS.phoneTel,
-    className: "text-xl font-medium text-forest",
-  },
-  {
-    icon: MailIcon,
-    label: BUSINESS.email,
-    href: `mailto:${BUSINESS.email}`,
-    className: "text-muted hover:text-carbon transition-colors",
-  },
-  {
-    icon: MapPinIcon,
-    label: "Serving the Willamette Valley, Portland Metro & beyond",
-  },
-  {
-    icon: CCBLicenseIcon,
-    label: `CCB #${BUSINESS.ccb} — Licensed Contractor`,
-  },
-];
+  const items = [
+    {
+      icon: PhoneIcon,
+      label: BUSINESS.phone,
+      href: BUSINESS.phoneTel,
+      className: "text-xl font-medium text-forest",
+    },
+    {
+      icon: MailIcon,
+      label: BUSINESS.email,
+      href: `mailto:${BUSINESS.email}`,
+      className: "text-muted hover:text-carbon transition-colors",
+    },
+    {
+      icon: MapPinIcon,
+      label: t.areaServed,
+    },
+    {
+      icon: CCBLicenseIcon,
+      label: t.ccbLine,
+    },
+  ];
 
-export default function ContactPage() {
   return (
     <MoodSection mood="about">
       <FadeUp>
@@ -52,15 +45,11 @@ export default function ContactPage() {
             letterSpacing: "var(--font-h1-ls)",
           }}
         >
-          Get in touch
+          {t.heading}
         </h1>
       </FadeUp>
       <FadeUp delay={0.1}>
-        <p className="mt-4 max-w-(--text-max) text-lg text-muted">
-          Whether it&apos;s an emergency or a question about your home,
-          we&apos;re here to help. Fill out the form below, or call us
-          directly — we answer 24/7.
-        </p>
+        <p className="mt-4 max-w-(--text-max) text-lg text-muted">{t.body}</p>
       </FadeUp>
 
       <div className="mt-12 grid gap-12 lg:grid-cols-[55fr_45fr] lg:gap-16">
@@ -68,7 +57,7 @@ export default function ContactPage() {
         <div className="order-1 lg:order-2">
           <FadeUp delay={0.15}>
             <div className="space-y-6">
-              {CONTACT_ITEMS.map((item) => {
+              {items.map((item) => {
                 const Icon = item.icon;
                 const content = (
                   <span className="flex items-center gap-4">

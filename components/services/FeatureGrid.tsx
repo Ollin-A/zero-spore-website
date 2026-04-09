@@ -1,3 +1,5 @@
+"use client";
+
 import {
   WaterDamageIcon,
   MoldRemediationIcon,
@@ -17,6 +19,7 @@ import MoodSection from "@/components/scroll/MoodSection";
 import FadeUp from "@/components/scroll/FadeUp";
 import { cn } from "@/lib/utils";
 import type { ServiceFeature } from "@/data/services";
+import { useDict } from "@/lib/use-dict";
 
 const ICON_MAP: Record<string, IconComponent> = {
   Extractor: ExtractorIcon,
@@ -39,6 +42,7 @@ interface FeatureGridProps {
 }
 
 export default function FeatureGrid({ features, accentColor }: FeatureGridProps) {
+  const dict = useDict();
   return (
     <MoodSection mood="services">
       <FadeUp>
@@ -49,7 +53,7 @@ export default function FeatureGrid({ features, accentColor }: FeatureGridProps)
             lineHeight: "var(--font-h2-lh)",
           }}
         >
-          What&rsquo;s included
+          {dict.servicePage.whatsIncluded}
         </h2>
       </FadeUp>
 

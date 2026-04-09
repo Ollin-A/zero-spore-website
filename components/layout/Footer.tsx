@@ -2,14 +2,13 @@ import Link from "next/link";
 import Image from "next/image";
 import { BUSINESS, SOCIAL, OLLIN } from "@/data/constants";
 import { FacebookIcon } from "@/components/icons";
-import { FOOTER_SERVICES, FOOTER_COMPANY } from "@/data/navigation";
+import { en } from "@/data/i18n/en";
+import { es } from "@/data/i18n/es";
+import type { Locale } from "@/data/i18n/routes";
 
-const MOBILE_FOOTER_NAV = [
-  { label: "Services", href: "/services/water-damage" },
-  { label: "About", href: "/about" },
-  { label: "Contact", href: "/contact" },
-  { label: "Blog", href: "/blog" },
-];
+interface FooterProps {
+  locale?: Locale;
+}
 
 function BuiltByOllin({ className }: { className?: string }) {
   return (
@@ -24,8 +23,13 @@ function BuiltByOllin({ className }: { className?: string }) {
   );
 }
 
-export default function Footer() {
+export default function Footer({ locale = "en" }: FooterProps) {
+  const dict = locale === "es" ? es : en;
   const year = new Date().getFullYear();
+  // Drop Terms / Privacy from the visible Company links — they live in the bottom bar.
+  const companyLinks = dict.footer.company.filter(
+    (l) => l.href !== "/terms" && l.href !== "/privacy",
+  );
 
   return (
     <footer id="site-footer" className="bg-carbon text-warm">
@@ -79,10 +83,10 @@ export default function Footer() {
             {/* Col 2 — Services */}
             <div>
               <h4 className="mb-4 font-sans text-sm font-medium uppercase tracking-wider text-ivory-dim">
-                Services
+                {dict.footer.servicesHeading}
               </h4>
               <ul className="flex flex-col gap-2.5">
-                {FOOTER_SERVICES.map((link) => (
+                {dict.footer.services.map((link) => (
                   <li key={link.href}>
                     <Link
                       href={link.href}
@@ -95,15 +99,13 @@ export default function Footer() {
               </ul>
             </div>
 
-            {/* Col 3 — Company (without Terms/Privacy — they're in the copyright bar) */}
+            {/* Col 3 — Company */}
             <div>
               <h4 className="mb-4 font-sans text-sm font-medium uppercase tracking-wider text-ivory-dim">
-                Company
+                {dict.footer.companyHeading}
               </h4>
               <ul className="flex flex-col gap-2.5">
-                {FOOTER_COMPANY.filter(
-                  (l) => l.href !== "/terms" && l.href !== "/privacy",
-                ).map((link) => (
+                {companyLinks.map((link) => (
                   <li key={link.href}>
                     <Link
                       href={link.href}
@@ -122,13 +124,13 @@ export default function Footer() {
             className="mt-12 flex items-center justify-between border-t pt-6 text-xs text-ivory-dim"
             style={{ borderColor: "#333" }}
           >
-            <p>&copy; {year} {BUSINESS.name}. All rights reserved.</p>
+            <p>&copy; {year} {BUSINESS.name}. {dict.footer.copyrightSuffix}</p>
             <div className="flex items-center gap-4">
               <Link href="/terms" className="inline-block py-1.5 transition-opacity hover:opacity-80">
-                Terms
+                {dict.footer.terms}
               </Link>
               <Link href="/privacy" className="inline-block py-1.5 transition-opacity hover:opacity-80">
-                Privacy
+                {dict.footer.privacy}
               </Link>
               <span className="text-ivory-dim/40">&middot;</span>
               <BuiltByOllin />
@@ -168,7 +170,7 @@ export default function Footer() {
 
           {/* Nav row */}
           <div className="flex items-center justify-center gap-5">
-            {MOBILE_FOOTER_NAV.map((link) => (
+            {dict.footer.mobileNav.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
@@ -194,9 +196,9 @@ export default function Footer() {
           <div className="mt-6 flex flex-col items-center gap-2 text-xs text-[#555]">
             <p>&copy; {year} {BUSINESS.name}</p>
             <p>
-              <Link href="/terms" className="transition-opacity hover:opacity-80">Terms</Link>
+              <Link href="/terms" className="transition-opacity hover:opacity-80">{dict.footer.terms}</Link>
               <span className="mx-1.5">&middot;</span>
-              <Link href="/privacy" className="transition-opacity hover:opacity-80">Privacy</Link>
+              <Link href="/privacy" className="transition-opacity hover:opacity-80">{dict.footer.privacy}</Link>
             </p>
             <BuiltByOllin className="mt-3" />
           </div>

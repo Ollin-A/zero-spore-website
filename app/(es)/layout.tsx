@@ -6,7 +6,7 @@ import Footer from "@/components/layout/Footer";
 import MobileCTABar from "@/components/layout/MobileCTABar";
 import EmergencyBadge from "@/components/layout/EmergencyBadge";
 import SchemaMarkup from "@/components/shared/SchemaMarkup";
-import "./globals.css";
+import "../globals.css";
 
 const instrumentSerif = Instrument_Serif({
   weight: "400",
@@ -30,19 +30,24 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://zerosporerestoration.com"),
-  title:
-    "Zero Spore Restoration | Water Damage & Mold Remediation | Sheridan, Oregon",
-  description:
-    "Family-owned emergency restoration company serving all of Oregon. Water damage mitigation, mold remediation, and 24/7 emergency response. CCB #244908.",
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "48x48" },
+      { url: "/favicon-32x32.png", type: "image/png", sizes: "32x32" },
+      { url: "/favicon-16x16.png", type: "image/png", sizes: "16x16" },
+    ],
+    apple: "/apple-touch-icon.png",
+  },
+  manifest: "/site.webmanifest",
   openGraph: {
     siteName: "Zero Spore Restoration",
-    locale: "en_US",
     type: "website",
+    locale: "es_US",
     images: [{ url: "/og/og-default.png", width: 1200, height: 630 }],
   },
 };
 
-export default function RootLayout({
+export default function SpanishRootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
@@ -51,11 +56,11 @@ export default function RootLayout({
 
   return (
     <html
-      lang="en"
+      lang="es"
       className={`${instrumentSerif.variable} ${plusJakarta.variable}`}
     >
       <head>
-        <SchemaMarkup type="localBusiness" />
+        <SchemaMarkup type="localBusiness" locale="es" />
         {plausibleDomain && (
           <script
             defer
@@ -66,11 +71,11 @@ export default function RootLayout({
       </head>
       <body className="antialiased">
         <ScrollMoodProvider>
-          <Nav />
+          <Nav locale="es" />
           <main className="pb-20 lg:pb-0">{children}</main>
-          <Footer />
-          <MobileCTABar />
-          <EmergencyBadge />
+          <Footer locale="es" />
+          <MobileCTABar locale="es" />
+          <EmergencyBadge locale="es" />
         </ScrollMoodProvider>
       </body>
     </html>
