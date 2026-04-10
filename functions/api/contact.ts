@@ -17,6 +17,20 @@ interface Env {
 export const onRequestPost: PagesFunction<Env> = async (context) => {
   const { env, request } = context;
 
+  // Guard: ensure all required env vars are set in Cloudflare dashboard
+  if (!env.LEAD_GATEWAY_URL || !env.LEAD_GATEWAY_TENANT || !env.LEAD_GATEWAY_TOKEN) {
+    const missing = [
+      !env.LEAD_GATEWAY_URL && "LEAD_GATEWAY_URL",
+      !env.LEAD_GATEWAY_TENANT && "LEAD_GATEWAY_TENANT",
+      !env.LEAD_GATEWAY_TOKEN && "LEAD_GATEWAY_TOKEN",
+    ].filter(Boolean).join(", ");
+    console.error(`Missing env vars: ${missing}`);
+    return Response.json(
+      { ok: false, error: "server_misconfigured" },
+      { status: 500 },
+    );
+  }
+
   const ip = request.headers.get("CF-Connecting-IP") ?? "unknown";
 
   try {
@@ -48,7 +62,7 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
         // This bypasses CORS validation since there's no browser Origin header
         "X-Ollin-Internal": env.LEAD_GATEWAY_TOKEN,
         // Set Origin so the gateway's CORS middleware doesn't block us
-        "Origin": "https://zerosporerestoration.com",
+        "Origin": "https://www.zerosporerestoration.com",
       },
       body: JSON.stringify(payload),
     });
@@ -62,7 +76,14 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
       );
     }
 
-    const result = await gatewayRes.json();
+    // Safe parse — gateway might return non-JSON on edge cases
+    let result: Record<string, unknown>;
+    try {
+      result = await gatewayRes.json();
+    } catch {
+      // Status was 2xx but body wasn't JSON — treat as success
+      result = { ok: true };
+    }
     return Response.json({ ok: result.ok ?? true });
   } catch (err) {
     console.error("Contact form error:", err);
