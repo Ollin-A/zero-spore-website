@@ -1,12 +1,3 @@
-// Cloudflare Pages Function — runs server-side, never exposed to the browser
-//
-// Env vars needed in Cloudflare dashboard:
-//   LEAD_GATEWAY_URL      = https://api.ollin.agency/api/clients/leads
-//   LEAD_GATEWAY_TENANT   = zero-spore
-//   LEAD_GATEWAY_TOKEN    = same value as N8N_INTERNAL_TOKEN on the gateway
-//
-// NOTE: No HMAC secret needed here — the gateway generates its own HMAC
-// when forwarding to n8n. We authenticate with the internal token instead.
 
 interface Env {
   LEAD_GATEWAY_URL: string;
@@ -17,7 +8,6 @@ interface Env {
 export const onRequestPost: PagesFunction<Env> = async (context) => {
   const { env, request } = context;
 
-  // Guard: ensure all required env vars are set in Cloudflare dashboard
   if (!env.LEAD_GATEWAY_URL || !env.LEAD_GATEWAY_TENANT || !env.LEAD_GATEWAY_TOKEN) {
     const missing = [
       !env.LEAD_GATEWAY_URL && "LEAD_GATEWAY_URL",
@@ -36,12 +26,10 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
   try {
     const body = await request.json<Record<string, unknown>>();
 
-    // Honeypot — silent fake success for bots
     if (body.company_fax) {
       return Response.json({ ok: true });
     }
 
-    // Build payload matching what /api/clients/leads expects
     const payload = {
       tenantId: env.LEAD_GATEWAY_TENANT,
       fullName: body.fullName,
