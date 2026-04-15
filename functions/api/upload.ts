@@ -2,6 +2,7 @@ interface Env {
   SUPABASE_URL: string;
   SUPABASE_SERVICE_KEY: string;
   SUPABASE_BUCKET: string;
+  LEAD_GATEWAY_TENANT: string;
 }
 
 const ALLOWED_TYPES = [
@@ -17,8 +18,8 @@ const MAX_FILES = 5;
 export const onRequestPost: PagesFunction<Env> = async (context) => {
   const { env, request } = context;
 
-  if (!env.SUPABASE_URL || !env.SUPABASE_SERVICE_KEY || !env.SUPABASE_BUCKET) {
-    console.error("Missing Supabase env vars");
+  if (!env.SUPABASE_URL || !env.SUPABASE_SERVICE_KEY || !env.SUPABASE_BUCKET || !env.LEAD_GATEWAY_TENANT) {
+    console.error("Missing env vars");
     return Response.json(
       { ok: false, error: "server_misconfigured" },
       { status: 500 },
@@ -68,7 +69,7 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
     for (const file of body.files) {
       const ext = file.name.split(".").pop()?.toLowerCase() || "jpg";
       const randomId = crypto.randomUUID().slice(0, 8);
-      const path = `${year}/${month}/${timestamp}-${randomId}.${ext}`;
+      const path = `${env.LEAD_GATEWAY_TENANT}/${year}/${month}/${timestamp}-${randomId}.${ext}`;
 
       const res = await fetch(
         `${env.SUPABASE_URL}/storage/v1/object/upload/sign/${env.SUPABASE_BUCKET}/${path}`,
