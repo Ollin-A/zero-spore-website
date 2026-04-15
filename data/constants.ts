@@ -3,7 +3,7 @@ export const BUSINESS = {
   shortName: "Zero Spore",
   phone: "(503) 302-0557",
   phoneTel: "tel:+15033020557",
-  email: "zerospore.resto@gmail.com",
+  email: "contact@zerosporerestoration.com",
   ccb: "244908",
   address: {
     city: "Sheridan",
