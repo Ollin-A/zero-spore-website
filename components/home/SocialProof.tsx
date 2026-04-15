@@ -70,7 +70,7 @@ export default function SocialProof() {
     <BeforeAfterSlider
       className="min-h-[400px] flex-1"
       beforeSrc="/images/portfolio/before-mold-room.webp"
-      afterSrc="/images/portfolio/after-mold-room.webp"
+      afterSrc="/images/portfolio/after-mold-room-v2.webp"
       beforeAlt="Mold-covered room before Zero Spore remediation"
       afterAlt="Clean room after Zero Spore mold remediation"
     />
