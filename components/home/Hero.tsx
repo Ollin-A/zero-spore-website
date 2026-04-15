@@ -40,7 +40,6 @@ export default function Hero() {
     <MoodSection mood="hero" fullHeight noPadding>
       {/* Background — video/poster */}
       <div className="absolute inset-0 z-0 overflow-hidden">
-        {/* TODO: REPLACE — Unsplash placeholder */}
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={HERO_POSTER_SRC}

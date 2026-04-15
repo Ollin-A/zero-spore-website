@@ -23,10 +23,10 @@ const STEP_ICONS: IconComponent[] = [
 ];
 
 const STEP_IMAGES: string[] = [
-  "/images/services/mold-inspection.webp",
-  "/images/services/mold-remediation-hero.webp",
-  "/images/portfolio/after-mold-room.webp",
-  "/images/services/emergency-response-hero.webp",
+  "/images/portfolio/step-1.webp",
+  "/images/portfolio/step-2.webp",
+  "/images/portfolio/step-3.webp",
+  "/images/portfolio/step-4.webp",
 ];
 
 export default function ProcessTimeline() {
@@ -200,7 +200,6 @@ export default function ProcessTimeline() {
 
                     <div className="flex-1">
                       <div className="overflow-hidden rounded-(--radius-image)">
-                        {/* TODO: REPLACE — Unsplash placeholder */}
                         {/* eslint-disable-next-line @next/next/no-img-element */}
                         <img
                           src={step.image}
@@ -246,7 +245,6 @@ function ProcessCard({
   return (
     <div className="process-card w-[clamp(350px,32vw,480px)] shrink-0">
       <div className="overflow-hidden rounded-(--radius-card) border border-stone bg-white">
-        {/* TODO: REPLACE — Unsplash placeholder */}
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={step.image}

@@ -103,7 +103,6 @@ export default function AboutContent() {
 
               <div className={block.reverse ? "lg:order-1" : ""}>
                 <FadeUp delay={0.2}>
-                  {/* TODO: REPLACE — Unsplash placeholder */}
                   <ParallaxImage
                     src={block.image}
                     alt={block.imageAlt}
@@ -172,7 +171,19 @@ export default function AboutContent() {
             {t.teamHeading}
           </h2>
         </FadeUp>
-        <FadeUp delay={0.15}>
+        <FadeUp delay={0.1}>
+          <div className="mt-10 overflow-hidden rounded-(--radius-image)">
+            <Image
+              src="/images/team/full-team.webp"
+              alt="The Zero Spore Restoration team reviewing project plans"
+              width={1600}
+              height={800}
+              className="w-full object-cover"
+              sizes="(max-width: 1024px) 100vw, 80vw"
+            />
+          </div>
+        </FadeUp>
+        <FadeUp delay={0.2}>
           <div className="mx-auto mt-12 max-w-md text-center">
             <div className="mx-auto aspect-square w-48 overflow-hidden rounded-full">
               <Image
@@ -190,7 +201,6 @@ export default function AboutContent() {
                 lineHeight: "var(--font-h3-lh)",
               }}
             >
-              {/* TODO: REPLACE — real owner name */}
               {t.teamRole}
             </h3>
             <p className="mt-1 text-sm text-forest">{t.teamFounder}</p>

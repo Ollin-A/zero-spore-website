@@ -70,8 +70,7 @@ export const SERVICES: Record<string, ServiceData> = {
       "Professional Water Damage Mitigation Oregon | Zero Spore Restoration",
     metaDescription:
       "Professional water damage mitigation across the Willamette Valley and Portland Metro area. 24/7 emergency response, commercial-grade drying, and full restoration. CCB #244908.",
-    heroImage:
-      "https://images.unsplash.com/photo-1585128792020-803d29415281?w=800&q=80", // TODO: REPLACE — Unsplash placeholder
+    heroImage: "/images/services/water_restoration_1.webp",
     features: [
       {
         icon: "Extractor",
@@ -365,7 +364,7 @@ export const SERVICES: Record<string, ServiceData> = {
       "24/7 Emergency Restoration Oregon | Zero Spore Restoration",
     metaDescription:
       "24/7 emergency restoration services across Oregon. Immediate response for water damage, flooding, and storm damage. Family-owned, CCB #244908.",
-    heroImage: "/images/services/emergency-response-hero.webp",
+    heroImage: "/images/services/emergency-service.webp",
     features: [
       {
         icon: "Extractor",
@@ -514,8 +513,7 @@ export const SERVICES_ES: Record<string, ServiceData> = {
       "Mitigación de Daños por Agua | Oregon | Zero Spore Restoration",
     metaDescription:
       "Servicio profesional de mitigación de daños por agua en Oregon. Extracción, secado estructural y respuesta 24/7. Empresa familiar. Hablamos español. CCB #244908.",
-    heroImage:
-      "https://images.unsplash.com/photo-1585128792020-803d29415281?w=800&q=80",
+    heroImage: "/images/services/water_restoration_1.webp",
     features: [
       {
         icon: "Extractor",
@@ -818,7 +816,7 @@ export const SERVICES_ES: Record<string, ServiceData> = {
       "Servicios de Restauración de Emergencia 24/7 | Oregon | Zero Spore Restoration",
     metaDescription:
       "Restauración de emergencia 24/7 en Oregon. Daños por agua, inundaciones y tormentas. Respuesta rápida. Hablamos español. CCB #244908.",
-    heroImage: "/images/services/emergency-response-hero.webp",
+    heroImage: "/images/services/emergency-service.webp",
     features: [
       {
         icon: "Extractor",
