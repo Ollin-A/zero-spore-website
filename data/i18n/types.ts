@@ -122,6 +122,11 @@ export interface ContactSection {
   emergencyAlertSuffix: string; // after the phone link
   messageLabel: string;
   messagePlaceholder: string;
+  photosLabel: string;
+  photosHint: string;
+  photosTapToAdd: string;
+  photosFormats: string;
+  photosUploading: string;
   submit: string;
   submitting: string;
   successTitle: string;

@@ -59,10 +59,10 @@ export default function AboutContent() {
           <p className="mt-4 text-lg text-muted">{t.heroSubline}</p>
         </FadeUp>
         <FadeUp delay={0.25}>
-          <div className="relative mt-10 aspect-21/9 overflow-hidden rounded-(--radius-image)">
+          <div className="relative mt-10 aspect-video overflow-hidden rounded-(--radius-image)">
             <Image
-              src="/images/about/portland-oregon.webp"
-              alt="Aerial view of Portland, Oregon"
+              src="/images/team/full-team.webp"
+              alt="The Zero Spore Restoration team in uniform"
               fill
               className="object-cover"
               sizes="100vw"
@@ -172,18 +172,6 @@ export default function AboutContent() {
           </h2>
         </FadeUp>
         <FadeUp delay={0.1}>
-          <div className="mt-10 overflow-hidden rounded-(--radius-image)">
-            <Image
-              src="/images/team/full-team.webp"
-              alt="The Zero Spore Restoration team reviewing project plans"
-              width={1600}
-              height={800}
-              className="w-full object-cover"
-              sizes="(max-width: 1024px) 100vw, 80vw"
-            />
-          </div>
-        </FadeUp>
-        <FadeUp delay={0.2}>
           <div className="mx-auto mt-12 max-w-md text-center">
             <div className="mx-auto aspect-square w-48 overflow-hidden rounded-full">
               <Image

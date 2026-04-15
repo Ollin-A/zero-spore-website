@@ -1,11 +1,15 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { submitContactForm } from "@/lib/lead-gateway";
 import { BUSINESS } from "@/data/constants";
 import Button from "@/components/ui/Button";
 import { AlertTriangleIcon, FollowUpIcon } from "@/components/icons";
 import { useDict } from "@/lib/use-dict";
+
+const MAX_FILES = 5;
+const MAX_FILE_SIZE = 10 * 1024 * 1024; // 10MB
+const ALLOWED_TYPES = ["image/jpeg", "image/png", "image/webp", "image/heic"];
 
 type FormStatus = "idle" | "submitting" | "success" | "error";
 
@@ -19,6 +23,17 @@ export default function ContactForm() {
   const t = dict.contact;
 
   const [status, setStatus] = useState<FormStatus>("idle");
+  const [selectedFiles, setSelectedFiles] = useState<File[]>([]);
+  const [uploading, setUploading] = useState(false);
+  const objectUrlsRef = useRef<string[]>([]);
+
+  // Clean up object URLs on unmount
+  useEffect(() => {
+    return () => {
+      objectUrlsRef.current.forEach((url) => URL.revokeObjectURL(url));
+    };
+  }, []);
+
   const [formData, setFormData] = useState({
     fullName: "",
     phone: "",
@@ -33,23 +48,89 @@ export default function ContactForm() {
     setFormData((prev) => ({ ...prev, [field]: value }));
   }
 
+  function handleFileSelect(e: React.ChangeEvent<HTMLInputElement>) {
+    const files = Array.from(e.target.files || []);
+    const valid = files.filter(
+      (f) => f.size <= MAX_FILE_SIZE && ALLOWED_TYPES.includes(f.type),
+    );
+    setSelectedFiles((prev) => [...prev, ...valid].slice(0, MAX_FILES));
+    // Reset input so the same file can be re-selected after removal
+    e.target.value = "";
+  }
+
+  function removeFile(index: number) {
+    setSelectedFiles((prev) => prev.filter((_, i) => i !== index));
+  }
+
+  function getPreviewUrl(file: File): string | null {
+    // Browsers can't preview HEIC
+    if (file.type === "image/heic") return null;
+    const url = URL.createObjectURL(file);
+    objectUrlsRef.current.push(url);
+    return url;
+  }
+
+  async function uploadImages(): Promise<string[]> {
+    if (selectedFiles.length === 0) return [];
+
+    setUploading(true);
+
+    // Get signed URLs from our server
+    const res = await fetch("/api/upload", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        files: selectedFiles.map((f) => ({ name: f.name, type: f.type })),
+      }),
+    });
+
+    const data = await res.json();
+    if (!data.ok) throw new Error(data.error || "Failed to get upload URLs");
+
+    // Upload each file directly to Supabase
+    const urls: string[] = [];
+    for (let i = 0; i < selectedFiles.length; i++) {
+      const file = selectedFiles[i];
+      const upload = data.uploads[i];
+
+      const uploadRes = await fetch(upload.signedUrl, {
+        method: "PUT",
+        headers: { "Content-Type": file.type },
+        body: file,
+      });
+
+      if (!uploadRes.ok) throw new Error(`Upload failed for ${file.name}`);
+      urls.push(upload.publicUrl);
+    }
+
+    setUploading(false);
+    return urls;
+  }
+
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     if (status === "submitting") return;
 
     setStatus("submitting");
 
-    const result = await submitContactForm({
-      fullName: formData.fullName.trim(),
-      phone: formData.phone.trim(),
-      email: formData.email.trim() || undefined,
-      serviceNeeded: formData.serviceNeeded || undefined,
-      isEmergency: formData.isEmergency,
-      message: formData.message.trim() || undefined,
-      company_fax: formData.company_fax,
-    });
+    try {
+      const imageUrls = await uploadImages();
 
-    setStatus(result.ok ? "success" : "error");
+      const result = await submitContactForm({
+        fullName: formData.fullName.trim(),
+        phone: formData.phone.trim(),
+        email: formData.email.trim() || undefined,
+        serviceNeeded: formData.serviceNeeded || undefined,
+        isEmergency: formData.isEmergency,
+        message: formData.message.trim() || undefined,
+        images: imageUrls.length > 0 ? imageUrls : undefined,
+        company_fax: formData.company_fax,
+      });
+
+      setStatus(result.ok ? "success" : "error");
+    } catch {
+      setStatus("error");
+    }
   }
 
   if (status === "success") {
@@ -219,6 +300,81 @@ export default function ContactForm() {
         />
       </div>
 
+      {/* Photo upload */}
+      <div>
+        <label className={labelClass}>
+          {t.photosLabel}{" "}
+          <span className="text-hint">{t.photosHint}</span>
+        </label>
+
+        <label className="mt-1.5 flex cursor-pointer flex-col items-center gap-2 rounded-(--radius-button) border border-dashed border-stone bg-white px-4 py-6 transition-colors hover:border-forest hover:bg-forest/5">
+          <svg
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            className="text-hint"
+          >
+            <path
+              d="M12 16V4M12 4L8 8M12 4L16 8"
+              stroke="currentColor"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+            <path
+              d="M20 16V18C20 19.1 19.1 20 18 20H6C4.9 20 4 19.1 4 18V16"
+              stroke="currentColor"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
+          <span className="text-sm text-hint">{t.photosTapToAdd}</span>
+          <span className="text-xs text-hint/60">{t.photosFormats}</span>
+          <input
+            type="file"
+            accept="image/jpeg,image/png,image/webp,image/heic"
+            multiple
+            onChange={handleFileSelect}
+            className="hidden"
+          />
+        </label>
+
+        {selectedFiles.length > 0 && (
+          <div className="mt-3 flex flex-wrap gap-2">
+            {selectedFiles.map((file, i) => {
+              const previewUrl = getPreviewUrl(file);
+              return (
+                <div
+                  key={`${file.name}-${i}`}
+                  className="relative h-16 w-16 overflow-hidden rounded-(--radius-button) border border-stone"
+                >
+                  {previewUrl ? (
+                    <img
+                      src={previewUrl}
+                      alt={file.name}
+                      className="h-full w-full object-cover"
+                    />
+                  ) : (
+                    <div className="flex h-full w-full items-center justify-center bg-warm text-xs text-hint">
+                      HEIC
+                    </div>
+                  )}
+                  <button
+                    type="button"
+                    onClick={() => removeFile(i)}
+                    className="absolute -right-1 -top-1 flex h-5 w-5 items-center justify-center rounded-full bg-carbon text-xs text-white"
+                  >
+                    &times;
+                  </button>
+                </div>
+              );
+            })}
+          </div>
+        )}
+      </div>
+
       {/* Honeypot */}
       <div
         className="absolute -left-[9999px] opacity-0 h-0 overflow-hidden"
@@ -238,7 +394,11 @@ export default function ContactForm() {
 
       {/* Submit */}
       <Button type="submit" className="w-full">
-        {status === "submitting" ? t.submitting : t.submit}
+        {status === "submitting"
+          ? uploading
+            ? t.photosUploading
+            : t.submitting
+          : t.submit}
       </Button>
     </form>
   );

@@ -8,6 +8,7 @@ interface ContactFormData {
   serviceNeeded?: string;
   isEmergency: boolean;
   message?: string;
+  images?: string[]; // Supabase public URLs for uploaded damage photos
   company_fax?: string; // honeypot — sent so server can check
 }
 

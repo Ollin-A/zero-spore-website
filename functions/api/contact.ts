@@ -38,6 +38,7 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
       serviceNeeded: body.serviceNeeded || undefined,
       isEmergency: body.isEmergency ?? false,
       message: body.message || undefined,
+      images: Array.isArray(body.images) ? body.images : [],
       source: "website-contact",
       ip,
     };
