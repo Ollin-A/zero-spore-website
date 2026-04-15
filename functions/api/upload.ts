@@ -9,6 +9,7 @@ const ALLOWED_TYPES = [
   "image/png",
   "image/webp",
   "image/heic",
+  "image/heif",
 ];
 
 const MAX_FILES = 5;
@@ -40,8 +41,16 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
       );
     }
 
+    function isAllowedType(fileName: string, mimeType: string): boolean {
+      if (ALLOWED_TYPES.includes(mimeType)) return true;
+      // Fallback: browsers report empty type for HEIC files
+      const ext = fileName.split(".").pop()?.toLowerCase();
+      const allowedExts = ["jpg", "jpeg", "png", "webp", "heic", "heif"];
+      return ext ? allowedExts.includes(ext) : false;
+    }
+
     for (const file of body.files) {
-      if (!ALLOWED_TYPES.includes(file.type)) {
+      if (!isAllowedType(file.name, file.type)) {
         return Response.json(
           { ok: false, error: "invalid_file_type", allowed: ALLOWED_TYPES },
           { status: 400 },

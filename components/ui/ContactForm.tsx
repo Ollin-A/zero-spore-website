@@ -54,11 +54,18 @@ export default function ContactForm() {
     setFormData((prev) => ({ ...prev, [field]: value }));
   }
 
+  function isAllowedFile(file: File): boolean {
+    if (ALLOWED_TYPES.includes(file.type)) return true;
+    // Fallback: check extension when browser reports empty type (common with HEIC on desktop)
+    const ext = file.name.split(".").pop()?.toLowerCase();
+    const allowedExts = ["jpg", "jpeg", "png", "webp", "heic", "heif"];
+    return ext ? allowedExts.includes(ext) : false;
+  }
+
   function handleFileSelect(e: React.ChangeEvent<HTMLInputElement>) {
     const files = Array.from(e.target.files || []);
-    console.log("Selected:", files.map(f => ({ name: f.name, type: f.type, size: f.size })));
     const valid = files.filter(
-      (f) => f.size <= MAX_FILE_SIZE && ALLOWED_TYPES.includes(f.type),
+      (f) => f.size <= MAX_FILE_SIZE && isAllowedFile(f),
     );
     setSelectedFiles((prev) => [...prev, ...valid].slice(0, MAX_FILES));
     e.target.value = "";
@@ -69,8 +76,9 @@ export default function ContactForm() {
   }
 
   function getPreviewUrl(file: File): string | null {
-    // Browsers can't preview HEIC
-    if (file.type === "image/heic") return null;
+    // Browsers can't preview HEIC (type may be empty for HEIC files)
+    const ext = file.name.split(".").pop()?.toLowerCase();
+    if (file.type === "image/heic" || file.type === "image/heif" || ext === "heic" || ext === "heif") return null;
     const url = URL.createObjectURL(file);
     objectUrlsRef.current.push(url);
     return url;
@@ -340,7 +348,7 @@ export default function ContactForm() {
           <span className="text-xs text-hint/60">{t.photosFormats}</span>
           <input
             type="file"
-            accept="image/jpeg,image/png,image/webp,image/heic"
+            accept="image/jpeg,image/png,image/webp,image/heic,image/heif,.heic,.heif"
             multiple
             onChange={handleFileSelect}
             className="hidden"
