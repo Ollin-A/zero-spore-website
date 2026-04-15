@@ -9,8 +9,14 @@ import { useDict } from "@/lib/use-dict";
 
 const MAX_FILES = 5;
 const MAX_FILE_SIZE = 10 * 1024 * 1024; // 10MB
-const ALLOWED_TYPES = ["image/jpeg", "image/png", "image/webp", "image/heic"];
-
+const ALLOWED_TYPES = [
+  "image/jpeg",
+  "image/jpg",     
+  "image/png",
+  "image/webp",
+  "image/heic",
+  "image/heif",   
+];
 type FormStatus = "idle" | "submitting" | "success" | "error";
 
 const inputClass =
@@ -50,11 +56,11 @@ export default function ContactForm() {
 
   function handleFileSelect(e: React.ChangeEvent<HTMLInputElement>) {
     const files = Array.from(e.target.files || []);
+    console.log("Selected:", files.map(f => ({ name: f.name, type: f.type, size: f.size })));
     const valid = files.filter(
       (f) => f.size <= MAX_FILE_SIZE && ALLOWED_TYPES.includes(f.type),
     );
     setSelectedFiles((prev) => [...prev, ...valid].slice(0, MAX_FILES));
-    // Reset input so the same file can be re-selected after removal
     e.target.value = "";
   }
 
